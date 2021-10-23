@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <AndroidManifestMerger>manifestmerger.jar</AndroidManifestMerger>
+  </PropertyGroup>  
+  
+  <ItemGroup>
+  </ItemGroup>
+  <PropertyGroup>
+    <AndroidManifestMerger>manifestmerger.jar</AndroidManifestMerger>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AndroidManifestMerger>manifestmerger.jar</AndroidManifestMerger>
+  </PropertyGroup>  
+  <PropertyGroup>
+    <AndroidFragmentType>AndroidX.Fragment.App.Fragment</AndroidFragmentType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <XamarinBuildRestoreResources Include="_XbdRestoreItems_playservicestasks_17_2_0" />
+  </ItemGroup>
+  <Target Name="_XbdRestoreItems_playservicestasks_17_2_0">
+    <ItemGroup>
+      <XamarinBuildDownload Include="playservicestasks-17.2.0">
+        <Url>https://dl.google.com/dl/android/maven2/com/google/android/gms/play-services-tasks/17.2.0/play-services-tasks-17.2.0.aar</Url>
+        <ToFile>playservicestasks-17.2.0.aar</ToFile>
+        <Kind>Uncompressed</Kind>
+        <Sha256>a131d126145dfe87de04fa904f9ce91753b2d3273851b7d084666a71255792a8</Sha256>
+      </XamarinBuildDownload>
+    </ItemGroup>
+
+
+    <ItemGroup>
+     <XamarinBuildDownloadAndroidAarLibrary Include="$(XamarinBuildDownloadDir)playservicestasks-17.2.0\playservicestasks-17.2.0.aar" />
+      <XamarinBuildDownloadAndroidAarLibrary Include="$(XamarinBuildDownloadDir)playservicestasks-17.2.0\playservicestasks-17.2.0.aar" />
+    </ItemGroup>
+  </Target>
+
+</Project>

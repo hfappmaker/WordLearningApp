@@ -1,0 +1,629 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Xamarin.Build.Download.0.10.0\build\Xamarin.Build.Download.props" Condition="Exists('packages\Xamarin.Build.Download.0.10.0\build\Xamarin.Build.Download.props')" />
+  <Import Project="packages\Xamarin.AndroidX.Migration.1.0.7\build\monoandroid90\Xamarin.AndroidX.Migration.props" Condition="Exists('packages\Xamarin.AndroidX.Migration.1.0.7\build\monoandroid90\Xamarin.AndroidX.Migration.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{89B4E522-B649-400C-AF36-8BF7AA62A9F7}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WordLearning</RootNamespace>
+    <AssemblyName>wordlearning</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <AndroidApplication>True</AndroidApplication>
+    <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
+    <AndroidResgenClass>Resource</AndroidResgenClass>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <TargetFrameworkVersion>v11.0</TargetFrameworkVersion>
+    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+    <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
+    <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <AndroidKeyStore>false</AndroidKeyStore>
+    <AndroidSigningStorePass>&amp;fIrstnukehiroex</AndroidSigningStorePass>
+    <AndroidSigningKeyAlias>単語帳メーカーver0.0.1</AndroidSigningKeyAlias>
+    <AndroidSigningKeyPass>?fIrstaliasnukehiroex</AndroidSigningKeyPass>
+    <AndroidSigningKeyStore>
+    </AndroidSigningKeyStore>
+    <ReleaseVersion>1.0</ReleaseVersion>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <AndroidCreatePackagePerAbi>true</AndroidCreatePackagePerAbi>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AndroidSupportedAbis>armeabi-v7a;x86;arm64-v8a;x86_64</AndroidSupportedAbis>
+    <AndroidKeyStore>True</AndroidKeyStore>
+    <AndroidSigningStorePass>Nukehiroex2</AndroidSigningStorePass>
+    <AndroidSigningKeyPass>Nukehiroex2</AndroidSigningKeyPass>
+    <AndroidSigningKeyStore>/Users/furugakihiromitsu/Library/Developer/Xamarin/Keystore/wordlearning/wordlearning.keystore</AndroidSigningKeyStore>
+    <AndroidSigningKeyAlias>wordlearning</AndroidSigningKeyAlias>
+    <AndroidDexTool>d8</AndroidDexTool>
+    <AndroidUseSharedRuntime>true</AndroidUseSharedRuntime>
+    <MandroidI18n>cjk;mideast;other;rare;west</MandroidI18n>
+    <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
+<LangVersion>latest</LangVersion>
+<AndroidEnableMultiDex>true</AndroidEnableMultiDex>
+<AndroidCreatePackagePerAbi>true</AndroidCreatePackagePerAbi>
+<AndroidUseAapt2>true</AndroidUseAapt2>
+<RunCodeAnalysis>true</RunCodeAnalysis><CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+<AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
+<AndroidLinkMode>None</AndroidLinkMode>
+<EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType></DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AndroidManagedSymbols>true</AndroidManagedSymbols>
+    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
+    <AndroidKeyStore>True</AndroidKeyStore>
+    <AndroidSigningKeyStore>/Users/furugakihiromitsu/Library/Developer/Xamarin/Keystore/wordlearning/wordlearning.keystore</AndroidSigningKeyStore>
+    <AndroidSigningStorePass>Nukehiroex2</AndroidSigningStorePass>
+    <AndroidSigningKeyAlias>wordlearning</AndroidSigningKeyAlias>
+    <AndroidSigningKeyPass>Nukehiroex2</AndroidSigningKeyPass>
+    <AndroidSupportedAbis>arm64-v8a;x86_64;x86;armeabi-v7a</AndroidSupportedAbis>
+    <AndroidDexTool>d8</AndroidDexTool>
+    <MandroidI18n>cjk;mideast;other;rare;west</MandroidI18n>
+    <AndroidPackageFormat>apk</AndroidPackageFormat>
+    <AndroidUseAapt2>true</AndroidUseAapt2>
+<LangVersion>latest</LangVersion>
+<RunCodeAnalysis>true</RunCodeAnalysis>  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Mono.Android">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Core" />
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Collections.Immutable">
+      <HintPath>packages\System.Collections.Immutable.1.7.1\lib\netstandard2.0\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.MultiDex">
+      <HintPath>packages\Xamarin.AndroidX.MultiDex.2.0.1.3\lib\monoandroid90\Xamarin.AndroidX.MultiDex.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.Annotation">
+      <HintPath>packages\Xamarin.AndroidX.Annotation.1.1.0.4\lib\monoandroid90\Xamarin.AndroidX.Annotation.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.Arch.Core.Common">
+      <HintPath>packages\Xamarin.AndroidX.Arch.Core.Common.2.1.0.4\lib\monoandroid90\Xamarin.AndroidX.Arch.Core.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.Arch.Core.Runtime">
+      <HintPath>packages\Xamarin.AndroidX.Arch.Core.Runtime.2.1.0.4\lib\monoandroid90\Xamarin.AndroidX.Arch.Core.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.Collection">
+      <HintPath>packages\Xamarin.AndroidX.Collection.1.1.0.3\lib\monoandroid90\Xamarin.AndroidX.Collection.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.DocumentFile">
+      <HintPath>packages\Xamarin.AndroidX.DocumentFile.1.0.1.3\lib\monoandroid90\Xamarin.AndroidX.DocumentFile.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.Lifecycle.Common">
+      <HintPath>packages\Xamarin.AndroidX.Lifecycle.Common.2.2.0.2\lib\monoandroid90\Xamarin.AndroidX.Lifecycle.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.Lifecycle.LiveData.Core">
+      <HintPath>packages\Xamarin.AndroidX.Lifecycle.LiveData.Core.2.2.0.2\lib\monoandroid90\Xamarin.AndroidX.Lifecycle.LiveData.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.Lifecycle.Runtime">
+      <HintPath>packages\Xamarin.AndroidX.Lifecycle.Runtime.2.2.0.2\lib\monoandroid90\Xamarin.AndroidX.Lifecycle.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.Lifecycle.ViewModel">
+      <HintPath>packages\Xamarin.AndroidX.Lifecycle.ViewModel.2.2.0.2\lib\monoandroid90\Xamarin.AndroidX.Lifecycle.ViewModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.LocalBroadcastManager">
+      <HintPath>packages\Xamarin.AndroidX.LocalBroadcastManager.1.0.0.3\lib\monoandroid90\Xamarin.AndroidX.LocalBroadcastManager.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.Print">
+      <HintPath>packages\Xamarin.AndroidX.Print.1.0.0.3\lib\monoandroid90\Xamarin.AndroidX.Print.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.SavedState">
+      <HintPath>packages\Xamarin.AndroidX.SavedState.1.0.0.2\lib\monoandroid90\Xamarin.AndroidX.SavedState.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.VersionedParcelable">
+      <HintPath>packages\Xamarin.AndroidX.VersionedParcelable.1.1.1.3\lib\monoandroid90\Xamarin.AndroidX.VersionedParcelable.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.Core">
+      <HintPath>packages\Xamarin.AndroidX.Core.1.2.0.2\lib\monoandroid90\Xamarin.AndroidX.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.Activity">
+      <HintPath>packages\Xamarin.AndroidX.Activity.1.1.0.2\lib\monoandroid90\Xamarin.AndroidX.Activity.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.CustomView">
+      <HintPath>packages\Xamarin.AndroidX.CustomView.1.0.0.2\lib\monoandroid90\Xamarin.AndroidX.CustomView.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.Loader">
+      <HintPath>packages\Xamarin.AndroidX.Loader.1.1.0.2\lib\monoandroid90\Xamarin.AndroidX.Loader.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.Legacy.Support.Core.Utils">
+      <HintPath>packages\Xamarin.AndroidX.Legacy.Support.Core.Utils.1.0.0.2\lib\monoandroid90\Xamarin.AndroidX.Legacy.Support.Core.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.ViewPager">
+      <HintPath>packages\Xamarin.AndroidX.ViewPager.1.0.0.2\lib\monoandroid90\Xamarin.AndroidX.ViewPager.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.Fragment">
+      <HintPath>packages\Xamarin.AndroidX.Fragment.1.2.4.2\lib\monoandroid90\Xamarin.AndroidX.Fragment.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Google.AutoValue.Annotations">
+      <HintPath>packages\Xamarin.Google.AutoValue.Annotations.1.6.5\lib\monoandroid80\Xamarin.Google.AutoValue.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.Lifecycle.ViewModelSavedState">
+      <HintPath>packages\Xamarin.AndroidX.Lifecycle.ViewModelSavedState.2.2.0.2\lib\monoandroid90\Xamarin.AndroidX.Lifecycle.ViewModelSavedState.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.CursorAdapter">
+      <HintPath>packages\Xamarin.AndroidX.CursorAdapter.1.0.0.3\lib\monoandroid90\Xamarin.AndroidX.CursorAdapter.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.Interpolator">
+      <HintPath>packages\Xamarin.AndroidX.Interpolator.1.0.0.3\lib\monoandroid90\Xamarin.AndroidX.Interpolator.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.AsyncLayoutInflater">
+      <HintPath>packages\Xamarin.AndroidX.AsyncLayoutInflater.1.0.0.2\lib\monoandroid90\Xamarin.AndroidX.AsyncLayoutInflater.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.CoordinatorLayout">
+      <HintPath>packages\Xamarin.AndroidX.CoordinatorLayout.1.1.0.2\lib\monoandroid90\Xamarin.AndroidX.CoordinatorLayout.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.DrawerLayout">
+      <HintPath>packages\Xamarin.AndroidX.DrawerLayout.1.0.0.2\lib\monoandroid90\Xamarin.AndroidX.DrawerLayout.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.Media">
+      <HintPath>packages\Xamarin.AndroidX.Media.1.1.0.2\lib\monoandroid90\Xamarin.AndroidX.Media.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.SlidingPaneLayout">
+      <HintPath>packages\Xamarin.AndroidX.SlidingPaneLayout.1.0.0.2\lib\monoandroid90\Xamarin.AndroidX.SlidingPaneLayout.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.SwipeRefreshLayout">
+      <HintPath>packages\Xamarin.AndroidX.SwipeRefreshLayout.1.0.0.2\lib\monoandroid90\Xamarin.AndroidX.SwipeRefreshLayout.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.Legacy.Support.Core.UI">
+      <HintPath>packages\Xamarin.AndroidX.Legacy.Support.Core.UI.1.0.0.2\lib\monoandroid90\Xamarin.AndroidX.Legacy.Support.Core.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.Legacy.Support.V4">
+      <HintPath>packages\Xamarin.AndroidX.Legacy.Support.V4.1.0.0.2\lib\monoandroid90\Xamarin.AndroidX.Legacy.Support.V4.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.Lifecycle.LiveData">
+      <HintPath>packages\Xamarin.AndroidX.Lifecycle.LiveData.2.2.0.2\lib\monoandroid90\Xamarin.AndroidX.Lifecycle.LiveData.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.CardView">
+      <HintPath>packages\Xamarin.AndroidX.CardView.1.0.0.3\lib\monoandroid90\Xamarin.AndroidX.CardView.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.RecyclerView">
+      <HintPath>packages\Xamarin.AndroidX.RecyclerView.1.1.0.2\lib\monoandroid90\Xamarin.AndroidX.RecyclerView.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.VectorDrawable">
+      <HintPath>packages\Xamarin.AndroidX.VectorDrawable.1.1.0.2\lib\monoandroid90\Xamarin.AndroidX.VectorDrawable.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.VectorDrawable.Animated">
+      <HintPath>packages\Xamarin.AndroidX.VectorDrawable.Animated.1.1.0.2\lib\monoandroid90\Xamarin.AndroidX.VectorDrawable.Animated.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.AppCompat.AppCompatResources">
+      <HintPath>packages\Xamarin.AndroidX.AppCompat.AppCompatResources.1.1.0.2\lib\monoandroid90\Xamarin.AndroidX.AppCompat.AppCompatResources.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.AppCompat">
+      <HintPath>packages\Xamarin.AndroidX.AppCompat.1.1.0.2\lib\monoandroid90\Xamarin.AndroidX.AppCompat.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.Transition">
+      <HintPath>packages\Xamarin.AndroidX.Transition.1.3.1.2\lib\monoandroid90\Xamarin.AndroidX.Transition.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Google.Android.Material">
+      <HintPath>packages\Xamarin.Google.Android.Material.1.0.0.1\lib\monoandroid90\Xamarin.Google.Android.Material.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Google.Android.DataTransport.TransportApi">
+      <HintPath>packages\Xamarin.Google.Android.DataTransport.TransportApi.2.2.0\lib\monoandroid90\Xamarin.Google.Android.DataTransport.TransportApi.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Google.Dagger">
+      <HintPath>packages\Xamarin.Google.Dagger.2.25.2.1\lib\monoandroid90\Xamarin.Google.Dagger.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Google.Android.DataTransport.TransportRuntime">
+      <HintPath>packages\Xamarin.Google.Android.DataTransport.TransportRuntime.2.2.2\lib\monoandroid90\Xamarin.Google.Android.DataTransport.TransportRuntime.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.JavaX.Inject">
+      <HintPath>packages\Xamarin.JavaX.Inject.1.0.0\lib\monoandroid90\Xamarin.JavaX.Inject.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Firebase.Database.Collection">
+      <HintPath>packages\Xamarin.Firebase.Database.Collection.71.1601.0\lib\monoandroid90\Xamarin.Firebase.Database.Collection.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.GooglePlayServices.Basement">
+      <HintPath>packages\Xamarin.GooglePlayServices.Basement.117.5.0\lib\monoandroid90\Xamarin.GooglePlayServices.Basement.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.GooglePlayServices.Tasks">
+      <HintPath>packages\Xamarin.GooglePlayServices.Tasks.117.2.0\lib\monoandroid90\Xamarin.GooglePlayServices.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Firebase.Common">
+      <HintPath>packages\Xamarin.Firebase.Common.119.5.0\lib\monoandroid90\Xamarin.Firebase.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Firebase.Database.Connection">
+      <HintPath>packages\Xamarin.Firebase.Database.Connection.71.1601.0\lib\monoandroid90\Xamarin.Firebase.Database.Connection.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Firebase.Database">
+      <HintPath>packages\Xamarin.Firebase.Database.71.1601.0\lib\monoandroid90\Xamarin.Firebase.Database.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.GooglePlayServices.Stats">
+      <HintPath>packages\Xamarin.GooglePlayServices.Stats.117.0.0\lib\monoandroid90\Xamarin.GooglePlayServices.Stats.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.GooglePlayServices.Base">
+      <HintPath>packages\Xamarin.GooglePlayServices.Base.117.1.0\lib\monoandroid90\Xamarin.GooglePlayServices.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Firebase.Iid.Interop">
+      <HintPath>packages\Xamarin.Firebase.Iid.Interop.117.0.0\lib\monoandroid90\Xamarin.Firebase.Iid.Interop.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Firebase.Iid">
+      <HintPath>packages\Xamarin.Firebase.Iid.121.0.1\lib\monoandroid90\Xamarin.Firebase.Iid.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Firebase.Annotations">
+      <HintPath>packages\Xamarin.Firebase.Annotations.116.0.0\lib\monoandroid90\Xamarin.Firebase.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Firebase.Components">
+      <HintPath>packages\Xamarin.Firebase.Components.116.1.0\lib\monoandroid90\Xamarin.Firebase.Components.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Firebase.Installations.InterOp">
+      <HintPath>packages\Xamarin.Firebase.Installations.InterOp.116.0.1\lib\monoandroid90\Xamarin.Firebase.Installations.InterOp.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Firebase.Installations">
+      <HintPath>packages\Xamarin.Firebase.Installations.116.3.5\lib\monoandroid90\Xamarin.Firebase.Installations.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.GooglePlayServices.CloudMessaging">
+      <HintPath>packages\Xamarin.GooglePlayServices.CloudMessaging.116.0.0\lib\monoandroid90\Xamarin.GooglePlayServices.CloudMessaging.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.lib.e_sqlite3.android">
+      <HintPath>packages\SQLitePCLRaw.lib.e_sqlite3.android.2.0.3\lib\monoandroid80\SQLitePCLRaw.lib.e_sqlite3.android.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers">
+      <HintPath>packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory">
+      <HintPath>packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.core">
+      <HintPath>packages\SQLitePCLRaw.core.2.0.3\lib\netstandard2.0\SQLitePCLRaw.core.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.provider.e_sqlite3">
+      <HintPath>packages\SQLitePCLRaw.provider.e_sqlite3.2.0.3\lib\netstandard2.0\SQLitePCLRaw.provider.e_sqlite3.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.batteries_v2">
+      <HintPath>packages\SQLitePCLRaw.bundle_green.2.0.3\lib\netstandard2.0\SQLitePCLRaw.batteries_v2.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLite-net">
+      <HintPath>packages\sqlite-net-pcl.1.7.335\lib\netstandard2.0\SQLite-net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Reactive">
+      <HintPath>packages\System.Reactive.5.0.0\lib\netstandard2.0\System.Reactive.dll</HintPath>
+    </Reference>
+    <Reference Include="ReactiveProperty.Core">
+      <HintPath>packages\ReactiveProperty.Core.7.11.0\lib\netstandard2.0\ReactiveProperty.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="ReactiveProperty">
+      <HintPath>packages\ReactiveProperty.7.11.0\lib\netstandard2.0\ReactiveProperty.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>packages\Newtonsoft.Json.13.0.1\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Resources\Resource.Designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Dialog\WlAlartDialogBuilder.cs" />
+    <Compile Include="Dialog\EditTagDialogBuilder.cs" />
+    <Compile Include="Dialog\CreateNewTagDialogBuilder.cs" />
+    <Compile Include="Dialog\SetLearnWordDialogBuilder.cs" />
+    <Compile Include="Dialog\EditWordTagDialogBuilder.cs" />
+    <Compile Include="Dialog\EditWordMemoDialogBuilder.cs" />
+    <Compile Include="Dialog\ChangeThemeColorDialogBuilder.cs" />
+    <Compile Include="Dialog\RenameDirectoryDialogBuilder.cs" />
+    <Compile Include="Activities\Question_bulletin_board.cs" />
+    <Compile Include="Activities\Settings.cs" />
+    <Compile Include="Activities\Start.cs" />
+    <Compile Include="Activities\Learn_Wordlist.cs" />
+    <Compile Include="Activities\Edit_Wordlist.cs" />
+    <Compile Include="Messages\WlMessage.cs" />
+    <Compile Include="Entry\WlWord.cs" />
+    <Compile Include="Entry\WlFolder.cs" />
+    <Compile Include="Language\WlLanguage.cs" />
+    <Compile Include="Adapter\RecyclerAdapter.cs" />
+    <Compile Include="Shape\WlShape.cs" />
+    <Compile Include="Language\WlLanguageUtil.cs" />
+    <Compile Include="Adapter\Edit_WordListAdapter.cs" />
+    <Compile Include="Adapter\TagListAdapter.cs" />
+    <Compile Include="Adapter\SelectedTagAdapter.cs" />
+    <Compile Include="Adapter\SelectedTagGridViewAdapter.cs" />
+    <Compile Include="Dialog\JumpDialogBuilder.cs" />
+    <Compile Include="Adapter\Start_MoveAdapter.cs" />
+    <Compile Include="Adapter\StartAdapter.cs" />
+    <Compile Include="Dialog\AutoPlayDialogBuilder.cs" />
+    <Compile Include="Adapter\TitleAdapter.cs" />
+    <Compile Include="Adapter\PostAdapter.cs" />
+    <Compile Include="Dialog\IntegrateDirectoryDialogBuilder.cs" />
+    <Compile Include="Fragment\WlAlartDialogFragment.cs" />
+    <Compile Include="Fragment\AddNewDirectoryDialogFragment.cs" />
+    <Compile Include="Fragment\CreateNewItemDialogFragment.cs" />
+    <Compile Include="Fragment\ChangeThemeColorDialogFragment.cs" />
+    <Compile Include="Fragment\CreateNewTagDialogFragment.cs" />
+    <Compile Include="Fragment\DeleteEntriesDialogFragment.cs" />
+    <Compile Include="Fragment\DeleteWordDialogFragment.cs" />
+    <Compile Include="Fragment\EditTagDialogFragment.cs" />
+    <Compile Include="Utility\WlUtility.cs" />
+    <Compile Include="Constant\WlConstant.cs" />
+    <Compile Include="Fragment\WordDialogFragment.cs" />
+    <Compile Include="Entry\WlWordList.cs" />
+    <Compile Include="Entry\WlEntryType.cs" />
+    <Compile Include="Colors\WlColorUtil.cs" />
+    <Compile Include="Colors\ThemeColor.cs" />
+    <Compile Include="Colors\TagColorCollection.cs" />
+    <Compile Include="Colors\TagColor.cs" />
+    <Compile Include="Activities\CustomActivity.cs" />
+    <Compile Include="States\StartInitToolbarState.cs" />
+    <Compile Include="States\StartDeleteToolbarState.cs" />
+    <Compile Include="States\Edit_WordlistDeleteToolbarState.cs" />
+    <Compile Include="States\Edit_WordlistInitToolbarState.cs" />
+    <Compile Include="Fragment\MoveDirectoryDialogFragment.cs" />
+    <Compile Include="Fragment\RenameDirectoryDialogFragment.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="GettingStarted.Xamarin" />
+    <None Include="Resources\AboutResources.txt" />
+    <None Include="Assets\AboutAssets.txt" />
+    <AndroidResource Include="Resources\layout\Edit_Wordlist.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\Learn_Wordlist.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\Toolbar_Start_Deletemode.xml">
+      <SubType>Designer</SubType>
+      <IncludeInPackage>false</IncludeInPackage>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\Toolbar_Learn_Wordlist_Init.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\row.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\row_Explorer.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\Start.axml" />
+    <AndroidResource Include="Resources\layout\Dialog_Move_Start.axml" />
+    <AndroidResource Include="Resources\drawable\ic_launcher_APP.png" />
+    <AndroidResource Include="Resources\drawable\ic_settings_48pt.png" />
+    <AndroidResource Include="Resources\values\strings.xml" />
+    <AndroidResource Include="Resources\values\styles.xml" />
+    <AndroidResource Include="Resources\values\colors.xml" />
+    <AndroidResource Include="Resources\layout\ToolBar_Settings.xml" />
+    <AndroidResource Include="Resources\layout\Settings.axml" />
+    <AndroidResource Include="Resources\layout\Dialog_Changethemecolor.axml" />
+    <AndroidResource Include="Resources\layout\row_Latest.xml" />
+    <AndroidResource Include="Resources\menu\menu_popup_Dialog_EditTag.xml" />
+    <AndroidResource Include="Resources\drawable\ic_more_vert_48pt_3x.png" />
+    <AndroidResource Include="Resources\drawable\ic_more_vert_18pt_2x.png" />
+    <AndroidResource Include="Resources\drawable\ic_action_more_vert.png" />
+    <AndroidResource Include="Resources\drawable\ic_action_more_vert_48pt.png" />
+    <AndroidResource Include="Resources\layout\Dialog_EditTag.xml" />
+    <AndroidResource Include="Resources\layout\Toolbar_Dialog_EditTag.xml" />
+    <AndroidResource Include="Resources\menu\menu_Dialog_EditTag.xml" />
+    <AndroidResource Include="Resources\drawable\ic_edit_48pt.png" />
+    <AndroidResource Include="Resources\layout\Dialog_CreateNewTag.xml" />
+    <AndroidResource Include="Resources\drawable\square.xml" />
+    <AndroidResource Include="Resources\layout\row_Taglist.xml" />
+    <AndroidResource Include="Resources\layout\row_SelectedTag.xml" />
+    <AndroidResource Include="Resources\layout\griditem_SelectedTag.xml" />
+    <AndroidResource Include="Resources\layout\Dialog_SetLearnWord.xml" />
+    <AndroidResource Include="Resources\menu\menu_Learn_Wordlist.xml" />
+    <AndroidResource Include="Resources\drawable\ic_folder2_48pt.png" />
+    <AndroidResource Include="Resources\drawable\ic_wordlist2_48pt.png" />
+    <AndroidResource Include="Resources\drawable\ic_palette_48pt.png" />
+    <AndroidResource Include="Resources\drawable\ic_play_48pt.png" />
+    <AndroidResource Include="Resources\drawable\ic_move_48pt.png" />
+    <AndroidResource Include="Resources\drawable\ic_integration_48pt.png" />
+    <AndroidResource Include="Resources\drawable\heart.xml" />
+    <AndroidResource Include="Resources\drawable\star.xml" />
+    <AndroidResource Include="Resources\drawable\circle.xml" />
+    <AndroidResource Include="Resources\drawable\ic_jump_48pt.png" />
+    <AndroidResource Include="Resources\drawable\battery.xml" />
+    <AndroidResource Include="Resources\drawable\ic_voice_48pt.png" />
+    <AndroidResource Include="Resources\drawable\ic_action_local_offer.png" />
+    <AndroidResource Include="Resources\drawable\ic_memo_48pt.png" />
+    <AndroidResource Include="Resources\drawable\ic_pause_48pt.png" />
+    <AndroidResource Include="Resources\drawable\ic_auto_48pt.png" />
+    <AndroidResource Include="Resources\layout\Dialog_SettingWordlist.xml" />
+    <None Include="packages.config" />
+    <AndroidResource Include="Resources\values-de\colors.xml" />
+    <AndroidResource Include="Resources\values-de\strings.xml" />
+    <AndroidResource Include="Resources\values-de\styles.xml" />
+    <AndroidResource Include="Resources\values-fr\colors.xml" />
+    <AndroidResource Include="Resources\values-fr\strings.xml" />
+    <AndroidResource Include="Resources\values-fr\styles.xml" />
+    <AndroidResource Include="Resources\values-ja\colors.xml" />
+    <AndroidResource Include="Resources\values-ja\strings.xml" />
+    <AndroidResource Include="Resources\values-ja\styles.xml" />
+    <AndroidResource Include="Resources\values-ko\colors.xml" />
+    <AndroidResource Include="Resources\values-ko\strings.xml" />
+    <AndroidResource Include="Resources\values-ko\styles.xml" />
+    <AndroidResource Include="Resources\values-ru\colors.xml" />
+    <AndroidResource Include="Resources\values-ru\strings.xml" />
+    <AndroidResource Include="Resources\values-ru\styles.xml" />
+    <AndroidResource Include="Resources\values-zh\colors.xml" />
+    <AndroidResource Include="Resources\values-zh\strings.xml" />
+    <AndroidResource Include="Resources\values-zh\styles.xml" />
+    <AndroidResource Include="Resources\values-zh-rHK\colors.xml" />
+    <AndroidResource Include="Resources\values-zh-rHK\strings.xml" />
+    <AndroidResource Include="Resources\values-zh-rHK\styles.xml" />
+    <AndroidResource Include="Resources\values-zh-rTW\colors.xml" />
+    <AndroidResource Include="Resources\values-zh-rTW\strings.xml" />
+    <AndroidResource Include="Resources\values-zh-rTW\styles.xml" />
+    <AndroidResource Include="Resources\values-in\colors.xml" />
+    <AndroidResource Include="Resources\values-in\strings.xml" />
+    <AndroidResource Include="Resources\values-in\styles.xml" />
+    <AndroidResource Include="Resources\layout\Question_bulletin_board.axml" />
+    <AndroidResource Include="Resources\layout\ToolBar_Question_bulletin_board.xml" />
+    <AndroidResource Include="Resources\layout\row_Post.xml" />
+    <AndroidResource Include="Resources\menu\menu_Question_bulletin_board.xml" />
+    <AndroidResource Include="Resources\drawable\border.xml" />
+    <AndroidResource Include="Resources\layout\row_SelectDestination.xml">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\Dialog_Word.xml">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\values\dimen.xml">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\Dialog_DirectoryName.xml">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\mipmap-hdpi\" />
+    <Folder Include="Resources\mipmap-mdpi\" />
+    <Folder Include="Resources\mipmap-xhdpi\" />
+    <Folder Include="Resources\mipmap-xxhdpi\" />
+    <Folder Include="Resources\mipmap-xxxhdpi\" />
+    <Folder Include="Resources\values-in\" />
+    <Folder Include="Dialog\" />
+    <Folder Include="Adapter\" />
+    <Folder Include="Attribute\" />
+    <Folder Include="Messages\" />
+    <Folder Include="Activities\" />
+    <Folder Include="Entry\" />
+    <Folder Include="Language\" />
+    <Folder Include="Shape\" />
+    <Folder Include="Fragment\" />
+    <Folder Include="Utility\" />
+    <Folder Include="Constant\" />
+    <Folder Include="States\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\AndroidManifest.xml">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\menu\menu_Start_Init.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_delete_48pt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Toolbar_Start_Init.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_add_48pt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\menu\menu_Start_Deletemode.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Toolbar_Edit_Wordlist_Init.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Toolbar_Edit_Wordlist_Deletemode.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\menu\menu_Edit_Wordlist_Init.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\menu\menu_Edit_Wordlist_Deletemode.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_wordlist_48pt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_folder_48pt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_switchdirectory_48pt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_below_48pt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <GoogleServicesJson Include="google-services.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{25ED5F4E-B2D0-4B36-8BB0-CD9BE6C7BF96}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+  <Import Project="packages\Xamarin.Google.Android.Material.1.0.0.1\build\monoandroid90\Xamarin.Google.Android.Material.targets" Condition="Exists('packages\Xamarin.Google.Android.Material.1.0.0.1\build\monoandroid90\Xamarin.Google.Android.Material.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.MultiDex.2.0.1.3\build\monoandroid90\Xamarin.AndroidX.MultiDex.targets" Condition="Exists('packages\Xamarin.AndroidX.MultiDex.2.0.1.3\build\monoandroid90\Xamarin.AndroidX.MultiDex.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.Migration.1.0.7\build\monoandroid90\Xamarin.AndroidX.Migration.targets" Condition="Exists('packages\Xamarin.AndroidX.Migration.1.0.7\build\monoandroid90\Xamarin.AndroidX.Migration.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.Annotation.1.1.0.4\build\monoandroid90\Xamarin.AndroidX.Annotation.targets" Condition="Exists('packages\Xamarin.AndroidX.Annotation.1.1.0.4\build\monoandroid90\Xamarin.AndroidX.Annotation.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.Arch.Core.Common.2.1.0.4\build\monoandroid90\Xamarin.AndroidX.Arch.Core.Common.targets" Condition="Exists('packages\Xamarin.AndroidX.Arch.Core.Common.2.1.0.4\build\monoandroid90\Xamarin.AndroidX.Arch.Core.Common.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.Arch.Core.Runtime.2.1.0.4\build\monoandroid90\Xamarin.AndroidX.Arch.Core.Runtime.targets" Condition="Exists('packages\Xamarin.AndroidX.Arch.Core.Runtime.2.1.0.4\build\monoandroid90\Xamarin.AndroidX.Arch.Core.Runtime.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.CardView.1.0.0.3\build\monoandroid90\Xamarin.AndroidX.CardView.targets" Condition="Exists('packages\Xamarin.AndroidX.CardView.1.0.0.3\build\monoandroid90\Xamarin.AndroidX.CardView.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.Collection.1.1.0.3\build\monoandroid90\Xamarin.AndroidX.Collection.targets" Condition="Exists('packages\Xamarin.AndroidX.Collection.1.1.0.3\build\monoandroid90\Xamarin.AndroidX.Collection.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.CursorAdapter.1.0.0.3\build\monoandroid90\Xamarin.AndroidX.CursorAdapter.targets" Condition="Exists('packages\Xamarin.AndroidX.CursorAdapter.1.0.0.3\build\monoandroid90\Xamarin.AndroidX.CursorAdapter.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.DocumentFile.1.0.1.3\build\monoandroid90\Xamarin.AndroidX.DocumentFile.targets" Condition="Exists('packages\Xamarin.AndroidX.DocumentFile.1.0.1.3\build\monoandroid90\Xamarin.AndroidX.DocumentFile.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.Interpolator.1.0.0.3\build\monoandroid90\Xamarin.AndroidX.Interpolator.targets" Condition="Exists('packages\Xamarin.AndroidX.Interpolator.1.0.0.3\build\monoandroid90\Xamarin.AndroidX.Interpolator.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.Lifecycle.Common.2.2.0.2\build\monoandroid90\Xamarin.AndroidX.Lifecycle.Common.targets" Condition="Exists('packages\Xamarin.AndroidX.Lifecycle.Common.2.2.0.2\build\monoandroid90\Xamarin.AndroidX.Lifecycle.Common.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.Lifecycle.LiveData.Core.2.2.0.2\build\monoandroid90\Xamarin.AndroidX.Lifecycle.LiveData.Core.targets" Condition="Exists('packages\Xamarin.AndroidX.Lifecycle.LiveData.Core.2.2.0.2\build\monoandroid90\Xamarin.AndroidX.Lifecycle.LiveData.Core.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.Lifecycle.LiveData.2.2.0.2\build\monoandroid90\Xamarin.AndroidX.Lifecycle.LiveData.targets" Condition="Exists('packages\Xamarin.AndroidX.Lifecycle.LiveData.2.2.0.2\build\monoandroid90\Xamarin.AndroidX.Lifecycle.LiveData.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.Lifecycle.Runtime.2.2.0.2\build\monoandroid90\Xamarin.AndroidX.Lifecycle.Runtime.targets" Condition="Exists('packages\Xamarin.AndroidX.Lifecycle.Runtime.2.2.0.2\build\monoandroid90\Xamarin.AndroidX.Lifecycle.Runtime.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.Lifecycle.ViewModel.2.2.0.2\build\monoandroid90\Xamarin.AndroidX.Lifecycle.ViewModel.targets" Condition="Exists('packages\Xamarin.AndroidX.Lifecycle.ViewModel.2.2.0.2\build\monoandroid90\Xamarin.AndroidX.Lifecycle.ViewModel.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.LocalBroadcastManager.1.0.0.3\build\monoandroid90\Xamarin.AndroidX.LocalBroadcastManager.targets" Condition="Exists('packages\Xamarin.AndroidX.LocalBroadcastManager.1.0.0.3\build\monoandroid90\Xamarin.AndroidX.LocalBroadcastManager.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.Print.1.0.0.3\build\monoandroid90\Xamarin.AndroidX.Print.targets" Condition="Exists('packages\Xamarin.AndroidX.Print.1.0.0.3\build\monoandroid90\Xamarin.AndroidX.Print.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.SavedState.1.0.0.2\build\monoandroid90\Xamarin.AndroidX.SavedState.targets" Condition="Exists('packages\Xamarin.AndroidX.SavedState.1.0.0.2\build\monoandroid90\Xamarin.AndroidX.SavedState.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.Lifecycle.ViewModelSavedState.2.2.0.2\build\monoandroid90\Xamarin.AndroidX.Lifecycle.ViewModelSavedState.targets" Condition="Exists('packages\Xamarin.AndroidX.Lifecycle.ViewModelSavedState.2.2.0.2\build\monoandroid90\Xamarin.AndroidX.Lifecycle.ViewModelSavedState.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.VersionedParcelable.1.1.1.3\build\monoandroid90\Xamarin.AndroidX.VersionedParcelable.targets" Condition="Exists('packages\Xamarin.AndroidX.VersionedParcelable.1.1.1.3\build\monoandroid90\Xamarin.AndroidX.VersionedParcelable.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.Core.1.2.0.2\build\monoandroid90\Xamarin.AndroidX.Core.targets" Condition="Exists('packages\Xamarin.AndroidX.Core.1.2.0.2\build\monoandroid90\Xamarin.AndroidX.Core.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.Activity.1.1.0.2\build\monoandroid90\Xamarin.AndroidX.Activity.targets" Condition="Exists('packages\Xamarin.AndroidX.Activity.1.1.0.2\build\monoandroid90\Xamarin.AndroidX.Activity.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.AsyncLayoutInflater.1.0.0.2\build\monoandroid90\Xamarin.AndroidX.AsyncLayoutInflater.targets" Condition="Exists('packages\Xamarin.AndroidX.AsyncLayoutInflater.1.0.0.2\build\monoandroid90\Xamarin.AndroidX.AsyncLayoutInflater.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.CustomView.1.0.0.2\build\monoandroid90\Xamarin.AndroidX.CustomView.targets" Condition="Exists('packages\Xamarin.AndroidX.CustomView.1.0.0.2\build\monoandroid90\Xamarin.AndroidX.CustomView.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.CoordinatorLayout.1.1.0.2\build\monoandroid90\Xamarin.AndroidX.CoordinatorLayout.targets" Condition="Exists('packages\Xamarin.AndroidX.CoordinatorLayout.1.1.0.2\build\monoandroid90\Xamarin.AndroidX.CoordinatorLayout.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.DrawerLayout.1.0.0.2\build\monoandroid90\Xamarin.AndroidX.DrawerLayout.targets" Condition="Exists('packages\Xamarin.AndroidX.DrawerLayout.1.0.0.2\build\monoandroid90\Xamarin.AndroidX.DrawerLayout.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.Loader.1.1.0.2\build\monoandroid90\Xamarin.AndroidX.Loader.targets" Condition="Exists('packages\Xamarin.AndroidX.Loader.1.1.0.2\build\monoandroid90\Xamarin.AndroidX.Loader.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.Legacy.Support.Core.Utils.1.0.0.2\build\monoandroid90\Xamarin.AndroidX.Legacy.Support.Core.Utils.targets" Condition="Exists('packages\Xamarin.AndroidX.Legacy.Support.Core.Utils.1.0.0.2\build\monoandroid90\Xamarin.AndroidX.Legacy.Support.Core.Utils.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.Media.1.1.0.2\build\monoandroid90\Xamarin.AndroidX.Media.targets" Condition="Exists('packages\Xamarin.AndroidX.Media.1.1.0.2\build\monoandroid90\Xamarin.AndroidX.Media.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.RecyclerView.1.1.0.2\build\monoandroid90\Xamarin.AndroidX.RecyclerView.targets" Condition="Exists('packages\Xamarin.AndroidX.RecyclerView.1.1.0.2\build\monoandroid90\Xamarin.AndroidX.RecyclerView.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.SlidingPaneLayout.1.0.0.2\build\monoandroid90\Xamarin.AndroidX.SlidingPaneLayout.targets" Condition="Exists('packages\Xamarin.AndroidX.SlidingPaneLayout.1.0.0.2\build\monoandroid90\Xamarin.AndroidX.SlidingPaneLayout.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.SwipeRefreshLayout.1.0.0.2\build\monoandroid90\Xamarin.AndroidX.SwipeRefreshLayout.targets" Condition="Exists('packages\Xamarin.AndroidX.SwipeRefreshLayout.1.0.0.2\build\monoandroid90\Xamarin.AndroidX.SwipeRefreshLayout.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.VectorDrawable.1.1.0.2\build\monoandroid90\Xamarin.AndroidX.VectorDrawable.targets" Condition="Exists('packages\Xamarin.AndroidX.VectorDrawable.1.1.0.2\build\monoandroid90\Xamarin.AndroidX.VectorDrawable.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.VectorDrawable.Animated.1.1.0.2\build\monoandroid90\Xamarin.AndroidX.VectorDrawable.Animated.targets" Condition="Exists('packages\Xamarin.AndroidX.VectorDrawable.Animated.1.1.0.2\build\monoandroid90\Xamarin.AndroidX.VectorDrawable.Animated.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.AppCompat.AppCompatResources.1.1.0.2\build\monoandroid90\Xamarin.AndroidX.AppCompat.AppCompatResources.targets" Condition="Exists('packages\Xamarin.AndroidX.AppCompat.AppCompatResources.1.1.0.2\build\monoandroid90\Xamarin.AndroidX.AppCompat.AppCompatResources.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.ViewPager.1.0.0.2\build\monoandroid90\Xamarin.AndroidX.ViewPager.targets" Condition="Exists('packages\Xamarin.AndroidX.ViewPager.1.0.0.2\build\monoandroid90\Xamarin.AndroidX.ViewPager.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.Fragment.1.2.4.2\build\monoandroid90\Xamarin.AndroidX.Fragment.targets" Condition="Exists('packages\Xamarin.AndroidX.Fragment.1.2.4.2\build\monoandroid90\Xamarin.AndroidX.Fragment.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.AppCompat.1.1.0.2\build\monoandroid90\Xamarin.AndroidX.AppCompat.targets" Condition="Exists('packages\Xamarin.AndroidX.AppCompat.1.1.0.2\build\monoandroid90\Xamarin.AndroidX.AppCompat.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.Legacy.Support.Core.UI.1.0.0.2\build\monoandroid90\Xamarin.AndroidX.Legacy.Support.Core.UI.targets" Condition="Exists('packages\Xamarin.AndroidX.Legacy.Support.Core.UI.1.0.0.2\build\monoandroid90\Xamarin.AndroidX.Legacy.Support.Core.UI.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.Legacy.Support.V4.1.0.0.2\build\monoandroid90\Xamarin.AndroidX.Legacy.Support.V4.targets" Condition="Exists('packages\Xamarin.AndroidX.Legacy.Support.V4.1.0.0.2\build\monoandroid90\Xamarin.AndroidX.Legacy.Support.V4.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.Transition.1.3.1.2\build\monoandroid90\Xamarin.AndroidX.Transition.targets" Condition="Exists('packages\Xamarin.AndroidX.Transition.1.3.1.2\build\monoandroid90\Xamarin.AndroidX.Transition.targets')" />
+  <Import Project="packages\Xamarin.Firebase.Database.Collection.71.1601.0\build\MonoAndroid90\Xamarin.Firebase.Database.Collection.targets" Condition="Exists('packages\Xamarin.Firebase.Database.Collection.71.1601.0\build\MonoAndroid90\Xamarin.Firebase.Database.Collection.targets')" />
+  <Import Project="packages\Xamarin.Firebase.Database.Connection.71.1601.0\build\MonoAndroid90\Xamarin.Firebase.Database.Connection.targets" Condition="Exists('packages\Xamarin.Firebase.Database.Connection.71.1601.0\build\MonoAndroid90\Xamarin.Firebase.Database.Connection.targets')" />
+  <Import Project="packages\Xamarin.Firebase.Database.71.1601.0\build\MonoAndroid90\Xamarin.Firebase.Database.targets" Condition="Exists('packages\Xamarin.Firebase.Database.71.1601.0\build\MonoAndroid90\Xamarin.Firebase.Database.targets')" />
+  <Import Project="packages\Xamarin.Build.Download.0.10.0\build\Xamarin.Build.Download.targets" Condition="Exists('packages\Xamarin.Build.Download.0.10.0\build\Xamarin.Build.Download.targets')" />
+  <Import Project="packages\Xamarin.Firebase.Annotations.116.0.0\build\MonoAndroid90\Xamarin.Firebase.Annotations.targets" Condition="Exists('packages\Xamarin.Firebase.Annotations.116.0.0\build\MonoAndroid90\Xamarin.Firebase.Annotations.targets')" />
+  <Import Project="packages\Xamarin.Firebase.Components.116.1.0\build\MonoAndroid90\Xamarin.Firebase.Components.targets" Condition="Exists('packages\Xamarin.Firebase.Components.116.1.0\build\MonoAndroid90\Xamarin.Firebase.Components.targets')" />
+  <Import Project="packages\Xamarin.GooglePlayServices.Basement.117.5.0\build\MonoAndroid90\Xamarin.GooglePlayServices.Basement.targets" Condition="Exists('packages\Xamarin.GooglePlayServices.Basement.117.5.0\build\MonoAndroid90\Xamarin.GooglePlayServices.Basement.targets')" />
+  <Import Project="packages\Xamarin.GooglePlayServices.Stats.117.0.0\build\MonoAndroid90\Xamarin.GooglePlayServices.Stats.targets" Condition="Exists('packages\Xamarin.GooglePlayServices.Stats.117.0.0\build\MonoAndroid90\Xamarin.GooglePlayServices.Stats.targets')" />
+  <Import Project="packages\Xamarin.GooglePlayServices.Tasks.117.2.0\build\MonoAndroid90\Xamarin.GooglePlayServices.Tasks.targets" Condition="Exists('packages\Xamarin.GooglePlayServices.Tasks.117.2.0\build\MonoAndroid90\Xamarin.GooglePlayServices.Tasks.targets')" />
+  <Import Project="packages\Xamarin.Firebase.Common.119.5.0\build\MonoAndroid90\Xamarin.Firebase.Common.targets" Condition="Exists('packages\Xamarin.Firebase.Common.119.5.0\build\MonoAndroid90\Xamarin.Firebase.Common.targets')" />
+  <Import Project="packages\Xamarin.Firebase.Installations.InterOp.116.0.1\build\MonoAndroid90\Xamarin.Firebase.Installations.InterOp.targets" Condition="Exists('packages\Xamarin.Firebase.Installations.InterOp.116.0.1\build\MonoAndroid90\Xamarin.Firebase.Installations.InterOp.targets')" />
+  <Import Project="packages\Xamarin.Firebase.Installations.116.3.5\build\MonoAndroid90\Xamarin.Firebase.Installations.targets" Condition="Exists('packages\Xamarin.Firebase.Installations.116.3.5\build\MonoAndroid90\Xamarin.Firebase.Installations.targets')" />
+  <Import Project="packages\Xamarin.GooglePlayServices.Base.117.1.0\build\MonoAndroid90\Xamarin.GooglePlayServices.Base.targets" Condition="Exists('packages\Xamarin.GooglePlayServices.Base.117.1.0\build\MonoAndroid90\Xamarin.GooglePlayServices.Base.targets')" />
+  <Import Project="packages\Xamarin.Firebase.Iid.Interop.117.0.0\build\MonoAndroid90\Xamarin.Firebase.Iid.Interop.targets" Condition="Exists('packages\Xamarin.Firebase.Iid.Interop.117.0.0\build\MonoAndroid90\Xamarin.Firebase.Iid.Interop.targets')" />
+  <Import Project="packages\Xamarin.GooglePlayServices.CloudMessaging.116.0.0\build\MonoAndroid90\Xamarin.GooglePlayServices.CloudMessaging.targets" Condition="Exists('packages\Xamarin.GooglePlayServices.CloudMessaging.116.0.0\build\MonoAndroid90\Xamarin.GooglePlayServices.CloudMessaging.targets')" />
+  <Import Project="packages\Xamarin.Firebase.Iid.121.0.1\build\MonoAndroid90\Xamarin.Firebase.Iid.targets" Condition="Exists('packages\Xamarin.Firebase.Iid.121.0.1\build\MonoAndroid90\Xamarin.Firebase.Iid.targets')" />
+</Project>

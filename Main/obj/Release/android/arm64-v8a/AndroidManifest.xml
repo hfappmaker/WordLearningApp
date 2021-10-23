@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="jp.h_f_appmaker.wordlearning" android:installLocation="auto" android:versionCode="400043" android:versionName="1.0">
+  <uses-sdk android:minSdkVersion="23" android:targetSdkVersion="29" />
+  <uses-sdk android:targetSdkVersion="28" />
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  <uses-permission android:name="android.permission.WAKE_LOCK" />
+  <!-- Required by older versions of Google Play services to create IID tokens -->
+  <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+  <application android:name="android.app.Application" android:allowBackup="true" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:extractNativeLibs="false" android:icon="@drawable/ic_launcher_app" android:label="@string/app_name" android:requestLegacyExternalStorage="true" android:theme="@style/AppTheme">
+    <receiver android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver" android:exported="false" />
+    <receiver android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:exported="true" android:permission="com.google.android.c2dm.permission.SEND">
+      <intent-filter>
+        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+        <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+        <category android:name="jp.h_f_appmaker.wordlearning" />
+      </intent-filter>
+      <intent-filter>
+        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+      </intent-filter>
+    </receiver>
+    <uses-library android:name="org.apache.http.legacy" android:required="false" />
+    <activity android:name="crc64eef4ae7064546f80.Edit_Wordlist" android:label="Edit_Wordlist" />
+    <activity android:name="crc64eef4ae7064546f80.Learn_Wordlist" android:label="Learn_Wordlist" />
+    <activity android:name="crc64eef4ae7064546f80.Start" android:label="@string/app_name" android:launchMode="singleTop">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
+    <service android:name="crc64eef4ae7064546f80.MyFirebaseIIDService">
+      <intent-filter>
+        <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+      </intent-filter>
+    </service>
+    <activity android:name="crc64eef4ae7064546f80.Wordlist_Editword" android:label="Wordlist_Editword" android:windowSoftInputMode="stateUnspecified|adjustResize" />
+    <activity android:name="crc64eef4ae7064546f80.Wordlist_Addword" android:label="Wordlist_Addword" android:windowSoftInputMode="stateUnspecified|adjustResize" />
+    <activity android:name="crc64eef4ae7064546f80.Settings" android:label="Settings" />
+    <activity android:name="crc64eef4ae7064546f80.Question_bulletin_board" android:label="Question_bulletin_board" />
+    <provider android:name="mono.MonoRuntimeProvider" android:authorities="jp.h_f_appmaker.wordlearning.mono.MonoRuntimeProvider.__mono_init__" android:exported="false" android:initOrder="1999999999" />
+    <provider android:name="com.google.firebase.provider.FirebaseInitProvider" android:authorities="jp.h_f_appmaker.wordlearning.firebaseinitprovider" android:exported="false" android:initOrder="100" />
+    <activity android:name="com.google.android.gms.common.api.GoogleApiActivity" android:exported="false" android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+    <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+    <service android:name="com.google.firebase.components.ComponentDiscoveryService" android:exported="false">
+      <meta-data android:name="com.google.firebase.components:com.google.firebase.iid.Registrar" android:value="com.google.firebase.components.ComponentRegistrar" />
+    </service>
+    <!--
+             FirebaseInstanceIdService performs security checks at runtime,
+             no need for explicit permissions despite exported="true"
+        -->
+    <service android:name="com.google.firebase.iid.FirebaseInstanceIdService" android:exported="true">
+      <intent-filter android:priority="-500">
+        <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+      </intent-filter>
+    </service>
+    <service android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService" android:exported="false" android:permission="android.permission.BIND_JOB_SERVICE"></service>
+    <receiver android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver" android:exported="false" />
+    <service android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery" android:exported="false" />
+  </application>
+</manifest>

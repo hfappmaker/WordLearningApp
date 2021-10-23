@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="jp.h_f_appmaker.wordlearning" android:versionName="1.0" android:installLocation="auto" android:versionCode="43">
+  <uses-sdk android:minSdkVersion="23" android:targetSdkVersion="29" />
+  <uses-sdk android:targetSdkVersion="28" />
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+  <application android:allowBackup="true" android:label="@string/app_name" android:theme="@style/AppTheme" android:icon="@drawable/ic_launcher_app" android:requestLegacyExternalStorage="true" android:name="android.app.Application">
+    <receiver android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver" android:exported="false" />
+    <receiver android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:exported="true" android:permission="com.google.android.c2dm.permission.SEND">
+      <intent-filter>
+        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+        <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+        <category android:name="jp.h_f_appmaker.wordlearning" />
+      </intent-filter>
+    </receiver>
+    <uses-library android:name="org.apache.http.legacy" android:required="false" />
+    <activity android:label="Edit_Wordlist" android:name="crc64eef4ae7064546f80.Edit_Wordlist" />
+    <activity android:label="Learn_Wordlist" android:name="crc64eef4ae7064546f80.Learn_Wordlist" />
+    <activity android:label="@string/app_name" android:launchMode="singleTop" android:name="crc64eef4ae7064546f80.Start">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
+    <service android:name="crc64eef4ae7064546f80.MyFirebaseIIDService">
+      <intent-filter>
+        <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+      </intent-filter>
+    </service>
+    <activity android:label="Wordlist_Editword" android:windowSoftInputMode="stateUnspecified|adjustResize" android:name="crc64eef4ae7064546f80.Wordlist_Editword" />
+    <activity android:label="Wordlist_Addword" android:windowSoftInputMode="stateUnspecified|adjustResize" android:name="crc64eef4ae7064546f80.Wordlist_Addword" />
+    <activity android:label="Settings" android:name="crc64eef4ae7064546f80.Settings" />
+    <activity android:label="Question_bulletin_board" android:name="crc64eef4ae7064546f80.Question_bulletin_board" />
+    <provider android:name="mono.MonoRuntimeProvider" android:exported="false" android:initOrder="1999999999" android:authorities="jp.h_f_appmaker.wordlearning.mono.MonoRuntimeProvider.__mono_init__" />
+  </application>
+</manifest>
