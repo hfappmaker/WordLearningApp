@@ -2,7 +2,6 @@
 using Android.Content;
 using Common.Utility;
 using Java.IO;
-using Newtonsoft.Json;
 
 namespace Common.Extension
 {

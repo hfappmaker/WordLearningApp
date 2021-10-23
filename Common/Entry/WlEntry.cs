@@ -6,8 +6,6 @@ using System.Xml.Linq;
 using System.ComponentModel;
 using System.Reactive.Linq;
 using System.Runtime.CompilerServices;
-using Reactive.Bindings;
-using Reactive.Bindings.Extensions;
 using Common.Visitors;
 using static Common.Utility.ActionHistoryManager;
 using System.Collections.Generic;
