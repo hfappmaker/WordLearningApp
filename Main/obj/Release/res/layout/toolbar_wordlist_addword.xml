@@ -1,1 +1,0 @@
-<androidx.appcompat.widget.Toolbar android:layout_width="match_parent" android:layout_height="?attr/actionBarSize" android:id="@+id/tbWordlist_Addword" android:background="?android:attr/colorPrimary" android:elevation="4dp" android:theme="@style/ThemeOverlay.AppCompat.ActionBar" xmlns:android="http://schemas.android.com/apk/res/android"></androidx.appcompat.widget.Toolbar>
