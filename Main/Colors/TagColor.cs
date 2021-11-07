@@ -19,89 +19,47 @@ namespace WordLearning.Colors
 
         public int Red
         {
-            get
-            {
-                return int.Parse(Tag.Element(nameof(Red)).Value);
-            }
+            get => int.Parse(Tag.Element(nameof(Red)).Value);
 
-            set
-            {
-                Tag.Element(nameof(Red)).Value = value.ToString();
-            }
+            set => Tag.Element(nameof(Red)).Value = value.ToString();
         }
 
         public int Green
         {
-            get
-            {
-                return int.Parse(Tag.Element(nameof(Green)).Value);
-            }
+            get => int.Parse(Tag.Element(nameof(Green)).Value);
 
-            set
-            {
-                Tag.Element(nameof(Green)).Value = value.ToString();
-            }
+            set => Tag.Element(nameof(Green)).Value = value.ToString();
         }
 
         public int Blue
         {
-            get
-            {
-                return int.Parse(Tag.Element(nameof(Blue)).Value);
-            }
+            get => int.Parse(Tag.Element(nameof(Blue)).Value);
 
-            set
-            {
-                Tag.Element(nameof(Blue)).Value = value.ToString();
-            }
+            set => Tag.Element(nameof(Blue)).Value = value.ToString();
         }
 
         public string Meaning
         {
-            get
-            {
-                return Tag.Element(nameof(Meaning)).Value;
-            }
+            get => Tag.Element(nameof(Meaning)).Value;
 
-            set
-            {
-                Tag.Element(nameof(Meaning)).Value = value.ToString();
-            }
+            set => Tag.Element(nameof(Meaning)).Value = value.ToString();
         }
 
         public WlShape Shape
         {
-            get
-            {
-                return Enum.Parse<WlShape>(Tag.Element(nameof(Shape)).Value);
-            }
+            get => Enum.Parse<WlShape>(Tag.Element(nameof(Shape)).Value);
 
-            set
-            {
-                Tag.Element(nameof(Shape)).Value = value.ToString();
-            }
+            set => Tag.Element(nameof(Shape)).Value = value.ToString();
         }
 
-        public Android.Graphics.Color WlColor
+        public Android.Graphics.Color WlColor => Android.Graphics.Color.Rgb(Red, Green, Blue);
+
+        public int this[int index] => index switch
         {
-            get
-            {
-                return Android.Graphics.Color.Rgb(Red, Green, Blue);
-            }
-        }
-
-        public int this[int index]
-        {
-            get
-            {
-                return index switch
-                {
-                    0 => Red,
-                    1 => Green,
-                    2 => Blue,
-                    _ => throw new IndexOutOfRangeException(),
-                };
-            }
-        }
+            0 => Red,
+            1 => Green,
+            2 => Blue,
+            _ => throw new IndexOutOfRangeException(),
+        };
     }
 }

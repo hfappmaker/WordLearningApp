@@ -1,5 +1,4 @@
-﻿using System;
-using Common.Entry;
+﻿using Common.Entry;
 
 namespace Common.Visitors
 {

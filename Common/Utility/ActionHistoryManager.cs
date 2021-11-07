@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections;
+﻿using Common.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Common.Core;
 
 namespace Common.Utility
 {
     public static class ActionHistoryManager
     {
-        private class Command<T1,T2> : ICommand
+        private class Command<T1, T2> : ICommand
         {
-            public Func<T1, T2> UndoFunc { get;}
-            public Func<T2, T1> RedoFunc { get;}
+            public Func<T1, T2> UndoFunc { get; }
+            public Func<T2, T1> RedoFunc { get; }
             private T1 _undoArg;
             private T2 _redoArg;
 
@@ -33,7 +32,7 @@ namespace Common.Utility
             }
 
 
-            public Command(Func<T1,T2> undoFunc, Func<T2, T1> redoFunc)
+            public Command(Func<T1, T2> undoFunc, Func<T2, T1> redoFunc)
             {
                 UndoFunc = undoFunc;
                 RedoFunc = redoFunc;
@@ -52,7 +51,7 @@ namespace Common.Utility
 
             public void Undo()
             {
-                foreach (var command in _commands)
+                foreach (ICommand command in _commands)
                 {
                     command.Undo();
                 }
@@ -61,7 +60,7 @@ namespace Common.Utility
 
             public void Redo()
             {
-                foreach (var command in Enumerable.Reverse(_commands))
+                foreach (ICommand command in Enumerable.Reverse(_commands))
                 {
                     command.Redo();
                 }
@@ -97,7 +96,10 @@ namespace Common.Utility
         {
             _redoCommandsList[transactionLevel].Clear();
             _undoCommandsList[transactionLevel].PushBack(command);
-            if (_undoCommandsList[transactionLevel].Count > MAX_UNDO_COUNT) _undoCommandsList[transactionLevel].PopFront();
+            if (_undoCommandsList[transactionLevel].Count > MAX_UNDO_COUNT)
+            {
+                _undoCommandsList[transactionLevel].PopFront();
+            }
         }
 
 
@@ -109,7 +111,7 @@ namespace Common.Utility
 
         public static void Execute<T1, T2>(Func<T1, T2> undoFunc, Func<T2, T1> redoFunc)
         {
-            var command = new Command<T1, T2>(undoFunc, redoFunc);
+            Command<T1, T2> command = new(undoFunc, redoFunc);
             command.Redo();
             Record(command);
         }
@@ -117,7 +119,7 @@ namespace Common.Utility
 
         public static void Undo()
         {
-            if (_undoCommandsList[transactionLevel].TryPop(out var command))
+            if (_undoCommandsList[transactionLevel].TryPop(out ICommand command))
             {
                 command.Undo();
                 _redoCommandsList[transactionLevel].Enqueue(command);
@@ -127,7 +129,7 @@ namespace Common.Utility
 
         public static void Redo()
         {
-            if (_redoCommandsList[transactionLevel].TryDequeue(out var command))
+            if (_redoCommandsList[transactionLevel].TryDequeue(out ICommand command))
             {
                 command.Redo();
                 _undoCommandsList[transactionLevel].PushBack(command);
@@ -153,9 +155,9 @@ namespace Common.Utility
                 return;
             }
 
-            var transactionCommand = new TransactionCommand();
+            TransactionCommand transactionCommand = new();
             _redoCommandsList[transactionLevel].Clear();
-            while (_undoCommandsList[transactionLevel].TryPop(out var command))
+            while (_undoCommandsList[transactionLevel].TryPop(out ICommand command))
             {
                 transactionCommand.AddCommand(command);
             }

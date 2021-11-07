@@ -1,22 +1,18 @@
 ﻿using Android.App;
-using Android.Widget;
+using Android.Content;
+using Android.Graphics;
 using Android.OS;
+using Android.Runtime;
+using Android.Speech.Tts;
+using Android.Views;
+using Android.Widget;
 using System;
 using System.Linq;
-using static Android.Widget.RadioGroup;
-using Android.Views;
-using static Android.Views.GestureDetector;
-using Android.Runtime;
-using Android.Graphics;
-using Android.Content;
-using Android.Speech.Tts;
-using Android.Views.InputMethods;
 using System.Threading;
-using WordLearning.Dialog;
-using WordLearning.Utility;
 using WordLearning.Colors;
-using WordLearning.Messages;
-using WordLearning.Language;
+using WordLearning.Dialog;
+using static Android.Views.GestureDetector;
+using static Android.Widget.RadioGroup;
 
 namespace WordLearning.Activities
 {
@@ -30,14 +26,14 @@ namespace WordLearning.Activities
 
         private GestureDetector mGestureDetector;
         private GestureListener mOnGestureListener;
-        TextToSpeech ttsword,ttsmeaning;
-        TextView txtWord;
-        TextView txtMeaning;
-        TextView txtPageNo;
-        GridLayout gridLayout;
+        private TextToSpeech ttsword, ttsmeaning;
+        private TextView txtWord;
+        private TextView txtMeaning;
+        private TextView txtPageNo;
+        private GridLayout gridLayout;
         private bool IsAutomode = false;
-        CancellationTokenSource tokenSource = new ();
-        Handler handler = new (handler:null);
+        private readonly CancellationTokenSource tokenSource = new();
+        private readonly Handler handler = new(handler: null);
         /// <summary>
         /// Ons the create.
         /// </summary>
@@ -64,7 +60,7 @@ namespace WordLearning.Activities
             ImageButton voicebtn_meaning = FindViewById<ImageButton>(Resource.Id.ibVoice_Meaning);
             ImageButton memobtn = FindViewById<ImageButton>(Resource.Id.ibMemo);
             voicebtn_word.SetColorFilter(ThemeColor.Color, PorterDuff.Mode.SrcIn);
-            voicebtn_meaning.SetColorFilter(ThemeColor.Color,PorterDuff.Mode.SrcIn);
+            voicebtn_meaning.SetColorFilter(ThemeColor.Color, PorterDuff.Mode.SrcIn);
             memobtn.SetColorFilter(ThemeColor.Color, PorterDuff.Mode.SrcIn);
             // WlUtility.WordNumber = 0;
             rdogSelectVisible_CheckedChange(new object(), new CheckedChangeEventArgs(Resource.Id.rdoOnlyWord));
@@ -76,15 +72,15 @@ namespace WordLearning.Activities
         {
             //switch(Intent.GetIntExtra("RadioButton", Resource.Id.rdoAscendant))
             //{
-                //case Resource.Id.rdoAscendant:
-                //    Utility.WordandMeanings = Utility.WordandMeanings.OrderBy(p => p.Value.Wordname).ToDictionary(p => p.Key,p=>p.Value);
-                //    break;
-                //case Resource.Id.rdoDescendant:
-                //    Utility.WordandMeanings = Utility.WordandMeanings.OrderByDescending(p => p.Value.Wordname).ToDictionary(p => p.Key, p => p.Value);
-                //    break;
-                //case Resource.Id.rdoRandomize:
-                //    Utility.WordandMeanings = Utility.WordandMeanings.OrderBy(p => Guid.NewGuid()).ToDictionary(p => p.Key, p => p.Value);
-                //    break;
+            //case Resource.Id.rdoAscendant:
+            //    Utility.WordandMeanings = Utility.WordandMeanings.OrderBy(p => p.Value.Wordname).ToDictionary(p => p.Key,p=>p.Value);
+            //    break;
+            //case Resource.Id.rdoDescendant:
+            //    Utility.WordandMeanings = Utility.WordandMeanings.OrderByDescending(p => p.Value.Wordname).ToDictionary(p => p.Key, p => p.Value);
+            //    break;
+            //case Resource.Id.rdoRandomize:
+            //    Utility.WordandMeanings = Utility.WordandMeanings.OrderBy(p => Guid.NewGuid()).ToDictionary(p => p.Key, p => p.Value);
+            //    break;
             //}
         }
 
@@ -98,17 +94,17 @@ namespace WordLearning.Activities
                 gridLayout.RemoveViews(0, gridLayout.ChildCount);
             }
 
-            foreach(var pair in TagColorCollection.Instance.Select((TagColor, Index) => (TagColor, Index)))
+            foreach ((TagColor TagColor, int Index) pair in TagColorCollection.Instance.Select((TagColor, Index) => (TagColor, Index)))
             {
-                var imageView = new ImageView(ApplicationContext);
-                var drawable = GetDrawable((int)pair.TagColor.Shape);
+                ImageView imageView = new ImageView(ApplicationContext);
+                Android.Graphics.Drawables.Drawable drawable = GetDrawable((int)pair.TagColor.Shape);
                 drawable.Mutate();
                 drawable.SetColorFilter(new BlendModeColorFilter(pair.TagColor.WlColor, BlendMode.Multiply));
                 imageView.SetImageDrawable(drawable);
-                var param = new GridLayout.LayoutParams
+                GridLayout.LayoutParams param = new GridLayout.LayoutParams
                 {
                     RowSpec = GridLayout.InvokeSpec(pair.Index),
-                    ColumnSpec=GridLayout.InvokeSpec(0)
+                    ColumnSpec = GridLayout.InvokeSpec(0)
                 };
                 imageView.LayoutParameters = param;
                 gridLayout.AddView(imageView);
@@ -202,11 +198,11 @@ namespace WordLearning.Activities
         /// <returns></returns>
         public override bool OnTouchEvent(MotionEvent e)
         {
-            if(e.Action == MotionEventActions.Down)
+            if (e.Action == MotionEventActions.Down)
             {
 
             }
-            else if(e.Action == MotionEventActions.Move)
+            else if (e.Action == MotionEventActions.Move)
             {
 
             }
@@ -233,7 +229,7 @@ namespace WordLearning.Activities
                     }
                 }
             }
-            return result;          
+            return result;
         }
         /// <summary>
         /// 
@@ -248,11 +244,19 @@ namespace WordLearning.Activities
                     Finish();
                     break;
                 case Resource.Id.action_edit_Learn_Wordlist:
-                    if (IsAutomode) break;
+                    if (IsAutomode)
+                    {
+                        break;
+                    }
+
                     new EditWordTagDialogBuilder(ApplicationContext).Show();
                     break;
                 case Resource.Id.action_jump_Learn_Wordlist:
-                    if (IsAutomode) break;
+                    if (IsAutomode)
+                    {
+                        break;
+                    }
+
                     new JumpDialogBuilder(ApplicationContext).Show();
                     break;
                 case Resource.Id.action_auto_Learn_Wordlist:
@@ -270,13 +274,13 @@ namespace WordLearning.Activities
         public override bool OnPrepareOptionsMenu(IMenu menu)
         {
             base.OnPrepareOptionsMenu(menu);
-            var auto = menu.FindItem(Resource.Id.action_auto_Learn_Wordlist);
-            var pause = menu.FindItem(Resource.Id.action_pause_Learn_Wordlist);
+            IMenuItem auto = menu.FindItem(Resource.Id.action_auto_Learn_Wordlist);
+            IMenuItem pause = menu.FindItem(Resource.Id.action_pause_Learn_Wordlist);
             auto.SetVisible(!IsAutomode);
             pause.SetVisible(IsAutomode);
             return true;
         }
-        
+
 
 
         /// <summary>
@@ -307,9 +311,9 @@ namespace WordLearning.Activities
             //ttsmeaning.SeWlLanguage.Utility.localeMeaning);
         }
 
-        public void ibVoice_Word_Click(object sender,EventArgs e)
+        public void ibVoice_Word_Click(object sender, EventArgs e)
         {
-            ttsword.Speak(txtWord.Text, QueueMode.Flush,null,"Word");
+            ttsword.Speak(txtWord.Text, QueueMode.Flush, null, "Word");
         }
 
         public void ibVoice_Meaning_Click(object sender, EventArgs e)
@@ -319,14 +323,17 @@ namespace WordLearning.Activities
 
         public void ibMemo_Click(object sender, EventArgs e)
         {
-            if (IsAutomode) return;
+            if (IsAutomode)
+            {
+                return;
+            }
             //var dlgMemo = new Android.Support.V7.App.AlertDialog.Builder(this) 
             {
 
             };
             EditText textView = new EditText(this)
             {
-               // Text = (WlUtility.CurrentEntry as Word).Memo,
+                // Text = (WlUtility.CurrentEntry as Word).Memo,
             };
             textView.SetMaxHeight(120 * 4);　//2019.03.24 add
             textView.Focusable = false;
@@ -396,8 +403,8 @@ namespace WordLearning.Activities
         {
             private const int SWIPE_THRESHOLD = 100;
             private const int SWIPE_VELOCITY_THRESHOLD = 100;
-            private Learn_Wordlist learn_Wordlist;
-            
+            private readonly Learn_Wordlist learn_Wordlist;
+
             public GestureListener(Learn_Wordlist learn_Wordlist)
             {
                 this.learn_Wordlist = learn_Wordlist;

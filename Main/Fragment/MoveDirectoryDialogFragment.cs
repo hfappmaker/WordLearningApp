@@ -1,43 +1,48 @@
-﻿using Android.Content;
+﻿using Android.OS;
 using Android.Views;
 using AndroidX.AppCompat.App;
 using AndroidX.RecyclerView.Widget;
+using Common.Entry;
+using Common.Visitors;
+using System.Collections.Generic;
+using System.Linq;
 using WordLearning.Adapter;
+using WordLearning.Entry;
+using WordLearning.Fragment;
 using WordLearning.Language;
 using WordLearning.Messages;
-using WordLearning.Fragment;
-using Android.OS;
 using WordLearning.Utility;
-using System.Collections.Generic;
-using Common.Entry;
-using System.Linq;
-using WordLearning.Entry;
-using Common.Visitors;
 
 namespace WordLearning.Dialog
 {
     public class MoveDirectoryDialogFragment : WlAlartDialogFragment
     {
-        private readonly IEnumerable<WlEntry> _checkedItems = new GetCheckedEntryVisitor().Visit(WlUtility.RootFolder);
-        public MoveDirectoryDialogFragment() : base()
+        private readonly WlFolder _rootFolder;
+
+
+        public MoveDirectoryDialogFragment(WlFolder rootFolder) : base()
         {
+            _rootFolder = rootFolder;
         }
 
 
         public override Android.App.Dialog OnCreateDialog(Bundle savedInstanceState)
         {
-            var builder = new AlertDialog.Builder(Activity);
-            var layout = LayoutInflater.Inflate(Resource.Layout.Dialog_Move_Start, null);
-            RecyclerView listFolder = layout.FindViewById<RecyclerView>(Resource.Id.lv_Dialog_Move_Start);
+            AlertDialog.Builder builder = new(Activity);
+            View layout                 = LayoutInflater.Inflate(Resource.Layout.Dialog_Move_Start, null);
+            RecyclerView listFolder     = layout.FindViewById<RecyclerView>(Resource.Id.lv_Dialog_Move_Start);
             listFolder.SetLayoutManager(new LinearLayoutManager(Activity));
-            var adapter = new Start_MoveAdapter(GetDestinationFolder);
+            var checkedItems            = _rootFolder.Accept(new GetCheckedEntryVisitor());
+            Start_MoveAdapter adapter   = new(() => _rootFolder.Accept(new GetHierarchicalEntryVisitor(checkedItems))
+                                            .Where(entry => entry is WlFolder)
+                                            .Select(entry => entry as WlFolder));
             listFolder.SetAdapter(adapter);
-            builder.SetMessage(WlMessage.SelectDestination[WlLanguageUtil.CurrentLanguage]);
-            builder.SetPositiveButton(WlMessage.Moving[WlLanguageUtil.CurrentLanguage], (_, _) =>
+            builder.SetMessage(Resource.String.SelectDestination);
+            builder.SetPositiveButton(Resource.String.Moving, (_, _) =>
             {
                 if (adapter.CurrentSelectedFolder != null)
                 {
-                    foreach (var item in _checkedItems.ToList())
+                    foreach (WlEntry item in checkedItems)
                     {
                         item.ClearCheck();
                         item.MoveTo(adapter.CurrentSelectedFolder);
@@ -50,14 +55,6 @@ namespace WordLearning.Dialog
             builder.SetView(layout);
             builder.SetCancelable(false);
             return builder.Create();
-        }
-
-
-        private IEnumerable<WlFolder> GetDestinationFolder()
-        {
-            return new GetHierarchicalEntryVisitor(_checkedItems).Visit(WlUtility.RootFolder)
-                            .Where(entry => entry is WlFolder)
-                            .Select(entry => entry as WlFolder);
         }
     }
 }

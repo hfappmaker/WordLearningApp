@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<stirng name="学習">学習</string>
+    <color name="ic_launcher_background">#2C3E50</color>
 </resources>

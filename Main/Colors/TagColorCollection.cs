@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using WordLearning.Utility;
@@ -32,11 +31,15 @@ namespace WordLearning.Colors
             }
         }
 
-        public IEnumerator<TagColor> GetEnumerator() => TagCollection.GetEnumerator();
+        public IEnumerator<TagColor> GetEnumerator()
+        {
+            return TagCollection.GetEnumerator();
+        }
 
-
-        IEnumerator IEnumerable.GetEnumerator() => TagCollection.GetEnumerator();
-
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return TagCollection.GetEnumerator();
+        }
 
         public int Count => TagCollection.Count;
 

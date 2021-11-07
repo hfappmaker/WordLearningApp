@@ -1,8 +1,6 @@
-﻿using System;
+﻿using Android.Content;
 using System.Threading;
 using System.Threading.Tasks;
-using Android.Content;
-using Android.Runtime;
 using WordLearning.Language;
 using WordLearning.Messages;
 
@@ -26,7 +24,7 @@ namespace WordLearning.Dialog
 
         private void AutoPlayStart(object sender, DialogClickEventArgs e)
         {
-            var tokenSource = new CancellationTokenSource();
+            CancellationTokenSource tokenSource = new CancellationTokenSource();
             // InvalidateOptionsMenu();
             Task.Run(() =>
             {

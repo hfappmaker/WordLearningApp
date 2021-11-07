@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using Android.Content;
+﻿using Android.Content;
 using Android.Views;
 using Android.Widget;
 using Common.Adapters;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using WordLearning.Activities;
 
 namespace WordLearning.Adapter
@@ -14,8 +14,8 @@ namespace WordLearning.Adapter
     /// </summary>
     public class ArrayAdapter_Title : CustomArrayAdapter
     {
-        List<(string, DateTime)> list;
-        Question_bulletin_board question_Bulletin_Board;
+        private readonly List<(string, DateTime)> list;
+        private readonly Question_bulletin_board question_Bulletin_Board;
         public ArrayAdapter_Title(Context context, int resource, IList objects) : base(context, resource, objects)
         {
             list = (List<(string, DateTime)>)objects;

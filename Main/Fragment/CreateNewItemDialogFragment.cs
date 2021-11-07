@@ -1,25 +1,19 @@
-﻿using System;
-using System.Linq;
-using Android.OS;
+﻿using Android.OS;
 using Android.Widget;
 using AndroidX.AppCompat.App;
-using Common.Entry;
 using Common.Extension;
-using WordLearning.Activities;
-using WordLearning.Dialog;
+using System;
 using WordLearning.Entry;
-using WordLearning.Language;
-using WordLearning.Messages;
 using WordLearning.Utility;
 
 namespace WordLearning.Fragment
 {
     public class CreateNewItemDialogFragment : WlAlartDialogFragment
     {
-        private const string    EDITTEXT_KEY   = "EditText";
-        public const string     ENTRY_TYPE_KEY = "EntryType";
+        private const string EDITTEXT_KEY = "EditText";
+        public const string ENTRY_TYPE_KEY = "EntryType";
         private EditText _editText;
-        public  CreateNewItemDialogFragment(Bundle bundle) : base(bundle)
+        public CreateNewItemDialogFragment(Bundle bundle) : base(bundle)
         {
         }
 
@@ -32,8 +26,8 @@ namespace WordLearning.Fragment
 
         public override Android.App.Dialog OnCreateDialog(Bundle savedInstanceState)
         {
-            var builder = new AlertDialog.Builder(Activity);
-            _editText   = new EditText(Activity);
+            AlertDialog.Builder builder = new AlertDialog.Builder(Activity);
+            _editText = new EditText(Activity);
             if (savedInstanceState != null)
             {
                 _editText.Text = savedInstanceState.GetString(EDITTEXT_KEY);
@@ -49,10 +43,10 @@ namespace WordLearning.Fragment
 
         private void CreateNewItem(string fileName)
         {
-            var entryType = Arguments.GetEnum<WlEntryType>(ENTRY_TYPE_KEY);
+            WlEntryType entryType = Arguments.GetEnum<WlEntryType>(ENTRY_TYPE_KEY);
             if (WlUtility.FileNameCheck(fileName, Context))
             {
-               OnDialogResult((entryType, fileName));
+                OnDialogResult((entryType, fileName));
             }
         }
 
@@ -65,7 +59,7 @@ namespace WordLearning.Fragment
 
         public override void OnSaveInstanceState(Bundle outState)
         {
-            outState.PutString(EDITTEXT_KEY,    _editText.Text);
+            outState.PutString(EDITTEXT_KEY, _editText.Text);
             base.OnSaveInstanceState(outState);
         }
 
@@ -75,7 +69,7 @@ namespace WordLearning.Fragment
             base.OnDetach();
         }
 
-
+        [Obsolete]
         public override void OnActivityCreated(Bundle savedInstanceState)
         {
             base.OnActivityCreated(savedInstanceState);

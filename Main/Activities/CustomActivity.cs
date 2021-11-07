@@ -1,13 +1,12 @@
 ﻿using Android.App;
-using System.Linq;
-using Android.Views;
 using Android.OS;
-using WordLearning.Colors;
+using Android.Views;
 using AndroidX.AppCompat.App;
 using AndroidX.AppCompat.Widget;
-using WordLearning.Utility;
-using Common.States;
 using AndroidX.Transitions;
+using Common.States;
+using WordLearning.Colors;
+using WordLearning.Utility;
 
 namespace WordLearning.Activities
 {
@@ -23,10 +22,7 @@ namespace WordLearning.Activities
 
         protected IToolbarState ToolbarState
         {
-            get
-            {
-                return _toolbarState;
-            }
+            get => _toolbarState;
 
             private set
             {
@@ -37,12 +33,12 @@ namespace WordLearning.Activities
 
         protected virtual void NotifyToolbarStateChanged()
         {
-            var rootscene = FindViewById<ViewGroup>(ToolbarId);
-            var scene = Scene.GetSceneForLayout(rootscene, ToolbarState.ToolbarLayout, this);
-            var transition = new Fade();
+            ViewGroup rootscene = FindViewById<ViewGroup>(ToolbarId);
+            Scene scene = Scene.GetSceneForLayout(rootscene, ToolbarState.ToolbarLayout, this);
+            Fade transition = new Fade();
             transition.SetDuration(150L);
             TransitionManager.Go(scene, transition);
-            var toolbar = FindViewById<Toolbar>(ToolbarState.ToolbarId);
+            Toolbar toolbar = FindViewById<Toolbar>(ToolbarState.ToolbarId);
             toolbar.Title = SupportActionBar?.Title;
             SetSupportActionBar(toolbar);
         }

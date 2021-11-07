@@ -1,13 +1,11 @@
-﻿using System;
+﻿using Android.Views;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-using Android.App;
-using Android.Content;
-using Android.Views;
 
 namespace Common.Utility
 {
@@ -30,7 +28,7 @@ namespace Common.Utility
         {
             while (true)
             {
-                if (_monitorQueue.TryPeek(out var result))
+                if (_monitorQueue.TryPeek(out (int Key, DateTime CreatedTime) result))
                 {
                     if (DateTime.Now - result.CreatedTime > MAX_HOLD_TIME)
                     {
@@ -61,7 +59,7 @@ namespace Common.Utility
 
         public static T GetData<T>(int key) where T : class
         {
-            if (!_temporaryStore.TryGetValue(key, out var value))
+            if (!_temporaryStore.TryGetValue(key, out object value))
             {
                 throw new KeyNotFoundException($"Key:{key}が存在しません。");
             }
@@ -77,7 +75,7 @@ namespace Common.Utility
 
         public static bool RemoveData<T>(int key, out T removedData) where T : class
         {
-            var result = _temporaryStore.TryRemove(key, out var _removedData);
+            bool result = _temporaryStore.TryRemove(key, out object _removedData);
             if (_removedData is not T)
             {
                 throw new InvalidCastException($"キャストエラー");
@@ -97,12 +95,16 @@ namespace Common.Utility
         public static void AddEventToEachView(dynamic root, FieldInfo[] idFields, object target = null)
         {
             target ??= root;
-            var methodInfoLookup = target.GetType().GetMethods().ToLookup(methodInfo => methodInfo.Name, methodInfo => methodInfo);
-            foreach (var idField in idFields)
+            ILookup<string, MethodInfo> methodInfoLookup = target.GetType().GetMethods().ToLookup(methodInfo => methodInfo.Name, methodInfo => methodInfo);
+            foreach (FieldInfo idField in idFields)
             {
                 int id = int.Parse(idField.GetValue(null).ToString());
-                var view = root.FindViewById(id);
-                if (view == null) continue;
+                dynamic view = root.FindViewById(id);
+                if (view == null)
+                {
+                    continue;
+                }
+
                 AddEvent(view, idField, target, methodInfoLookup);
             }
         }
@@ -110,13 +112,13 @@ namespace Common.Utility
 
         private static void AddEvent(View view, FieldInfo id, object target, ILookup<string, MethodInfo> methodInfoLookup)
         {
-            var eventInfos = view.GetType().GetEvents();
-            foreach (var eventInfo in eventInfos)
+            EventInfo[] eventInfos = view.GetType().GetEvents();
+            foreach (EventInfo eventInfo in eventInfos)
             {
-                var targetMethodName = string.Join("_", id.Name, eventInfo.Name);
+                string targetMethodName = string.Join("_", id.Name, eventInfo.Name);
                 if (methodInfoLookup.Contains(targetMethodName))
                 {
-                    var targetMethodInfos = methodInfoLookup[targetMethodName];
+                    IEnumerable<MethodInfo> targetMethodInfos = methodInfoLookup[targetMethodName];
                     if (targetMethodInfos.Count() > 1)
                     {
                         throw new Exception($"複数のメソッドの候補が存在します。 メソッド名:{targetMethodInfos.First().Name}");

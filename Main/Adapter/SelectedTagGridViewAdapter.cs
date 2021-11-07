@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using Android.Content;
+﻿using Android.Content;
 using Android.Views;
 using Android.Widget;
 using Common.Adapters;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace WordLearning.Adapter
 {

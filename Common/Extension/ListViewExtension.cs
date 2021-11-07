@@ -1,6 +1,6 @@
-﻿using System;
-using Android.Widget;
+﻿using Android.Widget;
 using Common.Adapters;
+using System;
 
 namespace Common.Extension
 {

@@ -1,9 +1,8 @@
-﻿using System;
-namespace Common.States
+﻿namespace Common.States
 {
     public interface IToolbarState
     {
-        public int ToolbarId { get;  }
+        public int ToolbarId { get; }
 
 
         public int ToolbarLayout { get; }

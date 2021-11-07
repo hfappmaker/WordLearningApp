@@ -1,14 +1,13 @@
-﻿using System;
-using System.Reactive.Subjects;
+﻿using Common.Visitors;
+using System;
+using System.Collections.Generic;
 using System.Reactive.Disposables;
+using System.Reactive.Linq;
+using System.Reactive.Subjects;
+using System.Runtime.CompilerServices;
 using System.Xml;
 using System.Xml.Linq;
-using System.ComponentModel;
-using System.Reactive.Linq;
-using System.Runtime.CompilerServices;
-using Common.Visitors;
 using static Common.Utility.ActionHistoryManager;
-using System.Collections.Generic;
 
 namespace Common.Entry
 {
@@ -19,7 +18,11 @@ namespace Common.Entry
 
         public T GetParent<T>() where T : WlDirectory
         {
-            if (Parent is not T) throw new InvalidCastException();
+            if (Parent is not T)
+            {
+                throw new InvalidCastException();
+            }
+
             return Parent as T;
         }
 
@@ -29,7 +32,7 @@ namespace Common.Entry
             get
             {
                 int rank = 0;
-                var currentEntry = this;
+                WlEntry currentEntry = this;
                 while (currentEntry.Parent != null)
                 {
                     currentEntry = currentEntry.Parent;
@@ -44,10 +47,10 @@ namespace Common.Entry
         protected XElement Element { get; }
 
 
-        private Subject<bool> CheckedChanged { get; } = new ();
+        private Subject<bool> CheckedChanged { get; } = new();
 
 
-        public Subject<(string PropertyName, string Value)> PropertyValueChanged { get; } = new (); 
+        public Subject<(string PropertyName, string Value)> PropertyValueChanged { get; } = new();
 
 
         public bool IsChecked { get; private set; }
@@ -56,23 +59,26 @@ namespace Common.Entry
         internal bool IsDisposed { get; private set; }
 
 
-        internal virtual void DisposeEntry() => IsDisposed = true;   
+        internal virtual void DisposeEntry()
+        {
+            IsDisposed = true;
+        }
 
+        internal virtual void RestoreEntry()
+        {
+            IsDisposed = false;
+        }
 
-        internal virtual void RestoreEntry() => IsDisposed = false;
-        
-
-
-        public void ChangeSelect() 
-           => Execute(() => ChangeSelectAction(), () => ChangeSelectAction());
-        
-
+        public void ChangeSelect()
+        {
+            Execute(() => ChangeSelectAction(), () => ChangeSelectAction());
+        }
 
         private void ChangeSelectAction()
         {
             if (Parent is not null)
             {
-                var currentSelectedEntry = Parent.CurrentSelectedEntry;
+                WlEntry currentSelectedEntry = Parent.CurrentSelectedEntry;
                 if (currentSelectedEntry == this)
                 {
                     Parent.CurrentSelectedEntry = null;
@@ -86,13 +92,16 @@ namespace Common.Entry
 
 
         public void ChangeCheck()
-            => Execute(() => ChangeCheckAction(), () => ChangeCheckAction());
-        
-
+        {
+            Execute(() => ChangeCheckAction(), () => ChangeCheckAction());
+        }
 
         public virtual void ClearCheck()
         {
-            if (IsChecked) ChangeCheck();
+            if (IsChecked)
+            {
+                ChangeCheck();
+            }
         }
 
 
@@ -134,14 +143,18 @@ namespace Common.Entry
 
         public void MoveTo(WlDirectory destination)
         {
-            if (Parent == null) throw new InvalidOperationException();
+            if (Parent == null)
+            {
+                throw new InvalidOperationException();
+            }
+
             if (!IsEdited)
             {
                 IsEdited = true;
                 BeginTransaction();
             }
 
-            var currentParent = Parent;
+            WlDirectory currentParent = Parent;
             Execute(() => MoveToAction(currentParent), () => MoveToAction(destination));
         }
 
@@ -155,7 +168,11 @@ namespace Common.Entry
 
         public virtual void Delete()
         {
-            if (Parent == null) throw new InvalidOperationException();
+            if (Parent == null)
+            {
+                throw new InvalidOperationException();
+            }
+
             if (!IsEdited)
             {
                 IsEdited = true;
@@ -177,14 +194,18 @@ namespace Common.Entry
 
         public void AddTo(WlDirectory destination)
         {
-            if (Parent != null) throw new InvalidOperationException();
+            if (Parent != null)
+            {
+                throw new InvalidOperationException();
+            }
+
             if (!destination.IsEdited)
             {
                 destination.IsEdited = true;
                 BeginTransaction();
             }
 
-            Execute(() => DeleteAction(),() => AddToAction(destination));
+            Execute(() => DeleteAction(), () => AddToAction(destination));
         }
 
 
@@ -198,9 +219,9 @@ namespace Common.Entry
 
 
         public WlEntry(XElement element)
-            => Element = element;
-        
-
+        {
+            Element = element;
+        }
 
         public void Save(string fileName)
         {
@@ -229,41 +250,67 @@ namespace Common.Entry
                 BeginTransaction();
             }
 
-            var oldValue = Element.Attribute(name).Value;
-            Execute(() => SetElementValueCore(name, oldValue), () => SetElementValueCore(name, XmlConvert.EncodeName(value)));
+            string oldValue = GetElementValue(name);
+            Execute(() => SetElementValueCore(name, oldValue), () => SetElementValueCore(name, value));
         }
 
 
         protected string GetElementValue([CallerMemberName] string name = "")
-            => XmlConvert.DecodeName(Element.Attribute(name).Value);
-        
-
+        {
+            return XmlConvert.DecodeName(Element.Attribute(name).Value);
+        }
 
         private void SetElementValueCore(string name, string value)
         {
-            Element.Attribute(name).Value = value;
+            Element.Attribute(name).Value = XmlConvert.EncodeName(value);
             PropertyValueChanged.OnNext((name, value));
         }
 
 
         public IDisposable RegisterCheckedChanged(Action<bool> handler)
-            => CheckedChanged.Subscribe(handler);
-        
+        {
+            if (!IsEdited)
+            {
+                IsEdited = true;
+                BeginTransaction();
+            }
+
+            IDisposable currentDisposable = null;
+
+            void registerAction() => currentDisposable = CheckedChanged.Subscribe(handler);
+            void disposedAction() => currentDisposable.Dispose();
+            Execute(disposedAction, registerAction);
+            return Disposable.Create(() => Execute(registerAction, disposedAction));
+        }
 
 
         public IDisposable RegisterPropertyValueChanged(string propertyName, Action<string> handler)
-            => PropertyValueChanged
-                .Where(source => source.PropertyName == propertyName)
-                .Subscribe(source => handler(source.Value));
+        {
+            if (!IsEdited)
+            {
+                IsEdited = true;
+                BeginTransaction();
+            }
 
+            IDisposable currentDisposable = null;
+
+            void registerAction() => currentDisposable = PropertyValueChanged
+                                                .Where(source => source.PropertyName == propertyName)
+                                                .Subscribe(source => handler(source.Value));
+            void disposedAction() => currentDisposable.Dispose();
+            Execute(disposedAction, registerAction);
+
+            return Disposable.Create(() => Execute(registerAction, disposedAction));
+        }
 
         public virtual void Accept(IWlEntrySetterVisitor visitor)
-            => visitor.Visit(this);
-        
-
+        {
+            visitor.Visit(this);
+        }
 
         public virtual IEnumerable<WlEntry> Accept(IWlEntryGetterVisitor visitor)
-            => visitor.Visit(this);
-        
+        {
+            return visitor.Visit(this);
+        }
     }
 }

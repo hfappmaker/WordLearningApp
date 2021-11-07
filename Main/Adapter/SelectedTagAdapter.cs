@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Android.Content;
+﻿using Android.Content;
 using Android.Views;
 using Android.Widget;
 using Common.Adapters;
+using System.Collections.Generic;
+using System.Linq;
 using WordLearning.Colors;
 
 namespace WordLearning.Adapter
@@ -37,7 +36,7 @@ namespace WordLearning.Adapter
                 view = Inflater.Inflate(layoutid, null);
                 view.SetPaddingRelative(48, 48, 48, 48);
                 //}
-                var tagColor = TagColorCollection.Instance[position];
+                TagColor tagColor = TagColorCollection.Instance[position];
                 //TextView text = null;
                 //ImageView imageView = null;
                 //CheckBox checkBox = null;

@@ -1,6 +1,4 @@
-﻿using System;
-using Android.Content;
-using Android.Runtime;
+﻿using Android.Content;
 using Android.Views;
 using Android.Widget;
 using WordLearning.Adapter;
@@ -17,9 +15,9 @@ namespace WordLearning.Dialog
 
         private void Initialize(Context context)
         {
-            var inflater = LayoutInflater.From(context);
-            var view = inflater.Inflate(Resource.Layout.Dialog_CreateNewTag, null);
-            var selectedTag = new ListView(context)
+            LayoutInflater inflater = LayoutInflater.From(context);
+            View view = inflater.Inflate(Resource.Layout.Dialog_CreateNewTag, null);
+            ListView selectedTag = new ListView(context)
             {
                 Adapter = new SelectedTagAdapter(context, Resource.Layout.row_SelectedTag),
                 ChoiceMode = ChoiceMode.Multiple

@@ -1,7 +1,5 @@
-﻿using System;
+﻿using Common.Entry;
 using System.Collections.Generic;
-using System.Linq;
-using Common.Entry;
 
 namespace Common.Visitors
 {
@@ -9,10 +7,14 @@ namespace Common.Visitors
     {
         public IEnumerable<WlEntry> Visit(WlDirectory directory)
         {
-            if (directory.IsChecked) yield return directory;
-            foreach (var entry in directory.EntryIterator)
+            if (directory.IsChecked)
             {
-                foreach (var item in entry.Accept(this))
+                yield return directory;
+            }
+
+            foreach (WlEntry entry in directory)
+            {
+                foreach (WlEntry item in entry.Accept(this))
                 {
                     yield return item;
                 }
@@ -22,7 +24,10 @@ namespace Common.Visitors
 
         public IEnumerable<WlEntry> Visit(WlEntry entry)
         {
-            if (entry.IsChecked) yield return entry;
+            if (entry.IsChecked)
+            {
+                yield return entry;
+            }
         }
     }
 }

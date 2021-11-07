@@ -1,12 +1,8 @@
-﻿using System;
-using Android.Content;
-using Android.Runtime;
-using Android.Views;
+﻿using Android.Content;
 using Android.Widget;
 using AndroidX.AppCompat.App;
 using WordLearning.Language;
 using WordLearning.Messages;
-using WordLearning.Utility;
 
 namespace WordLearning.Dialog
 {
@@ -21,8 +17,10 @@ namespace WordLearning.Dialog
 
         private void Initialize(Context context)
         {
-            _editText = new EditText(context);
-            _editText.InputType = Android.Text.InputTypes.ClassNumber;
+            _editText = new EditText(context)
+            {
+                InputType = Android.Text.InputTypes.ClassNumber
+            };
             _editText.FocusChange += (s1, e1) =>
             {
                 if (e1.HasFocus)
@@ -39,7 +37,7 @@ namespace WordLearning.Dialog
 
         public override AlertDialog Show()
         {
-            var dialog = base.Show();
+            AlertDialog dialog = base.Show();
             _editText.RequestFocus();
             return dialog;
         }

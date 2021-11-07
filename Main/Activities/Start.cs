@@ -1,26 +1,24 @@
 ﻿using Android.App;
-using Android.OS;
-using System.Collections.Generic;
 using Android.Content;
-using static Android.Widget.AdapterView;
-using Android.Views;
-using System;
-using Android.Util;
-using Android.Runtime;
-using Firebase.Iid;
 using Android.Gms.Common;
-using WordLearning.Utility;
-using WordLearning.Entry;
+using Android.OS;
+using Android.Util;
+using Android.Views;
+using Android.Widget;
+using Common.Entry;
+using Common.Extension;
+using Firebase.Iid;
+using System;
+using System.Reactive.Disposables;
 using WordLearning.Adapter;
+using WordLearning.Dialog;
+using WordLearning.Entry;
+using WordLearning.Fragment;
 using WordLearning.Language;
 using WordLearning.Messages;
-using Android.Widget;
-using WordLearning.Fragment;
-using Common.Entry;
-using System.Reactive.Disposables;
-using Common.Extension;
 using WordLearning.States;
-using WordLearning.Dialog;
+using WordLearning.Utility;
+using static Android.Widget.AdapterView;
 
 namespace WordLearning.Activities
 {
@@ -54,7 +52,7 @@ namespace WordLearning.Activities
             }
             else
             {
-                var currentFolder = savedInstanceState.GetExtra<WlFolder>(CURRENT_FOLDER_KEY);
+                WlFolder currentFolder = savedInstanceState.GetExtra<WlFolder>(CURRENT_FOLDER_KEY);
                 adapter = new StartAdapter(this, Resource.Layout.row_Explorer, currentFolder);
             }
 
@@ -67,7 +65,7 @@ namespace WordLearning.Activities
                 SupportActionBar.SetDisplayHomeAsUpEnabled(value != WlUtility.RootFolder);
                 SupportActionBar.SetHomeButtonEnabled(value != WlUtility.RootFolder);
                 disposable = value.RegisterPropertyValueChanged(nameof(WlFolder.Name),
-                                name => SupportActionBar.Title = name);
+                                handler: name => SupportActionBar.Title = name);
             }));
 
             _listView.Adapter = adapter;
@@ -87,14 +85,14 @@ namespace WordLearning.Activities
                 return;
             }
 
-            var channel = new NotificationChannel(CHANNEL_ID,
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID,
                                                   "FCM Notifications",
                                                   NotificationImportance.Default)
             {
                 Description = "Firebase Cloud Messages appear in this channel"
             };
 
-            var notificationManager = (NotificationManager)GetSystemService(NotificationService);
+            NotificationManager notificationManager = (NotificationManager)GetSystemService(NotificationService);
             notificationManager.CreateNotificationChannel(channel);
         }
 
@@ -173,15 +171,15 @@ namespace WordLearning.Activities
                 _listView.GetItem<WlEntry>(e.Position).ChangeCheck();
                 return;
             }
-            var adapter = _listView.Adapter as StartAdapter;
-            var selectedDirectory = adapter.CurrentFolder[e.Position] as WlDirectory;
+            StartAdapter adapter = _listView.Adapter as StartAdapter;
+            WlDirectory selectedDirectory = adapter.CurrentFolder[e.Position] as WlDirectory;
             switch (selectedDirectory.EntryType)
             {
                 case nameof(WlFolder):
                     adapter.CurrentFolder = selectedDirectory as WlFolder;
                     break;
                 case nameof(WlWordList):
-                    var intent = new Intent(this, typeof(Edit_Wordlist));
+                    Intent intent = new Intent(this, typeof(Edit_Wordlist));
                     intent.PutExtra(nameof(Edit_Wordlist), selectedDirectory);
                     StartActivity(intent);
                     break;
@@ -224,7 +222,7 @@ namespace WordLearning.Activities
                     switch (ToolbarState.ToolbarId)
                     {
                         case Resource.Id.tbStart_Init:
-                            var adapter = _listView.GetAdapter<StartAdapter>();
+                            StartAdapter adapter = _listView.GetAdapter<StartAdapter>();
                             adapter.CurrentFolder = adapter.CurrentFolder.GetParent<WlFolder>();
                             break;
                         case Resource.Id.tbStart_Deletemode:
@@ -237,15 +235,15 @@ namespace WordLearning.Activities
                     new DeleteEntriesDialogFragment().Show(SupportFragmentManager, null);
                     break;
                 case Resource.Id.action_move_Start_Deletemode:
-                    new MoveDirectoryDialogFragment().Show(SupportFragmentManager, null);
+                    new MoveDirectoryDialogFragment(WlUtility.RootFolder).Show(SupportFragmentManager, null);
                     break;
                 case Resource.Id.action_rename_Start_Deletemode:
-                    var bundle = new Bundle();
+                    Bundle bundle = new();
                     bundle.PutExtra<WlDirectory>(RenameDirectoryDialogFragment.RenameDirectoryKey, _listView.GetAdapter<StartAdapter>().CurrentFolder);
                     new RenameDirectoryDialogFragment(bundle).Show(SupportFragmentManager, null);
                     break;
                 case Resource.Id.action_integration_Start_Deletemode:
-                    //new WlAlartDialogFragment(typeof(IntegrateDirectoryDialogBuilder)).Show(SupportFragmentManager, null);
+                    new MergeWordListDialogFragment(WlUtility.RootFolder).Show(SupportFragmentManager, null);
                     break;
             }
 
@@ -269,7 +267,9 @@ namespace WordLearning.Activities
             if (resultCode != ConnectionResult.Success)
             {
                 if (GoogleApiAvailability.Instance.IsUserResolvableError(resultCode))
-                     GoogleApiAvailability.Instance.GetErrorString(resultCode);
+                {
+                    GoogleApiAvailability.Instance.GetErrorString(resultCode);
+                }
                 else
                 {
                     Finish();
@@ -285,11 +285,12 @@ namespace WordLearning.Activities
 
         public override void OnDialogResult(dynamic result, string dialogName)
         {
+            WlFolder targetFolder = _listView.GetAdapter<StartAdapter>().CurrentFolder;
+
             switch (dialogName)
             {
                 case nameof(CreateNewItemDialogFragment):
-                    var targetFolder = _listView.GetAdapter<StartAdapter>().CurrentFolder;
-                    var (entryType, fileName) = ((WlEntryType, string))result;
+                    (WlEntryType entryType, string fileName) = ((WlEntryType, string))result;
                     WlDirectory directory = null;
                     switch (entryType)
                     {
@@ -305,7 +306,7 @@ namespace WordLearning.Activities
                     break;
                 case nameof(DeleteEntriesDialogFragment):
                     SetToolbar<StartInitToolbarState>();
-                    Toast.MakeText(this, WlMessage.Delete[WlLanguageUtil.CurrentLanguage], ToastLength.Short).Show();
+                    Toast.MakeText(this, Resource.String.Delete, ToastLength.Short).Show();
                     break;
                 case nameof(MoveDirectoryDialogFragment):
                     SetToolbar<StartInitToolbarState>();
@@ -315,6 +316,10 @@ namespace WordLearning.Activities
                     }
                     break;
                 case nameof(RenameDirectoryDialogFragment):
+                    break;
+                case nameof(MergeWordListDialogFragment):
+                    (result as WlWordList).AddTo(targetFolder);
+                    Toast.MakeText(this, WlMessage.Move[WlLanguageUtil.CurrentLanguage], ToastLength.Short).Show();
                     break;
             }
         }
@@ -328,7 +333,7 @@ namespace WordLearning.Activities
     [Obsolete]
     public class MyFirebaseIIDService : FirebaseInstanceIdService
     {
-        const string TAG = "MyFirebaseIIDService";
+        private const string TAG = "MyFirebaseIIDService";
 
         [Obsolete]
         public override void OnTokenRefresh()
@@ -337,7 +342,8 @@ namespace WordLearning.Activities
             Log.Debug(TAG, "Refreshed token: " + refreshedToken);
             SendRegistrationToServer(refreshedToken);
         }
-        void SendRegistrationToServer(string token)
+
+        private void SendRegistrationToServer(string token)
         {
             // Add custom implementation, as needed.
         }

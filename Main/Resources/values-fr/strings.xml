@@ -61,4 +61,11 @@
 <string name="Edittag_menu_popup_Dialog_EditTag">Modifier la balise</string>
 <!--Dialog_DirectoryName-->
 <string name="InputDirectoryName">Enter directory name</string>
+<!--Dialog_MergedWordListName-->
+<string name="SelectWordListOnly">Please select wordlist only</string>
+<!--Dialog_Move_Start-->
+<string name="SelectDestination">S'il vous plaît sélectionner une destination</string>
+
+<string name="Delete">La suppression est terminée</string>
+<string name="Moving">Bouge toi</string>
 </resources>

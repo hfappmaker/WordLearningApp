@@ -1,6 +1,5 @@
-﻿using System;
+﻿using Common.Entry;
 using System.Linq;
-using Common.Entry;
 
 namespace Common.Visitors
 {
@@ -14,7 +13,7 @@ namespace Common.Visitors
             }
             else
             {
-                foreach (WlEntry entry in directory.EntryIterator.ToList())
+                foreach (WlEntry entry in directory.ToList())
                 {
                     entry.Accept(this);
                 }

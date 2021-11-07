@@ -14,9 +14,9 @@ namespace WordLearning.Fragment
 
         public override Android.App.Dialog OnCreateDialog(Bundle savedInstanceState)
         {
-            var builder = new AlertDialog.Builder(Activity);
+            AlertDialog.Builder builder = new AlertDialog.Builder(Activity);
             builder.SetMessage(Resource.String.DeleteEntryConfirm);
-            builder.SetPositiveButton("OK", (_,_) =>
+            builder.SetPositiveButton("OK", (_, _) =>
             {
                 WlUtility.RootFolder.Accept(new DeleteCheckedEntryVisitor());
                 OnDialogResult();

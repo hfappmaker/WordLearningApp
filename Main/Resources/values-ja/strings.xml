@@ -57,12 +57,19 @@
 <!--Wordlist_Editword-->
 <string name="InputWord_WordDialog">単語を入力</string>
 <string name="InputMeaning_WordDialog">意味を入力</string>
-<string name="InputMemo_WordDialog">Enter memo</string>
+<string name="InputMemo_WordDialog">メモを入力</string>
 <string name="Cancel_Wordlist_Editword">キャンセル</string>
 <string name="Register_Wordlist_Editword">登録</string>
 <!--menu_popup_Dialog_EditTag-->
 <string name="Editmemo_menu_popup_Dialog_EditTag">メモの編集</string>
 <string name="Edittag_menu_popup_Dialog_EditTag">タグの編集</string>
 <!--Dialog_DirectoryName-->
-<string name="InputDirectoryName">Enter directory name</string>
+<string name="InputDirectoryName">フォルダ名を入力</string>
+<!--Dialog_MergedWordListName-->
+<string name="SelectWordListOnly">単語帳を選択して下さい</string>
+<!--Dialog_Move_Start-->
+<string name="SelectDestination">移動先を選択して下さい</string>
+
+<string name="Delete">削除されました。</string>
+	<string name="Moving">移動</string>
 </resources>

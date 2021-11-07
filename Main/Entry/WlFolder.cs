@@ -1,8 +1,7 @@
-﻿using System;
-using System.Reflection;
+﻿using Common.Entry;
+using System;
 using System.Xml;
 using System.Xml.Linq;
-using Common.Entry;
 using WordLearning.Utility;
 
 namespace WordLearning.Entry
@@ -24,7 +23,7 @@ namespace WordLearning.Entry
 
         protected override WlEntry CreateChildEntry(XElement childElement)
         {
-            var type = WlUtility.CurrentAssembly.GetType(childElement.Name.ToString());
+            Type type = WlUtility.CurrentAssembly.GetType(childElement.Name.ToString());
             if (type == typeof(WlWord))
             {
                 throw new InvalidOperationException();

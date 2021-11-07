@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace WordLearning.Language
+﻿namespace WordLearning.Language
 {
     public enum WlLanguage
     {

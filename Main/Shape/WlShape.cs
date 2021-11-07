@@ -1,5 +1,4 @@
-﻿using System;
-namespace WordLearning.Shape
+﻿namespace WordLearning.Shape
 {
     public enum WlShape
     {

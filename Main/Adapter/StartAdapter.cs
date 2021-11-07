@@ -1,22 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Reactive.Disposables;
-using System.Reactive.Subjects;
-using Android.Content;
-using Android.Views;
+﻿using Android.Views;
 using Android.Widget;
 using AndroidX.AppCompat.App;
 using Common.Adapters;
 using Common.Entry;
-using Reactive.Bindings;
-using Reactive.Bindings.Extensions;
+using Common.Extension;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reactive.Disposables;
+using System.Reactive.Subjects;
 using WordLearning.Colors;
 using WordLearning.Entry;
-using WordLearning.Language;
-using WordLearning.Utility;
-using Common.Extension;
-using System.Linq;
-using System.Collections;
 
 namespace WordLearning.Adapter
 {
@@ -25,17 +19,14 @@ namespace WordLearning.Adapter
     /// </summary>
     public class StartAdapter : CustomArrayAdapter
     {
-        private CompositeDisposable _folderDisposable = new ();
-        private readonly CompositeDisposable _adapterDisposable = new ();
-        private CompositeDisposable _itemDisposable = new ();
+        private CompositeDisposable _folderDisposable = new();
+        private readonly CompositeDisposable _adapterDisposable = new();
+        private CompositeDisposable _itemDisposable = new();
 
         private WlFolder _currentFolder;
         public WlFolder CurrentFolder
         {
-            get
-            {
-                return _currentFolder;
-            }
+            get => _currentFolder;
             set
             {
                 _currentFolder = value;
@@ -45,18 +36,18 @@ namespace WordLearning.Adapter
 
         private readonly Subject<WlFolder> _folderChanged = new();
 
-        public StartAdapter(AppCompatActivity context, int resource, WlFolder folder) : base(context, resource, folder.EntryIterator)
+        public StartAdapter(AppCompatActivity context, int resource, WlFolder folder) : base(context, resource, folder)
         {
             _adapterDisposable.Add(_folderChanged.Subscribe(value =>
             {
                 _folderDisposable.Dispose();
-                _folderDisposable = new ();
+                _folderDisposable = new();
                 _folderDisposable.Add(value.RegisterCollectionChanged((entries, e) =>
                 {
                     NotifyDataSetChanged(entries);
                 }));
 
-                NotifyDataSetChanged(value.EntryIterator);
+                NotifyDataSetChanged(value);
             }));
 
             CurrentFolder = folder;
@@ -82,7 +73,7 @@ namespace WordLearning.Adapter
 
         public IDisposable SubscribeFolderChangedObservable(Action<WlFolder> folderChangedAction)
         {
-            var disposeble = _folderChanged.Subscribe(folderChangedAction);
+            IDisposable disposeble = _folderChanged.Subscribe(folderChangedAction);
             _folderChanged.OnNext(CurrentFolder);
             return disposeble;
         }
@@ -91,7 +82,7 @@ namespace WordLearning.Adapter
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
             View view;
-            var isConvertView = convertView != null;
+            bool isConvertView = convertView != null;
             if (isConvertView)
             {
                 view = convertView;
@@ -102,9 +93,9 @@ namespace WordLearning.Adapter
                 view.SetPaddingRelative(48, 48, 48, 48);
             }
 
-            var item = this.GetItem<WlDirectory>(position);
-            TextView    textView    = view.FindViewById<TextView>(Resource.Id.tvRow_Explorer);
-            ImageView   imageView   = view.FindViewById<ImageView>(Resource.Id.ivRow_Explorer);
+            WlDirectory item = this.GetItem<WlDirectory>(position);
+            TextView textView = view.FindViewById<TextView>(Resource.Id.tvRow_Explorer);
+            ImageView imageView = view.FindViewById<ImageView>(Resource.Id.ivRow_Explorer);
             ImageButton imageButton = view.FindViewById<ImageButton>(Resource.Id.ibRow_Explorer);
             textView.Text = item.Name;
             switch (item.EntryType)

@@ -1,7 +1,5 @@
-﻿using System;
+﻿using Common.Entry;
 using System.Collections.Generic;
-using System.Linq;
-using Common.Entry;
 
 namespace Common.Visitors
 {
@@ -10,9 +8,9 @@ namespace Common.Visitors
         private readonly HashSet<WlEntry> _exceptedEntries;
 
         public GetHierarchicalEntryVisitor(IEnumerable<WlEntry> exceptedEntries)
-            => _exceptedEntries = new HashSet<WlEntry>(exceptedEntries);
-        
-
+        {
+            _exceptedEntries = new HashSet<WlEntry>(exceptedEntries);
+        }
 
         public IEnumerable<WlEntry> Visit(WlDirectory directory)
         {
@@ -21,9 +19,9 @@ namespace Common.Visitors
                 yield return directory;
                 if (directory.IsExpanded)
                 {
-                    foreach (var entry in directory.EntryIterator)
+                    foreach (WlEntry entry in directory)
                     {
-                        foreach (var item in entry.Accept(this))
+                        foreach (WlEntry item in entry.Accept(this))
                         {
                             yield return item;
                         }

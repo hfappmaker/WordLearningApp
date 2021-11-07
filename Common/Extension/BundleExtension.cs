@@ -1,7 +1,7 @@
-﻿using System;
-using Android.OS;
+﻿using Android.OS;
 using Common.Utility;
 using Java.IO;
+using System;
 
 namespace Common.Extension
 {

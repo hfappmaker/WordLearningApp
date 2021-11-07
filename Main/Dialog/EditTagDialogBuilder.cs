@@ -1,13 +1,6 @@
-﻿using System;
-using Android.Content;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-using WordLearning.Adapter;
-using WordLearning.Language;
-using WordLearning.Messages;
-using static AndroidX.AppCompat.Widget.Toolbar;
+﻿using Android.Content;
 using static Android.Widget.AdapterView;
+using static AndroidX.AppCompat.Widget.Toolbar;
 
 namespace WordLearning.Dialog
 {

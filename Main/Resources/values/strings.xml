@@ -61,4 +61,12 @@
 <string name="Edittag_menu_popup_Dialog_EditTag">Edit tag</string>
 <!--Dialog_DirectoryName-->
 <string name="InputDirectoryName">Enter directory name</string>
+<string name="InputMergedWordListName">Enter merged wordlist name</string>
+<!--Dialog_MergedWordListName-->
+<string name="SelectWordListOnly">Please select wordlist only</string>
+<!--Dialog_Move_Start-->
+<string name="SelectDestination">Please select a destination</string>
+	
+<string name="Delete">Deletion is completed</string>
+<string name="Moving">Move</string>
 </resources>

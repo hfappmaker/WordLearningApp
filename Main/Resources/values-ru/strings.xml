@@ -59,4 +59,11 @@
 <string name="Edittag_menu_popup_Dialog_EditTag">Изменить тег</string>
 <!--Dialog_DirectoryName-->
 <string name="InputDirectoryName">Enter directory name</string>
+<!--Dialog_MergedWordListName-->
+<string name="SelectWordListOnly">Please select wordlist only</string>
+<!--Dialog_Move_Start-->
+<string name="SelectDestination">Пожалуйста, выберите пункт назначения</string>
+
+<string name="Delete">Удаление завершено</string>
+	<string name="Moving">Переехать</string>
 </resources>

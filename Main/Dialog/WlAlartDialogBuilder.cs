@@ -1,9 +1,6 @@
-﻿using System;
-using Android.Content;
-using Android.Runtime;
-using WordLearning.Utility;
+﻿using Android.Content;
 using AndroidX.AppCompat.App;
-using Common.Utility;
+using WordLearning.Utility;
 
 namespace WordLearning.Dialog
 {
@@ -16,7 +13,7 @@ namespace WordLearning.Dialog
 
         public override AlertDialog Create()
         {
-            var dialog = base.Create();
+            AlertDialog dialog = base.Create();
             WlUtility.AddEventToEachView(dialog, this);
             return dialog;
         }

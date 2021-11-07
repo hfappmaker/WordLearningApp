@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Android.Content;
+﻿using Android.Content;
 using Android.Graphics;
 using Android.Views;
 using Android.Widget;
 using Common.Adapters;
+using System.Collections.Generic;
+using System.Linq;
 using WordLearning.Activities;
 using WordLearning.Colors;
 
@@ -17,7 +16,7 @@ namespace WordLearning.Adapter
     public class TagListAdapter : CustomArrayAdapter
     {
         public List<(int, int[], string, string)> list;
-        readonly Edit_Wordlist edit_Wordlist;
+        private readonly Edit_Wordlist edit_Wordlist;
         public TagListAdapter(Context context, int resource) : base(context, resource, TagColorCollection.Instance.ToList())
         {
             edit_Wordlist = (Edit_Wordlist)context;
@@ -25,7 +24,7 @@ namespace WordLearning.Adapter
 
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
-            var tagColor = TagColorCollection.Instance[position];
+            TagColor tagColor = TagColorCollection.Instance[position];
             ListView listView = (ListView)parent;
             if (list != null)
             {
@@ -47,7 +46,7 @@ namespace WordLearning.Adapter
                         text = view.FindViewById<TextView>(Resource.Id.tvMeaning_row_Taglist);
                         text.Text = tagColor.Meaning;
                         imageView = view.FindViewById<ImageView>(Resource.Id.iv_row_Taglist);
-                        var drawable = edit_Wordlist.GetDrawable((int)tagColor.Shape);
+                        Android.Graphics.Drawables.Drawable drawable = edit_Wordlist.GetDrawable((int)tagColor.Shape);
                         drawable.Mutate();
                         drawable.SetColorFilter(new BlendModeColorFilter(tagColor.WlColor, BlendMode.Multiply));
                         imageView.SetImageDrawable(drawable);

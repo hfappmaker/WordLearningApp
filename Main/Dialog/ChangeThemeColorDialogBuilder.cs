@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using Android.Content;
+﻿using Android.Content;
 using Android.Content.Res;
 using Android.Graphics;
 using Android.Graphics.Drawables;
-using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using System;
+using System.Collections.Generic;
 using WordLearning.Colors;
 using WordLearning.Language;
 using WordLearning.Messages;
@@ -25,8 +24,8 @@ namespace WordLearning.Dialog
 
         private void Initialize(Context context)
         {
-            var inflater = LayoutInflater.From(context);
-            var view = inflater.Inflate(Resource.Layout.Dialog_Changethemecolor, null);
+            LayoutInflater inflater = LayoutInflater.From(context);
+            View view = inflater.Inflate(Resource.Layout.Dialog_Changethemecolor, null);
             SetMessage(WlMessage.ChangeThemeColor[WlLanguageUtil.CurrentLanguage]);
             SetView(view);
         }
@@ -34,9 +33,9 @@ namespace WordLearning.Dialog
 
         public void rdogSelectshape_CheckedChange(object sender, CheckedChangeEventArgs e)
         {
-            var view = (sender as RadioGroup).RootView;
-            var tagColor = TagColorCollection.Instance[0].WlColor;
-            var shape = TagColorCollection.Instance[0].Shape;
+            View view = (sender as RadioGroup).RootView;
+            Color tagColor = TagColorCollection.Instance[0].WlColor;
+            WlShape shape = TagColorCollection.Instance[0].Shape;
             IReadOnlyDictionary<int, WlShape> drawableDictionary = new Dictionary<int, WlShape>()
                                         {
                                             {Resource.Id.rdorect,WlShape.Square},
@@ -44,7 +43,7 @@ namespace WordLearning.Dialog
                                             {Resource.Id.rdoheart,WlShape.Heart},
                                         };
 
-            var drawable = Context.GetDrawable((int)drawableDictionary[e.CheckedId]) as VectorDrawable;
+            VectorDrawable drawable = Context.GetDrawable((int)drawableDictionary[e.CheckedId]) as VectorDrawable;
             drawable.Mutate();
             drawable.SetColorFilter(new BlendModeColorFilter(tagColor, BlendMode.Multiply));
         }
@@ -67,8 +66,8 @@ namespace WordLearning.Dialog
 
         private void SetSeekBar(object sender, ProgressChangedEventArgs e)
         {
-            var view = (sender as SeekBar).RootView;
-            var seekBars = new SeekBar[]
+            View view = (sender as SeekBar).RootView;
+            SeekBar[] seekBars = new SeekBar[]
             {
                 view.FindViewById<SeekBar>(Resource.Id.Sb_Red_Dialog_CreateNewTag),
                 view.FindViewById<SeekBar>(Resource.Id.Sb_Green_Dialog_CreateNewTag),
@@ -84,9 +83,9 @@ namespace WordLearning.Dialog
             };
 
             e.SeekBar.ProgressTintList = ColorStateList.ValueOf(Android.Graphics.Color.Argb(e.Progress, progressTintColor[0], progressTintColor[1], progressTintColor[2]));
-            var tagColor = Android.Graphics.Color.Rgb(seekBars[0].Progress, seekBars[1].Progress, seekBars[2].Progress);
-            var imageView = view.FindViewById<ImageView>(Resource.Id.ivDialog_CreateNewTag);
-            var drawable = imageView.Drawable as VectorDrawable;
+            Color tagColor = Android.Graphics.Color.Rgb(seekBars[0].Progress, seekBars[1].Progress, seekBars[2].Progress);
+            ImageView imageView = view.FindViewById<ImageView>(Resource.Id.ivDialog_CreateNewTag);
+            VectorDrawable drawable = imageView.Drawable as VectorDrawable;
             drawable.Mutate();
             drawable.SetColorFilter(new BlendModeColorFilter(tagColor, BlendMode.Multiply));
         }

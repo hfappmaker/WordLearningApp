@@ -1,8 +1,6 @@
-﻿using System;
+﻿using Common.Entry;
 using System.Xml;
 using System.Xml.Linq;
-using Common.Entry;
-using static Common.Utility.ActionHistoryManager;
 
 namespace WordLearning.Entry
 {
@@ -12,7 +10,7 @@ namespace WordLearning.Entry
 
         public string WordMeaning { get => GetElementValue(); internal set => SetElementValue(value); }
 
-        public string Memo { get => GetElementValue(); internal set => SetElementValue(value);}
+        public string Memo { get => GetElementValue(); internal set => SetElementValue(value); }
 
 
         public WlWord(XElement element) : base(element)

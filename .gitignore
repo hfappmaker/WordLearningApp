@@ -363,3 +363,5 @@ MigrationBackup/
 FodyWeavers.xsd
 
 *.apk
+/wordlearning.keyInfo
+/wordlearning.keystore

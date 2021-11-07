@@ -1,15 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Android.Content;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-using WordLearning.Adapter;
-using WordLearning.Entry;
-using WordLearning.Language;
-using WordLearning.Messages;
-using WordLearning.Utility;
+﻿using Android.Content;
 
 namespace WordLearning.Dialog
 {

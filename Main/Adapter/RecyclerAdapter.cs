@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using Android.Content;
-using AndroidX.RecyclerView.Widget;
+﻿using AndroidX.RecyclerView.Widget;
 
 namespace WordLearning.Adapter
 {

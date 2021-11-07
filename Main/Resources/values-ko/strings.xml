@@ -59,4 +59,11 @@
 <string name="Edittag_menu_popup_Dialog_EditTag">태그 수정</string>
 <!--Dialog_DirectoryName-->
 <string name="InputDirectoryName">Enter directory name</string>
+<!--Dialog_MergedWordListName-->
+<string name="SelectWordListOnly">Please select wordlist only</string>
+<!--Dialog_Move_Start-->
+<string name="SelectDestination">목적지를 선택하십시오</string>
+
+<string name="Delete">삭제가 완료되었습니다</string>
+	<string name="Moving">움직임</string>
 </resources>

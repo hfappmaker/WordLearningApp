@@ -1,7 +1,6 @@
 ﻿using Android.Content;
 using Android.OS;
 using AndroidX.AppCompat.App;
-using Common.Visitors;
 using WordLearning.Language;
 using WordLearning.Messages;
 
@@ -19,9 +18,9 @@ namespace WordLearning.Fragment
 
         public override Android.App.Dialog OnCreateDialog(Bundle savedInstanceState)
         {
-            var builder = new AlertDialog.Builder(Activity);
+            AlertDialog.Builder builder = new AlertDialog.Builder(Activity);
             builder.SetMessage(WlMessage.DeleteWordConfirm[WlLanguageUtil.CurrentLanguage]);
-            builder.SetNegativeButton("CANCEL", (_,_) => { });
+            builder.SetNegativeButton("CANCEL", (_, _) => { });
             builder.SetPositiveButton("OK", Delete);
             return builder.Create();
         }

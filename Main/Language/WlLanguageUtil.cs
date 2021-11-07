@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace WordLearning.Language
 {
@@ -45,7 +44,7 @@ namespace WordLearning.Language
             };
 
             // ロケールの取得
-            var defaultLocale = Java.Util.Locale.GetDefault(Java.Util.Locale.Category.Display);
+            Java.Util.Locale defaultLocale = Java.Util.Locale.GetDefault(Java.Util.Locale.Category.Display);
             defaultlanguage = defaultLocale.Language;
             country = defaultLocale.Country;
 
@@ -83,7 +82,7 @@ namespace WordLearning.Language
             }
         }
 
-        public static Java.Util.Locale LocaleWord       { get; set; }   = Java.Util.Locale.English;
-        public static Java.Util.Locale LocaleMeaning    { get; set; }   = Java.Util.Locale.Japan;
+        public static Java.Util.Locale LocaleWord { get; set; } = Java.Util.Locale.English;
+        public static Java.Util.Locale LocaleMeaning { get; set; } = Java.Util.Locale.Japan;
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-namespace WordLearning.Entry
+﻿namespace WordLearning.Entry
 {
     public enum WlEntryType
     {

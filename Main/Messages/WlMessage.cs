@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using WordLearning.Entry;
 using WordLearning.Language;
-using WordLearning.Utility;
 
 namespace WordLearning.Messages
 {
@@ -467,19 +465,6 @@ namespace WordLearning.Messages
             };
 
 
-        public static IReadOnlyDictionary<WlLanguage, string> SelectDestination { get; } = new Dictionary<WlLanguage, string>()
-            {
-                {WlLanguage.日本語,"移動先を選択して下さい" },
-                {WlLanguage.English,"Please select a destination" },
-                {WlLanguage.繁體中文,"請選擇目的地"},
-                {WlLanguage.简体中文,"请选择目的地"},
-                {WlLanguage.Deutsch,"Bitte wählen Sie ein Ziel aus"},
-                {WlLanguage.Français,"S'il vous plaît sélectionner une destination"},
-                {WlLanguage.한국어,"목적지를 선택하십시오."},
-                {WlLanguage.русский,"Пожалуйста, выберите пункт назначения"},
-                {WlLanguage.इंडिया,""}
-            };
-
         public static IReadOnlyDictionary<WlLanguage, string> IntegrationConfirm { get; } = new Dictionary<WlLanguage, string>()
             {
                 {WlLanguage.日本語,"選択した単語帳を一つの単語帳に統合します。" + System.Environment.NewLine + "宜しいですか？" },
@@ -517,18 +502,7 @@ namespace WordLearning.Messages
                 {WlLanguage.русский,"совпавших слов не существует." },
                 {WlLanguage.इंडिया,""}
             };
-        public static IReadOnlyDictionary<WlLanguage, string> Delete { get; } = new Dictionary<WlLanguage, string>()
-            {
-                {WlLanguage.日本語,"削除されました。"},
-                {WlLanguage.English,"Deletion is completed."},
-                {WlLanguage.繁體中文,"刪除完成。"},
-                {WlLanguage.简体中文,"删除完成。"},
-                {WlLanguage.Deutsch,"Die Löschung ist abgeschlossen."},
-                {WlLanguage.Français,"La suppression est terminée."},
-                {WlLanguage.한국어,"삭제가 완료되었습니다." },
-                {WlLanguage.русский,"Удаление завершено." },
-                {WlLanguage.इंडिया,""}
-            };
+
         public static IReadOnlyDictionary<WlLanguage, string> MoveValidate { get; } = new Dictionary<WlLanguage, string>()
             {
                 {WlLanguage.日本語,"移動先が現在位置と同じです。"},
@@ -551,18 +525,6 @@ namespace WordLearning.Messages
                 {WlLanguage.Français,"Le déménagement est terminé."},
                 {WlLanguage.한국어,"이동이 완료되었습니다." },
                 {WlLanguage.русский,"Перемещение завершено." },
-                {WlLanguage.इंडिया,""}
-            };
-        public static IReadOnlyDictionary<WlLanguage, string> Moving { get; } = new Dictionary<WlLanguage, string>()
-            {
-                {WlLanguage.日本語,"移動"},
-                {WlLanguage.English,"Move"},
-                {WlLanguage.繁體中文,"移動"},
-                {WlLanguage.简体中文,"移动"},
-                {WlLanguage.Deutsch,"Bewegung"},
-                {WlLanguage.Français,"Bouge toi"},
-                {WlLanguage.한국어,"움직임"},
-                {WlLanguage.русский,"Переехать"},
                 {WlLanguage.इंडिया,""}
             };
 

@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using Android.Content;
+﻿using Android.Content;
 using Android.Views;
 using Android.Widget;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Common.Adapters
 {
@@ -13,6 +12,7 @@ namespace Common.Adapters
         public LayoutInflater Inflater;
         protected CustomArrayAdapter(Context context, int resource, IEnumerable objects) : base(context, resource, GetObjects(objects))
         {
+
             layoutid = resource;
             Inflater = (LayoutInflater)context.GetSystemService(Context.LayoutInflaterService);
         }
@@ -25,8 +25,8 @@ namespace Common.Adapters
 
         private static IList GetObjects(IEnumerable objects)
         {
-            var list = new List<object>();
-            foreach (var item in objects)
+            List<object> list = new List<object>();
+            foreach (object item in objects)
             {
                 list.Add(item);
             }

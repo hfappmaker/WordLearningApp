@@ -1,20 +1,11 @@
 ﻿using Android.Content;
+using Android.OS;
 using Android.Views;
 using AndroidX.AppCompat.App;
-using AndroidX.RecyclerView.Widget;
-using WordLearning.Adapter;
-using WordLearning.Language;
-using WordLearning.Messages;
-using WordLearning.Fragment;
-using Android.OS;
-using WordLearning.Utility;
-using System.Collections.Generic;
 using Common.Entry;
-using System.Linq;
-using WordLearning.Entry;
-using Common.Visitors;
-using Google.Android.Material.TextField;
 using Common.Extension;
+using Google.Android.Material.TextField;
+using WordLearning.Fragment;
 
 namespace WordLearning.Dialog
 {
@@ -36,13 +27,13 @@ namespace WordLearning.Dialog
 
         public override Android.App.Dialog OnCreateDialog(Bundle savedInstanceState)
         {
-            var builder = new AlertDialog.Builder(Activity);
+            AlertDialog.Builder builder = new AlertDialog.Builder(Activity);
 
-            var layout = LayoutInflater.Inflate(Resource.Layout.Dialog_DirectoryName, null);
+            View layout = LayoutInflater.Inflate(Resource.Layout.Dialog_DirectoryName, null);
 
             _directory = layout.FindViewById<TextInputEditText>(Resource.Id.etxtDirectoryName_Dialog_DirectoryName);
 
-            var directory = Arguments.GetExtra<WlDirectory>(RenameDirectoryKey);
+            WlDirectory directory = Arguments.GetExtra<WlDirectory>(RenameDirectoryKey);
             _directory.Text = directory.Name;
             if (savedInstanceState != null) // 画面回転時
             {
@@ -76,7 +67,7 @@ namespace WordLearning.Dialog
         /// <param name="e"></param>
         private void ButtonPressAction(object sender, DialogClickEventArgs e)
         {
-            var directory = Arguments.GetExtra<WlDirectory>(RenameDirectoryKey);
+            WlDirectory directory = Arguments.GetExtra<WlDirectory>(RenameDirectoryKey);
             if ((DialogButtonType)e.Which == DialogButtonType.Negative)
             {
                 return;

@@ -1,10 +1,10 @@
-﻿using System;
-using System.Reflection;
-using System.Xml.Linq;
-using Android.App;
+﻿using Android.App;
 using Android.Content;
 using Common.Entry;
 using Common.Utility;
+using System;
+using System.Reflection;
+using System.Xml.Linq;
 using WordLearning.Colors;
 using WordLearning.Entry;
 using WordLearning.Language;
@@ -25,40 +25,49 @@ namespace WordLearning.Utility
         private const string FileName = "Wordlist.xml";
 
 
-        public readonly static string WordListPath =
+        public static readonly string WordListPath =
             System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), FileName);
 
 
         public static WlFolder RootFolder { get; } = new WlFolder(RootElement.Element(nameof(WlFolder)));
 
 
-        private static XElement GetDefaultTagColorElement() => new(nameof(TagColor),
-                                                 new XElement(nameof(TagColor.Red), TagColor.DefaultTagColor.R),
-                                                 new XElement(nameof(TagColor.Green), TagColor.DefaultTagColor.G),
-                                                 new XElement(nameof(TagColor.Blue), TagColor.DefaultTagColor.B),
-                                                 new XElement(nameof(TagColor.Meaning), string.Empty),
-                                                 new XElement(nameof(TagColor.Shape), TagColor.DefaultShape)
-                                                          );
+        private static XElement GetDefaultTagColorElement()
+        {
+            return new(nameof(TagColor),
+                new XElement(nameof(TagColor.Red), TagColor.DefaultTagColor.R),
+                new XElement(nameof(TagColor.Green), TagColor.DefaultTagColor.G),
+                new XElement(nameof(TagColor.Blue), TagColor.DefaultTagColor.B),
+                new XElement(nameof(TagColor.Meaning), string.Empty),
+                new XElement(nameof(TagColor.Shape), TagColor.DefaultShape)
+         );
+        }
 
-        private static XElement GetDefaultThemeColorElement() => new(nameof(ThemeColor),
-                                              new XElement(nameof(ThemeColor.Red), ThemeColor.DefaultRed),
-                                              new XElement(nameof(ThemeColor.Green), ThemeColor.DefaultGreen),
-                                              new XElement(nameof(ThemeColor.Blue), ThemeColor.DefaultBlue)
-                                                       );
+        private static XElement GetDefaultThemeColorElement()
+        {
+            return new(nameof(ThemeColor),
+                new XElement(nameof(ThemeColor.Red), ThemeColor.DefaultRed),
+                new XElement(nameof(ThemeColor.Green), ThemeColor.DefaultGreen),
+                new XElement(nameof(ThemeColor.Blue), ThemeColor.DefaultBlue)
+    );
+        }
 
-        private static XDocument GetDefaultDocument() => new(
-                                     new XDeclaration("1.0", "utf-8", "true"),
-                                        new XElement("Root",
-                                           new XElement(nameof(WlFolder), new XAttribute(nameof(WlDirectory.Name), WlMessage.ToolbarTitle_Wordlist[WlLanguageUtil.CurrentLanguage])),
-                                           GetDefaultThemeColorElement(),
-                                           new XElement(nameof(TagColorCollection),
-                                              GetDefaultTagColorElement(),
-                                              GetDefaultTagColorElement(),
-                                              GetDefaultTagColorElement(),
-                                              GetDefaultTagColorElement(),
-                                              GetDefaultTagColorElement())
-                                                    )
-                                    );
+        private static XDocument GetDefaultDocument()
+        {
+            return new(
+                new XDeclaration("1.0", "utf-8", "true"),
+                new XElement("Root",
+                new XElement(nameof(WlFolder), new XAttribute(nameof(WlDirectory.Name), WlMessage.ToolbarTitle_Wordlist[WlLanguageUtil.CurrentLanguage])),
+                GetDefaultThemeColorElement(),
+                new XElement(nameof(TagColorCollection),
+                   GetDefaultTagColorElement(),
+                   GetDefaultTagColorElement(),
+                   GetDefaultTagColorElement(),
+                   GetDefaultTagColorElement(),
+                   GetDefaultTagColorElement())
+         )
+);
+        }
 
         private static XDocument document;
         public static XElement RootElement
@@ -98,7 +107,7 @@ namespace WordLearning.Utility
         /// <returns></returns>
         public static bool FileNameCheck(string fileName, Context context)
         {
-            var dialog = new AlertDialog.Builder(context);
+            AlertDialog.Builder dialog = new AlertDialog.Builder(context);
             if (string.IsNullOrEmpty(fileName))
             {
                 dialog.SetMessage(Resource.String.SetName);

@@ -1,20 +1,9 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Xml;
-using System.Xml.Linq;
-using Android.Content;
-using Android.Graphics;
-using Android.Graphics.Drawables;
+﻿using Android.Graphics;
 using Android.Views;
 using Android.Widget;
-using Common.Entry;
-using Common.Visitors;
-using WordLearning.Colors;
-using WordLearning.Dialog;
+using System;
+using System.Collections.Generic;
 using WordLearning.Entry;
-using WordLearning.Utility;
 using static AndroidX.RecyclerView.Widget.RecyclerView;
 
 namespace WordLearning.Adapter
@@ -24,7 +13,7 @@ namespace WordLearning.Adapter
     /// </summary>
     public class Start_MoveAdapter : RecyclerAdapter
     {
-        private readonly List<WlFolder> _items = new ();
+        private readonly List<WlFolder> _items = new();
         private readonly Func<IEnumerable<WlFolder>> _getter;
         public WlFolder CurrentSelectedFolder { get; private set; }
         public Start_MoveAdapter(Func<IEnumerable<WlFolder>> getter)
@@ -67,7 +56,7 @@ namespace WordLearning.Adapter
         public override ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
         {
             View itemView = LayoutInflater.From(parent.Context).Inflate(Resource.Layout.row_SelectDestination, parent, false);
-            WlFolderView vh = new (itemView, OnImageClick, OnTextClick);
+            WlFolderView vh = new(itemView, OnImageClick, OnTextClick);
             return vh;
         }
 
@@ -89,8 +78,8 @@ namespace WordLearning.Adapter
 
         private class WlFolderView : ViewHolder
         {
-            public ImageView    ArrowImage { get; private set; }
-            public TextView     FolderName { get; private set; }
+            public ImageView ArrowImage { get; private set; }
+            public TextView FolderName { get; private set; }
 
             public WlFolderView(View itemView, Action<int> imageClickAction, Action<int> textClickAction) : base(itemView)
             {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Xml;
-using Android.App;
+﻿using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
@@ -10,6 +6,10 @@ using Android.Views;
 using Android.Widget;
 using Firebase.Database;
 using Google.Android.Material.TextField;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Xml;
 using WordLearning.Adapter;
 using static Android.Widget.AdapterView;
 
@@ -24,15 +24,17 @@ namespace WordLearning.Activities
 
 
         private DatabaseReference mDatabase;
-        static ListView listView;
-        static List<(string,string,DateTime)> listboard = new List<(string,string,DateTime)>();
-        static List<(string,DateTime)> listtitle = new List<(string,DateTime)>();
+        private static ListView listView;
+        private static List<(string, string, DateTime)> listboard = new();
+        private static List<(string, DateTime)> listtitle = new();
         private int position;
-        string selecttitle;
-        string selecttitledate;
-        enum Mode {Title,Board};
-        Mode mode;
-        string yourname = string.Empty;
+        private string selecttitle;
+        private string selecttitledate;
+
+        private enum Mode { Title, Board };
+
+        private Mode mode;
+        private readonly string yourname = string.Empty;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -70,15 +72,18 @@ namespace WordLearning.Activities
 
         public void lv_Question_bulletin_board_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (mode == Mode.Board) return;
-            DateTime dateTime;
-            
-            var title = listView.Adapter.GetItem(e.Position).ToString();
-            var titlename = XmlConvert.EncodeName(title.TrimStart('(').TrimEnd(')').Split(',')[0]);
-            var titledate = title.TrimStart('(').TrimEnd(')').Split(',')[1].Trim();
-            DateTime.TryParse(titledate, null, System.Globalization.DateTimeStyles.AssumeLocal | System.Globalization.DateTimeStyles.AdjustToUniversal, out dateTime);
+            if (mode == Mode.Board)
+            {
+                return;
+            }
+
+
+            string title = listView.Adapter.GetItem(e.Position).ToString();
+            string titlename = XmlConvert.EncodeName(title.TrimStart('(').TrimEnd(')').Split(',')[0]);
+            string titledate = title.TrimStart('(').TrimEnd(')').Split(',')[1].Trim();
+            DateTime.TryParse(titledate, null, System.Globalization.DateTimeStyles.AssumeLocal | System.Globalization.DateTimeStyles.AdjustToUniversal, out DateTime dateTime);
             titledate = XmlConvert.EncodeName(dateTime.ToString(System.Globalization.CultureInfo.GetCultureInfo("en-us")));
-            var test = mDatabase.Child(titlename).Child(titledate);
+            DatabaseReference test = mDatabase.Child(titlename).Child(titledate);
             position = e.Position;
             selecttitle = titlename;
             selecttitledate = titledate;
@@ -108,7 +113,7 @@ namespace WordLearning.Activities
 
         }
 
-        public override bool OnOptionsItemSelected(IMenuItem item) 
+        public override bool OnOptionsItemSelected(IMenuItem item)
         {
             // var dlg = new Android.Support.V7.App.AlertDialog.Builder(this);
             switch (item.ItemId)
@@ -124,7 +129,7 @@ namespace WordLearning.Activities
                         listView = FindViewById<ListView>(Resource.Id.lv_Question_bulletin_board);
                         GetDatabaseQuery();
                     }
-                    else 
+                    else
                     {
                         Finish();
                     }
@@ -273,7 +278,7 @@ namespace WordLearning.Activities
 
         public class listboardevent : Java.Lang.Object, IValueEventListener
         {
-            private Question_bulletin_board question_bulletin_board;
+            private readonly Question_bulletin_board question_bulletin_board;
 
             public listboardevent(Question_bulletin_board question_bulletin_board)
             {
@@ -287,19 +292,22 @@ namespace WordLearning.Activities
 
             public void OnDataChange(DataSnapshot snapshot)
             {
-                listboard = new List<(string,string,DateTime)>();
+                listboard = new List<(string, string, DateTime)>();
                 foreach (DataSnapshot dss in snapshot.Children.ToEnumerable())
                 {
-                    DateTime datetime;
-                    var nameandsentence = dss.GetValue(true) as JavaDictionary;
-                    if (nameandsentence == null) continue;
-                    var name = nameandsentence.Keys as JavaSet;
-                    var sentence = nameandsentence.Values as JavaCollection;
-                    var namestr = name.OfType<string>().First();
-                    var sentencestr = sentence.GetEnumerator();
+                    JavaDictionary nameandsentence = dss.GetValue(true) as JavaDictionary;
+                    if (nameandsentence == null)
+                    {
+                        continue;
+                    }
+
+                    JavaSet name = nameandsentence.Keys as JavaSet;
+                    JavaCollection sentence = nameandsentence.Values as JavaCollection;
+                    string namestr = name.OfType<string>().First();
+                    System.Collections.IEnumerator sentencestr = sentence.GetEnumerator();
                     sentencestr.MoveNext();
 
-                    DateTime.TryParse(XmlConvert.DecodeName(dss.Key), null, System.Globalization.DateTimeStyles.AssumeUniversal, out datetime);
+                    DateTime.TryParse(XmlConvert.DecodeName(dss.Key), null, System.Globalization.DateTimeStyles.AssumeUniversal, out DateTime datetime);
                     listboard.Add((XmlConvert.DecodeName(sentencestr.Current.ToString()), XmlConvert.DecodeName(namestr), datetime));
                 }
                 listboard = listboard.OrderByDescending(elm => elm.Item3).ToList();
@@ -312,7 +320,7 @@ namespace WordLearning.Activities
 
         public class listtitleevent : Java.Lang.Object, IValueEventListener
         {
-            private Question_bulletin_board question_bulletin_board;
+            private readonly Question_bulletin_board question_bulletin_board;
 
             public listtitleevent(Question_bulletin_board question_bulletin_board)
             {
@@ -326,25 +334,25 @@ namespace WordLearning.Activities
 
             public void OnDataChange(DataSnapshot snapshot)
             {
-                listtitle = new List<(string,DateTime)>();
+                listtitle = new List<(string, DateTime)>();
                 foreach (DataSnapshot dss in snapshot.Children.ToEnumerable())
-                { 
+                {
                     DateTime datetime;
-                    var date = dss.GetValue(true) as JavaDictionary;
-                    var date2 = dss.GetValue(true) as Java.Lang.String;
+                    JavaDictionary date = dss.GetValue(true) as JavaDictionary;
+                    Java.Lang.String date2 = dss.GetValue(true) as Java.Lang.String;
                     if (date == null && date2 != null)
                     {
-                        DateTime.TryParse(XmlConvert.DecodeName(date2.ToString()),null,System.Globalization.DateTimeStyles.AssumeUniversal, out datetime);
+                        DateTime.TryParse(XmlConvert.DecodeName(date2.ToString()), null, System.Globalization.DateTimeStyles.AssumeUniversal, out datetime);
                         listtitle.Add((XmlConvert.DecodeName(dss.Key), datetime));
                     }
                     else if (date != null)
                     {
-                        var teststr = date.Keys as JavaSet;
-                        var datestr = teststr.OfType<string>().First();
+                        JavaSet teststr = date.Keys as JavaSet;
+                        string datestr = teststr.OfType<string>().First();
                         DateTime.TryParse(XmlConvert.DecodeName(datestr), null, System.Globalization.DateTimeStyles.AssumeUniversal, out datetime);
                         listtitle.Add((XmlConvert.DecodeName(dss.Key), datetime));
                     }
-                    
+
                 }
                 listtitle = listtitle.OrderByDescending(elm => elm.Item2).ToList();
                 if (question_bulletin_board.mode == Mode.Title)

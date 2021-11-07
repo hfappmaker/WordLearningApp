@@ -1,6 +1,4 @@
-﻿using System;
-using Android.Content;
-using Android.Runtime;
+﻿using Android.Content;
 using Android.Views;
 using Android.Widget;
 using WordLearning.Language;
@@ -18,15 +16,15 @@ namespace WordLearning.Dialog
 
         private void Initialize(Context context)
         {
-            var inflater = LayoutInflater.From(context);
+            LayoutInflater inflater = LayoutInflater.From(context);
 
-            var memo = new EditText(context);
+            EditText memo = new EditText(context);
             memo.SetMaxHeight(70 * 4);
             SetMessage(WlMessage.InputMemo[WlLanguageUtil.CurrentLanguage]);
             SetView(memo);
-            SetPositiveButton("OK", (s1, e1) => {});
+            SetPositiveButton("OK", (s1, e1) => { });
             SetNegativeButton("CANCEL", (s1, e1) => { });
-            memo.FocusChange += (s1, e1) =>{ };
+            memo.FocusChange += (s1, e1) => { };
             memo.RequestFocus();
         }
     }

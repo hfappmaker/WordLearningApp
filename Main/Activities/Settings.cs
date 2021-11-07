@@ -1,21 +1,21 @@
-﻿using Android.App;
-using Android.Widget;
-using Android.OS;
-using System.IO;
+﻿using Android;
+using Android.App;
 using Android.Content;
-using static Android.Widget.AdapterView;
-using Android.Views;
+using Android.Content.PM;
+using Android.Database;
+using Android.OS;
+using Android.Provider;
 using Android.Runtime;
+using Android.Views;
+using Android.Widget;
+using AndroidX.Core.App;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using Android;
-using Android.Content.PM;
 using System.Xml.Linq;
-using Android.Provider;
-using Android.Database;
 using WordLearning.Dialog;
-using AndroidX.Core.App;
+using static Android.Widget.AdapterView;
 
 namespace WordLearning.Activities
 {
@@ -26,9 +26,9 @@ namespace WordLearning.Activities
 
         protected override int LayoutId { get; } = Resource.Layout.Settings;
 
-        ListView listView_BU_And_RC;
-        readonly SeekBar[] seekBars = new SeekBar[3];
-        List<(string, List<string[]>)> contentdata = new();
+        private ListView listView_BU_And_RC;
+        private readonly SeekBar[] seekBars = new SeekBar[3];
+        private readonly List<(string, List<string[]>)> contentdata = new();
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -110,7 +110,7 @@ namespace WordLearning.Activities
             contentdata.Clear();
             if (requestCode == (int)RequestCode.SELECT_CSVFILE && resultCode == Result.Ok)
             {
-                var uri = data.Data;
+                Android.Net.Uri uri = data.Data;
                 if (uri != null) //１つだけ選択した場合
                 {
                     (string, List<string[]>) csvdata = new ValueTuple<string, List<string[]>>
@@ -119,8 +119,8 @@ namespace WordLearning.Activities
                     };
                     string name = "test";
                     bool skipflag = false;
-                    var st = ContentResolver.OpenInputStream(uri);
-                    string[] projection = { MediaStore.IMediaColumns.DisplayName };
+                    Stream st = ContentResolver.OpenInputStream(uri);
+                    string[] projection = { MediaStore.MediaColumns.DisplayName };
                     ICursor cursor = ContentResolver.Query(uri, projection, null, null, null);
                     if (cursor != null)
                     {
@@ -143,16 +143,16 @@ namespace WordLearning.Activities
                         try
                         {
                             // csvファイルを開く
-                            using (var sr = new StreamReader(st, System.Text.Encoding.GetEncoding("UTF-8")))
+                            using (StreamReader sr = new StreamReader(st, System.Text.Encoding.GetEncoding("UTF-8")))
                             {
                                 csvdata.Item1 = new string(name.SkipLast(4).ToArray());
                                 // ストリームの末尾まで繰り返す
                                 while (!sr.EndOfStream)
                                 {
                                     // ファイルから一行読み込む
-                                    var line = sr.ReadLine();
+                                    string line = sr.ReadLine();
                                     // 読み込んだ一行をカンマ毎に分けて配列に格納する
-                                    var values = line.Split(',');
+                                    string[] values = line.Split(',');
                                     // 出力する
                                     if (values.Length > 1)
                                     {
@@ -182,14 +182,14 @@ namespace WordLearning.Activities
                 {
                     for (int i = 0; i < data.ClipData.ItemCount; i++)
                     {
-                        var uri2 = data.ClipData.GetItemAt(i).Uri;
+                        Android.Net.Uri uri2 = data.ClipData.GetItemAt(i).Uri;
                         (string, List<string[]>) csvdata = new ValueTuple<string, List<string[]>>
                         {
                             Item2 = new List<string[]>()
                         };
                         string name = "test";
-                        var st = ContentResolver.OpenInputStream(uri2);
-                        string[] projection = { MediaStore.IMediaColumns.DisplayName };
+                        Stream st = ContentResolver.OpenInputStream(uri2);
+                        string[] projection = { MediaStore.MediaColumns.DisplayName };
                         ICursor cursor = ContentResolver.Query(uri2, projection, null, null, null);
                         if (cursor != null)
                         {
@@ -210,16 +210,16 @@ namespace WordLearning.Activities
                         try
                         {
                             // csvファイルを開く
-                            using (var sr = new StreamReader(st, System.Text.Encoding.GetEncoding("UTF-8")))
+                            using (StreamReader sr = new StreamReader(st, System.Text.Encoding.GetEncoding("UTF-8")))
                             {
                                 csvdata.Item1 = new string(name.SkipLast(4).ToArray());
                                 // ストリームの末尾まで繰り返す
                                 while (!sr.EndOfStream)
                                 {
                                     // ファイルから一行読み込む
-                                    var line = sr.ReadLine();
+                                    string line = sr.ReadLine();
                                     // 読み込んだ一行をカンマ毎に分けて配列に格納する
-                                    var values = line.Split(',');
+                                    string[] values = line.Split(',');
                                     // 出力する
                                     if (values.Length > 1)
                                     {
@@ -247,16 +247,16 @@ namespace WordLearning.Activities
                 }
                 if (contentdata.Count > 0)
                 {
-                //    var dlg = new Android.Support.V7.App.AlertDialog.Builder(this);
-                //    dlg.SetMessage(WlMessage.RegisterWordListConfirm[WlLanguageUtil.CurrentLanguage]);
-                //    ListView listView = new ListView(this)
-                //    {
-                //        Adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, (from dataelm in contentdata select dataelm.Item1).ToList())
-                //    };
-                //    dlg.SetView(listView);
-                //    dlg.SetPositiveButton("OK", Addcsvdata);
-                //    dlg.SetNegativeButton("CANCEL", (s, e) => { });
-                //    dlg.Show();
+                    //    var dlg = new Android.Support.V7.App.AlertDialog.Builder(this);
+                    //    dlg.SetMessage(WlMessage.RegisterWordListConfirm[WlLanguageUtil.CurrentLanguage]);
+                    //    ListView listView = new ListView(this)
+                    //    {
+                    //        Adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, (from dataelm in contentdata select dataelm.Item1).ToList())
+                    //    };
+                    //    dlg.SetView(listView);
+                    //    dlg.SetPositiveButton("OK", Addcsvdata);
+                    //    dlg.SetNegativeButton("CANCEL", (s, e) => { });
+                    //    dlg.Show();
                 }
             }
             //else if (requestCode == (int)RequestCode.RESLUT_CAMERA && resultCode == Result.Ok)
@@ -404,51 +404,52 @@ namespace WordLearning.Activities
                 CreateBackup();
             }
         }
+
         /// <summary>
         /// Create backup.
         /// </summary>
-        void CreateBackup()
+        private void CreateBackup()
         {
-//            var dlgResult = new Android.Support.V7.App.AlertDialog.Builder(this);
-//            try
-//            {
-//                //if (File.Exists(Utility.BackupPath))
-//                //{
-//                //    File.Delete(Utility.BackupPath);
-//                //}
-//                //else
-//                {
-//                    if (!Directory.Exists(GetExternalFilesDir(Android.OS.Environment.DirectoryDocuments).AbsolutePath))
-//                    {
-//                        Directory.CreateDirectory(GetExternalFilesDir(Android.OS.Environment.DirectoryDocuments).AbsolutePath);
-//                    }
-//                }
-//                //File.Copy(Utility.WordListPath, Utility.BackupPath, true);
-//                dlgResult.SetMessage(WlMessage.CreateBackupComplete[WlLanguageUtil.CurrentLanguage]);
-//            }
-//            catch (UnauthorizedAccessException ex)
-//            {
-//#if DEBUG
-//                System.Diagnostics.Debug.Print(ex.Message);
-//#endif
+            //            var dlgResult = new Android.Support.V7.App.AlertDialog.Builder(this);
+            //            try
+            //            {
+            //                //if (File.Exists(Utility.BackupPath))
+            //                //{
+            //                //    File.Delete(Utility.BackupPath);
+            //                //}
+            //                //else
+            //                {
+            //                    if (!Directory.Exists(GetExternalFilesDir(Android.OS.Environment.DirectoryDocuments).AbsolutePath))
+            //                    {
+            //                        Directory.CreateDirectory(GetExternalFilesDir(Android.OS.Environment.DirectoryDocuments).AbsolutePath);
+            //                    }
+            //                }
+            //                //File.Copy(Utility.WordListPath, Utility.BackupPath, true);
+            //                dlgResult.SetMessage(WlMessage.CreateBackupComplete[WlLanguageUtil.CurrentLanguage]);
+            //            }
+            //            catch (UnauthorizedAccessException ex)
+            //            {
+            //#if DEBUG
+            //                System.Diagnostics.Debug.Print(ex.Message);
+            //#endif
 
-//                dlgResult.SetTitle(WlMessage.Error[WlLanguageUtil.CurrentLanguage]);
-//                dlgResult.SetMessage(WlMessage.RequireStorageAccess[WlLanguageUtil.CurrentLanguage]);
-//            }
-//            catch (Exception ex)
-//            {
-//#if DEBUG
-//                System.Diagnostics.Debug.Print(ex.Message);
-//#endif
+            //                dlgResult.SetTitle(WlMessage.Error[WlLanguageUtil.CurrentLanguage]);
+            //                dlgResult.SetMessage(WlMessage.RequireStorageAccess[WlLanguageUtil.CurrentLanguage]);
+            //            }
+            //            catch (Exception ex)
+            //            {
+            //#if DEBUG
+            //                System.Diagnostics.Debug.Print(ex.Message);
+            //#endif
 
-//                dlgResult.SetTitle(WlMessage.Error[WlLanguageUtil.CurrentLanguage]);
-//                dlgResult.SetMessage(WlMessage.CreateBackupFailure[WlLanguageUtil.CurrentLanguage]);
-//            }
-//            finally
-//            {
-//                dlgResult.SetPositiveButton("OK", (_s, _e) => { });
-//                dlgResult.Show();
-//            }
+            //                dlgResult.SetTitle(WlMessage.Error[WlLanguageUtil.CurrentLanguage]);
+            //                dlgResult.SetMessage(WlMessage.CreateBackupFailure[WlLanguageUtil.CurrentLanguage]);
+            //            }
+            //            finally
+            //            {
+            //                dlgResult.SetPositiveButton("OK", (_s, _e) => { });
+            //                dlgResult.Show();
+            //            }
         }
         /// <summary>
         /// Recover from backup.
@@ -467,10 +468,11 @@ namespace WordLearning.Activities
                 RecoverfromBackup();
             }
         }
+
         /// <summary>
         /// Recover from backup.
         /// </summary>
-        void RecoverfromBackup()
+        private void RecoverfromBackup()
         {
             // var dlgResult = new Android.Support.V7.App.AlertDialog.Builder(this);
             //bool toomanyflag = false;
@@ -569,7 +571,7 @@ namespace WordLearning.Activities
             Intent intent = new Intent(MediaStore.ActionImageCapture);
             StartActivityForResult(intent, (int)RequestCode.RESLUT_CAMERA);
         }
-#endregion
+        #endregion
 
         /// <summary>
         /// 

@@ -1,5 +1,4 @@
-﻿using System;
-namespace WordLearning.Colors
+﻿namespace WordLearning.Colors
 {
     public static class WlColorUtil
     {

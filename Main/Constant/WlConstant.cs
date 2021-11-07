@@ -1,5 +1,4 @@
-﻿using System;
-namespace WordLearning.Constant
+﻿namespace WordLearning.Constant
 {
     public static class WlConstant
     {

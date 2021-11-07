@@ -59,4 +59,11 @@
 <string name="Edittag_menu_popup_Dialog_EditTag">编辑标签</string>
 <!--Dialog_DirectoryName-->
 <string name="InputDirectoryName">Enter directory name</string>
+<!--Dialog_MergedWordListName-->
+<string name="SelectWordListOnly">Please select wordlist only</string>
+<!--Dialog_Move_Start-->
+<string name="SelectDestination">请选择目的地</string>
+
+<string name="Delete">删除完成</string>
+	<string name="Moving">移动</string>
 </resources>

@@ -1,7 +1,5 @@
-﻿using System;
-using Android.Content;
+﻿using Android.Content;
 using Common.Utility;
-using Java.IO;
 
 namespace Common.Extension
 {

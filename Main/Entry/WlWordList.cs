@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Common.Entry;
+using System;
 using System.Xml;
 using System.Xml.Linq;
-using Common.Entry;
 using WordLearning.Language;
 using WordLearning.Utility;
 
@@ -15,7 +15,7 @@ namespace WordLearning.Entry
 
 
         public WlWordList(string fileName)
-            : base (new XElement(nameof(WlWordList), new XAttribute(nameof(Name), XmlConvert.EncodeName(fileName))))
+            : base(new XElement(nameof(WlWordList), new XAttribute(nameof(Name), XmlConvert.EncodeName(fileName))))
         {
         }
 
@@ -31,7 +31,7 @@ namespace WordLearning.Entry
 
         protected override WlEntry CreateChildEntry(XElement childElement)
         {
-            var type = WlUtility.CurrentAssembly.GetType(childElement.Name.ToString());
+            Type type = WlUtility.CurrentAssembly.GetType(childElement.Name.ToString());
             if (type != typeof(WlWord))
             {
                 throw new InvalidOperationException();

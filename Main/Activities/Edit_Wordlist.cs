@@ -1,19 +1,17 @@
 ﻿using Android.App;
-using Android.Widget;
-using Android.OS;
 using Android.Content;
-using static Android.Widget.AdapterView;
-using Android.Views;
+using Android.OS;
 using Android.Runtime;
-using WordLearning.Dialog;
-using WordLearning.Utility;
-using WordLearning.Entry;
-using AndroidX.AppCompat.App;
-using WordLearning.Adapter;
-using Common.Utility;
-using WordLearning.Fragment;
+using Android.Views;
+using Android.Widget;
 using Common.Extension;
+using WordLearning.Adapter;
+using WordLearning.Dialog;
+using WordLearning.Entry;
+using WordLearning.Fragment;
 using WordLearning.States;
+using WordLearning.Utility;
+using static Android.Widget.AdapterView;
 
 namespace WordLearning.Activities
 {
@@ -36,8 +34,8 @@ namespace WordLearning.Activities
             base.OnCreate(savedInstanceState);
             SetContentViewAndToolbar<Edit_WordlistInitToolbarState>();
             _listView = FindViewById<ListView>(Resource.Id.lv_Edit_Wordlist);
-            var selectedWordList = Intent.GetExtra<WlWordList>(nameof(Edit_Wordlist));
-            var adapter = new Edit_WordListAdapter(this, Resource.Layout.row_Latest, selectedWordList);
+            WlWordList selectedWordList = Intent.GetExtra<WlWordList>(nameof(Edit_Wordlist));
+            Edit_WordListAdapter adapter = new(this, Resource.Layout.row_Latest, selectedWordList);
             _listView.Adapter = adapter;
         }
 
@@ -70,7 +68,7 @@ namespace WordLearning.Activities
         {
             if (ToolbarState is Edit_WordlistInitToolbarState)
             {
-                var bundle = new Bundle();
+                Bundle bundle = new();
                 bundle.PutExtra(WordDialogFragment.EDIT_WORD_KEY, _listView.Adapter.GetItem<WlWord>(e.Position));
                 new WordDialogFragment(bundle).Show(SupportFragmentManager, null);
             }
@@ -103,7 +101,7 @@ namespace WordLearning.Activities
         /// <returns></returns>
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            var bundle = new Bundle();
+            Bundle bundle = new Bundle();
 
             switch (item.ItemId)
             {
@@ -128,7 +126,7 @@ namespace WordLearning.Activities
                                 {
                                     _listView.ClearChoices();
                                     _listView.ChoiceMode = ChoiceMode.None;
-                                    var state = _listView.OnSaveInstanceState();
+                                    IParcelable state = _listView.OnSaveInstanceState();
                                     _listView.OnRestoreInstanceState(state);
                                     SetToolbar<Edit_WordlistInitToolbarState>();
                                     break;

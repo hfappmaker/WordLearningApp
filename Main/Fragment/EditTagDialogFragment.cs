@@ -1,15 +1,4 @@
-﻿using System;
-using Android.Content;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-using WordLearning.Adapter;
-using WordLearning.Language;
-using WordLearning.Messages;
-using static AndroidX.AppCompat.Widget.Toolbar;
-using static Android.Widget.AdapterView;
-
-namespace WordLearning.Fragment
+﻿namespace WordLearning.Fragment
 {
     internal class EditTagDialogFragment : WlAlartDialogFragment
     {

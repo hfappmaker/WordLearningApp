@@ -1,14 +1,8 @@
-﻿using System;
-using System.Linq;
-using Android.OS;
+﻿using Android.OS;
 using AndroidX.AppCompat.App;
-using Common.Entry;
 using Common.Extension;
-using WordLearning.Dialog;
+using System;
 using WordLearning.Entry;
-using WordLearning.Language;
-using WordLearning.Messages;
-using WordLearning.Utility;
 
 namespace WordLearning.Fragment
 {
@@ -21,7 +15,7 @@ namespace WordLearning.Fragment
 
         public override Android.App.Dialog OnCreateDialog(Bundle savedInstanceState)
         {
-            var builder = new AlertDialog.Builder(Activity);
+            AlertDialog.Builder builder = new AlertDialog.Builder(Activity);
             builder.SetItems(new string[] {
                     Resources.GetString(Resource.String.AddFolder),
                     Resources.GetString(Resource.String.AddWordlist)
@@ -43,7 +37,7 @@ namespace WordLearning.Fragment
         /// <param name="e"></param>
         private void AddDirectory(WlEntryType entryType)
         {
-            var bundle = new Bundle();
+            Bundle bundle = new Bundle();
             bundle.PutEnum(CreateNewItemDialogFragment.ENTRY_TYPE_KEY, entryType);
             new CreateNewItemDialogFragment(bundle).Show(Activity.SupportFragmentManager, null);
         }
@@ -66,7 +60,7 @@ namespace WordLearning.Fragment
             base.OnDetach();
         }
 
-
+        [Obsolete]
         public override void OnActivityCreated(Bundle savedInstanceState)
         {
             base.OnActivityCreated(savedInstanceState);
