@@ -65,7 +65,9 @@
 <string name="SelectWordListOnly">Please select wordlist only</string>
 <!--Dialog_Move_Start-->
 <string name="SelectDestination">Bitte wählen Sie ein Ziel aus</string>
-
-<string name="Delete">Die Löschung ist abgeschlossen</string>
-<string name="Moving">Bewegung</string>
+	<string name="Delete">Die Löschung ist abgeschlossen</string>
+	<string name="Merge">Die Zusammenführung ist abgeschlossen</string>
+	<string name="Moving">Bewegung</string>
+	<string name="Move">Der Umzug ist abgeschlossen</string>
+	<string name="Wordlist">Wortbuch</string>
 </resources>

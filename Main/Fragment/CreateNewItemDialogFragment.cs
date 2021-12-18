@@ -1,8 +1,12 @@
 ﻿using Android.OS;
 using Android.Widget;
 using AndroidX.AppCompat.App;
+using AndroidX.RecyclerView.Widget;
+using Common.Entry;
 using Common.Extension;
+using Common.Visitors;
 using System;
+using WordLearning.Adapter;
 using WordLearning.Entry;
 using WordLearning.Utility;
 
@@ -37,6 +41,34 @@ namespace WordLearning.Fragment
             builder.SetMessage(Resource.String.SetName);
             builder.SetNegativeButton("CANCEL", (_, _) => { });
             builder.SetPositiveButton("OK", (_, _) => CreateNewItem(_editText.Text));
+
+
+            AlertDialog.Builder builder = new(Activity);
+            View layout = LayoutInflater.Inflate(Resource.Layout.Dialog_Move_Start, null);
+            RecyclerView listFolder = layout.FindViewById<RecyclerView>(Resource.Id.lv_Dialog_Move_Start);
+            listFolder.SetLayoutManager(new LinearLayoutManager(Activity));
+            var checkedItems = _rootFolder.Accept(new GetCheckedEntryVisitor());
+            Start_MoveAdapter adapter = new(() => _rootFolder.Accept(new GetHierarchicalEntryVisitor(checkedItems))
+                                          .Where(entry => entry is WlFolder)
+                                          .Select(entry => entry as WlFolder));
+            listFolder.SetAdapter(adapter);
+            builder.SetMessage(Resource.String.SelectDestination);
+            builder.SetPositiveButton(Resource.String.Moving, (_, _) =>
+            {
+                if (adapter.CurrentSelectedFolder != null)
+                {
+                    foreach (WlEntry item in checkedItems.ToList())
+                    {
+                        item.ClearCheck();
+                        item.MoveTo(adapter.CurrentSelectedFolder);
+                    }
+                }
+
+                OnDialogResult(true);
+            });
+            builder.SetNegativeButton("CANCEL", (_, _) => OnDialogResult());
+            builder.SetView(layout);
+            builder.SetCancelable(false);
             return builder.Create();
         }
 

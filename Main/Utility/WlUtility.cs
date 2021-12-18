@@ -57,7 +57,7 @@ namespace WordLearning.Utility
             return new(
                 new XDeclaration("1.0", "utf-8", "true"),
                 new XElement("Root",
-                new XElement(nameof(WlFolder), new XAttribute(nameof(WlDirectory.Name), WlMessage.ToolbarTitle_Wordlist[WlLanguageUtil.CurrentLanguage])),
+                new XElement(nameof(WlFolder), new XAttribute(nameof(WlDirectory.Name), Application.Context.GetString(Resource.String.Wordlist))),
                 GetDefaultThemeColorElement(),
                 new XElement(nameof(TagColorCollection),
                    GetDefaultTagColorElement(),

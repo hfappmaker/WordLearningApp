@@ -1,14 +1,20 @@
 ﻿using Android.OS;
 using AndroidX.AppCompat.App;
+using Common.Entry;
 using Common.Visitors;
+using WordLearning.Entry;
 using WordLearning.Utility;
 
 namespace WordLearning.Fragment
 {
     public class DeleteEntriesDialogFragment : WlAlartDialogFragment
     {
-        public DeleteEntriesDialogFragment() : base()
+        private readonly WlDirectory _rootFolder;
+
+
+        public DeleteEntriesDialogFragment(WlDirectory rootFolder) : base()
         {
+            _rootFolder = rootFolder;
         }
 
 
@@ -18,7 +24,7 @@ namespace WordLearning.Fragment
             builder.SetMessage(Resource.String.DeleteEntryConfirm);
             builder.SetPositiveButton("OK", (_, _) =>
             {
-                WlUtility.RootFolder.Accept(new DeleteCheckedEntryVisitor());
+                _rootFolder.Accept(new DeleteCheckedEntryVisitor());
                 OnDialogResult();
             });
             builder.SetNegativeButton("CANCEL", (_, _) => { });

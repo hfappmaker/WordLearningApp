@@ -62,8 +62,10 @@
 <!--Dialog_MergedWordListName-->
 <string name="SelectWordListOnly">Please select wordlist only</string>
 <!--Dialog_Move_Start-->
-<string name="SelectDestination">请选择目的地</string>
-
-<string name="Delete">删除完成</string>
+	<string name="SelectDestination">请选择目的地</string>
+	<string name="Delete">删除完成</string>
+	<string name="Merge">合并完成</string>
 	<string name="Moving">移动</string>
+	<string name="Move">移动完成</string>
+	<string name="Wordlist">单词书</string>
 </resources>

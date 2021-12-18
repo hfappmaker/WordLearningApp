@@ -156,7 +156,7 @@ namespace WordLearning.Activities
             base.OnStart();
         }
 
-        #region event
+        #region events
 
         #region listview click
         /// <summary>
@@ -179,7 +179,7 @@ namespace WordLearning.Activities
                     adapter.CurrentFolder = selectedDirectory as WlFolder;
                     break;
                 case nameof(WlWordList):
-                    Intent intent = new Intent(this, typeof(Edit_Wordlist));
+                    Intent intent = new(this, typeof(Edit_Wordlist));
                     intent.PutExtra(nameof(Edit_Wordlist), selectedDirectory);
                     StartActivity(intent);
                     break;
@@ -213,6 +213,11 @@ namespace WordLearning.Activities
             switch (item.ItemId)
             {
                 case Resource.Id.action_add_Start_Init:
+                    SupportFragmentManager.SetFragmentResultListenerXamarin(AddNewDirectoryDialogFragment.AddNewDiredtoryKey, this, (key, bundle) => 
+                    {
+                        WlFolder targetFolder = _listView.GetAdapter<StartAdapter>().CurrentFolder;
+                        bundle.GetExtra<WlDirectory>(nameof(WlDirectory)).AddTo(targetFolder);
+                    });
                     new AddNewDirectoryDialogFragment().Show(SupportFragmentManager, null);
                     break;
                 case Resource.Id.action_settings_Start_Init:
@@ -232,7 +237,7 @@ namespace WordLearning.Activities
                     }
                     break;
                 case Resource.Id.action_delete_Start_Deletemode:
-                    new DeleteEntriesDialogFragment().Show(SupportFragmentManager, null);
+                    new DeleteEntriesDialogFragment(WlUtility.RootFolder).Show(SupportFragmentManager, null);
                     break;
                 case Resource.Id.action_move_Start_Deletemode:
                     new MoveDirectoryDialogFragment(WlUtility.RootFolder).Show(SupportFragmentManager, null);
@@ -289,21 +294,21 @@ namespace WordLearning.Activities
 
             switch (dialogName)
             {
-                case nameof(CreateNewItemDialogFragment):
-                    (WlEntryType entryType, string fileName) = ((WlEntryType, string))result;
-                    WlDirectory directory = null;
-                    switch (entryType)
-                    {
-                        case WlEntryType.Folder:
-                            directory = new WlFolder(fileName);
-                            break;
-                        case WlEntryType.WordList:
-                            directory = new WlWordList(fileName);
-                            break;
-                    }
+                //case nameof(CreateNewItemDialogFragment):
+                //    (WlEntryType entryType, string fileName) = ((WlEntryType, string))result;
+                //    WlDirectory directory = null;
+                //    switch (entryType)
+                //    {
+                //        case WlEntryType.Folder:
+                //            directory = new WlFolder(fileName);
+                //            break;
+                //        case WlEntryType.WordList:
+                //            directory = new WlWordList(fileName);
+                //            break;
+                //    }
 
-                    directory?.AddTo(targetFolder);
-                    break;
+                //    directory?.AddTo(targetFolder);
+                //    break;
                 case nameof(DeleteEntriesDialogFragment):
                     SetToolbar<StartInitToolbarState>();
                     Toast.MakeText(this, Resource.String.Delete, ToastLength.Short).Show();
@@ -312,14 +317,15 @@ namespace WordLearning.Activities
                     SetToolbar<StartInitToolbarState>();
                     if (result == true)
                     {
-                        Toast.MakeText(this, WlMessage.Move[WlLanguageUtil.CurrentLanguage], ToastLength.Short).Show();
+                        Toast.MakeText(this, Resource.String.Move, ToastLength.Short).Show();
                     }
                     break;
                 case nameof(RenameDirectoryDialogFragment):
                     break;
                 case nameof(MergeWordListDialogFragment):
                     (result as WlWordList).AddTo(targetFolder);
-                    Toast.MakeText(this, WlMessage.Move[WlLanguageUtil.CurrentLanguage], ToastLength.Short).Show();
+                    Toast.MakeText(this, Resource.String.Merge, ToastLength.Short).Show();
+                    SetToolbar<StartInitToolbarState>();
                     break;
             }
         }

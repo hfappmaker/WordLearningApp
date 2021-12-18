@@ -9,13 +9,13 @@ namespace Common.Extension
     {
         public static void PutExtra<T>(this Bundle @bundle, string key, T item) where T : class
         {
-            bundle.PutInt(key, CommonUtility.SetData(item));
+            bundle.PutString(key, CommonUtility.SetData(item));
         }
 
 
         public static T GetExtra<T>(this Bundle @bundle, string key) where T : class
         {
-            return CommonUtility.GetData<T>(bundle.GetInt(key));
+            return CommonUtility.GetData<T>(bundle.GetString(key));
         }
 
 

@@ -35,7 +35,7 @@ namespace WordLearning.Activities
         {
             ViewGroup rootscene = FindViewById<ViewGroup>(ToolbarId);
             Scene scene = Scene.GetSceneForLayout(rootscene, ToolbarState.ToolbarLayout, this);
-            Fade transition = new Fade();
+            Fade transition = new();
             transition.SetDuration(150L);
             TransitionManager.Go(scene, transition);
             Toolbar toolbar = FindViewById<Toolbar>(ToolbarState.ToolbarId);

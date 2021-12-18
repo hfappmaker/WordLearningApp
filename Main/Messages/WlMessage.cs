@@ -85,19 +85,6 @@ namespace WordLearning.Messages
                 {WlLanguage.इंडिया,"शीर्षक डुप्लिकेट है। कृपया एक और शीर्षक सेट करें।"}
             };
 
-
-        public static IReadOnlyDictionary<WlLanguage, string> ToolbarTitle_Wordlist { get; } = new Dictionary<WlLanguage, string>()
-            {
-                {WlLanguage.日本語,"単語帳"},
-                {WlLanguage.English,"Word book"},
-                {WlLanguage.简体中文,"单词书"},
-                {WlLanguage.繁體中文,"單詞書"},
-                {WlLanguage.Deutsch,"Wortbuch"},
-                {WlLanguage.Français,"Livre de mots"},
-                {WlLanguage.한국어,"단어장"},
-                {WlLanguage.русский,"Слово книга"},
-                {WlLanguage.इंडिया,""}
-            };
         public static IReadOnlyDictionary<WlLanguage, string> ToolbarTitle_RegisterWord { get; } = new Dictionary<WlLanguage, string>()
             {
                 {WlLanguage.日本語,"単語の登録"},
@@ -513,18 +500,6 @@ namespace WordLearning.Messages
                 {WlLanguage.Français,"La destination est la même que la position actuelle."},
                 {WlLanguage.한국어,"목적지는 현재 위치와 같습니다." },
                 {WlLanguage.русский,"Пункт назначения совпадает с текущей позицией." },
-                {WlLanguage.इंडिया,""}
-            };
-        public static IReadOnlyDictionary<WlLanguage, string> Move { get; } = new Dictionary<WlLanguage, string>()
-            {
-                {WlLanguage.日本語,"移動されました。"},
-                {WlLanguage.English,"Move is completed."},
-                {WlLanguage.繁體中文,"移動完成。"},
-                {WlLanguage.简体中文,"移动完成。"},
-                {WlLanguage.Deutsch,"Der Umzug ist abgeschlossen."},
-                {WlLanguage.Français,"Le déménagement est terminé."},
-                {WlLanguage.한국어,"이동이 완료되었습니다." },
-                {WlLanguage.русский,"Перемещение завершено." },
                 {WlLanguage.इंडिया,""}
             };
 

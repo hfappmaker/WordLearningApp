@@ -66,7 +66,7 @@ namespace WordLearning.Dialog
                 var wordlist = new WlWordList(_wordlist.Text);
                 foreach(WlWordList checkedItem in checkedItems.ToList())
                 {
-                    foreach (var word in checkedItem)
+                    foreach (var word in checkedItem.ToList())
                     {
                         word.MoveTo(wordlist);
                     }

@@ -5,6 +5,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Common.Extension;
+using System;
+using System.Reactive.Disposables;
 using WordLearning.Adapter;
 using WordLearning.Dialog;
 using WordLearning.Entry;
@@ -25,6 +27,10 @@ namespace WordLearning.Activities
 
 
         private ListView _listView;
+
+
+        private readonly CompositeDisposable _disposables = new();
+
         /// <summary>
         /// Ons the create.
         /// </summary>
@@ -37,6 +43,10 @@ namespace WordLearning.Activities
             WlWordList selectedWordList = Intent.GetExtra<WlWordList>(nameof(Edit_Wordlist));
             Edit_WordListAdapter adapter = new(this, Resource.Layout.row_Latest, selectedWordList);
             _listView.Adapter = adapter;
+
+            _disposables.Add(selectedWordList.RegisterPropertyValueChanged(nameof(WlWordList.Name), name => SupportActionBar.Title = name));
+            SupportActionBar.Title = selectedWordList.Name;
+            _listView.Adapter = adapter;
         }
 
 
@@ -46,6 +56,7 @@ namespace WordLearning.Activities
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
             SupportActionBar.SetHomeButtonEnabled(true);
         }
+
         /// <summary>
         /// Ons the key down.
         /// </summary>
@@ -110,7 +121,7 @@ namespace WordLearning.Activities
                     new WordDialogFragment(bundle).Show(SupportFragmentManager, null);
                     break;
                 case Resource.Id.action_delete_Edit_Wordlist_Deletemode:
-                    new DeleteEntriesDialogFragment().Show(SupportFragmentManager, null);
+                    new DeleteEntriesDialogFragment(_listView.GetAdapter<Edit_WordListAdapter>().CurrentWordList).Show(SupportFragmentManager, null);
                     break;
                 case Resource.Id.action_edit_Edit_Wordlist_Init:
                     new EditTagDialogBulder(this).Show();
@@ -178,6 +189,7 @@ namespace WordLearning.Activities
 
         protected override void OnDestroy()
         {
+            _disposables.Dispose();
             base.OnDestroy();
         }
 

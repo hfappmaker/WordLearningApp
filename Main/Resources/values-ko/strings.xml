@@ -65,5 +65,8 @@
 <string name="SelectDestination">목적지를 선택하십시오</string>
 
 <string name="Delete">삭제가 완료되었습니다</string>
+	<string name="Merge">병합이 완료되었습니다</string>
 	<string name="Moving">움직임</string>
+	<string name="Move">이동이 완료되었습니다</string>
+	<string name="Wordlist">단어장</string>
 </resources>

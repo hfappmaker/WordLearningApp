@@ -42,7 +42,7 @@ namespace WordLearning.Dialog
             {
                 if (adapter.CurrentSelectedFolder != null)
                 {
-                    foreach (WlEntry item in checkedItems)
+                    foreach (WlEntry item in checkedItems.ToList())
                     {
                         item.ClearCheck();
                         item.MoveTo(adapter.CurrentSelectedFolder);

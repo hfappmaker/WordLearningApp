@@ -108,16 +108,13 @@
     <Compile Include="Dialog\JumpDialogBuilder.cs" />
     <Compile Include="Dialog\SetLearnWordDialogBuilder.cs" />
     <Compile Include="Dialog\WlAlartDialogBuilder.cs" />
-    <Compile Include="Entry\WlEntryType.cs" />
     <Compile Include="Entry\WlFolder.cs" />
     <Compile Include="Entry\WlWord.cs" />
     <Compile Include="Entry\WlWordList.cs" />
     <Compile Include="Fragment\AddNewDirectoryDialogFragment.cs" />
     <Compile Include="Fragment\ChangeThemeColorDialogFragment.cs" />
-    <Compile Include="Fragment\CreateNewItemDialogFragment.cs" />
     <Compile Include="Fragment\CreateNewTagDialogFragment.cs" />
     <Compile Include="Fragment\DeleteEntriesDialogFragment.cs" />
-    <Compile Include="Fragment\DeleteWordDialogFragment.cs" />
     <Compile Include="Fragment\EditTagDialogFragment.cs" />
     <Compile Include="Fragment\MergeWordListDialogFragment.cs" />
     <Compile Include="Fragment\MoveDirectoryDialogFragment.cs" />

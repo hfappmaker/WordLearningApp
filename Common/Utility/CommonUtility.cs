@@ -11,11 +11,11 @@ namespace Common.Utility
 {
     public static class CommonUtility
     {
-        private static readonly TimeSpan MAX_HOLD_TIME = TimeSpan.FromSeconds(10);
+        private static readonly TimeSpan MaxHoldTime = TimeSpan.FromSeconds(10);
+        private const int MaxStoreCount = 10000;
         private static readonly object _lockObj = new();
-        private static int _key;
-        private static readonly ConcurrentDictionary<int, object> _temporaryStore = new();
-        private static readonly ConcurrentQueue<(int Key, DateTime CreatedTime)> _monitorQueue = new();
+        private static readonly ConcurrentDictionary<string, object> _temporaryStore = new();
+        private static readonly ConcurrentQueue<(string Key, DateTime CreatedTime)> _monitorQueue = new();
 
 
         static CommonUtility()
@@ -28,9 +28,9 @@ namespace Common.Utility
         {
             while (true)
             {
-                if (_monitorQueue.TryPeek(out (int Key, DateTime CreatedTime) result))
+                if (_monitorQueue.TryPeek(out (string Key, DateTime CreatedTime) result))
                 {
-                    if (DateTime.Now - result.CreatedTime > MAX_HOLD_TIME)
+                    if (DateTime.Now - result.CreatedTime > MaxHoldTime)
                     {
                         throw new InvalidOperationException($"保持期限切れ");
                     }
@@ -46,18 +46,21 @@ namespace Common.Utility
         }
 
 
-        public static int SetData(object data)
+        public static string SetData(object data)
         {
-            lock (_lockObj)
+            if (_temporaryStore.Count == MaxStoreCount)
             {
-                _temporaryStore.TryAdd(_key, data);
-                _monitorQueue.Enqueue((_key, DateTime.Now));
-                return _key++;
+                throw new InvalidOperationException($"上限を超えました。");
             }
+
+            string newKey = Guid.NewGuid().ToString();
+            _temporaryStore.TryAdd(newKey, data);
+            _monitorQueue.Enqueue((newKey, DateTime.Now));
+            return newKey;
         }
 
 
-        public static T GetData<T>(int key) where T : class
+        public static T GetData<T>(string key) where T : class
         {
             if (!_temporaryStore.TryGetValue(key, out object value))
             {
@@ -73,7 +76,7 @@ namespace Common.Utility
         }
 
 
-        public static bool RemoveData<T>(int key, out T removedData) where T : class
+        public static bool RemoveData<T>(string key, out T removedData) where T : class
         {
             bool result = _temporaryStore.TryRemove(key, out object _removedData);
             if (_removedData is not T)
@@ -86,7 +89,7 @@ namespace Common.Utility
         }
 
 
-        public static bool RemoveData(int key)
+        public static bool RemoveData(string key)
         {
             return _temporaryStore.TryRemove(key, out _);
         }
@@ -128,5 +131,28 @@ namespace Common.Utility
                 }
             }
         }
+
+
+        public static T CreateInstance<T>(Assembly targetAssembly, string name, params object[] args)
+        {
+
+            if (!_assemblyTypeDictionary.ContainsKey(targetAssembly))
+            {
+                _assemblyTypeDictionary.TryAdd(targetAssembly, new ConcurrentDictionary<string, Type>(targetAssembly.GetExportedTypes().ToDictionary(type => type.Name, type => type)));
+            }
+
+
+            _assemblyTypeDictionary.TryGetValue(targetAssembly, out ConcurrentDictionary<string, Type> typeDictionary);
+            typeDictionary.TryGetValue(name, out Type targetType);
+
+            if (!typeof(T).IsAssignableFrom(targetType))
+            {
+                throw new InvalidOperationException();
+            }
+
+            return (T)Activator.CreateInstance(targetType, args);
+        }
+
+        private static readonly ConcurrentDictionary<Assembly, ConcurrentDictionary<string, Type>> _assemblyTypeDictionary = new();
     }
 }

@@ -11,14 +11,13 @@ namespace WordLearning.Dialog
 {
     public class RenameDirectoryDialogFragment : WlAlartDialogFragment
     {
-        public const string RenameDirectoryKey = "RenameDirectoryKey";
-        private const string EditRenameDirectoryKey = "EditRenameDirectoryKey";
+        public static readonly  string RenameDirectoryKey               = nameof(RenameDirectoryKey);
+        private static readonly string EditRenameDirectoryKey           = nameof(EditRenameDirectoryKey);
+        public static readonly  string RenameDirectoryDialogResultKey   = nameof(RenameDirectoryDialogResultKey);
 
 
         protected TextInputEditText _directory;
-        public RenameDirectoryDialogFragment() : base()
-        {
-        }
+
 
         public RenameDirectoryDialogFragment(Bundle bundle) : base(bundle)
         {
@@ -67,14 +66,18 @@ namespace WordLearning.Dialog
         /// <param name="e"></param>
         private void ButtonPressAction(object sender, DialogClickEventArgs e)
         {
-            WlDirectory directory = Arguments.GetExtra<WlDirectory>(RenameDirectoryKey);
-            if ((DialogButtonType)e.Which == DialogButtonType.Negative)
+           
+            if ((DialogButtonType)e.Which == DialogButtonType.Positive)
             {
-                return;
+                WlDirectory directory = Arguments.GetExtra<WlDirectory>(RenameDirectoryKey);
+                directory.Name = _directory.Text;
             }
 
-            directory.Name = _directory.Text;
-            OnDialogResult(directory);
+            var bundle = new Bundle();
+            bundle.PutEnum(nameof(DialogButtonType), (DialogButtonType)e.Which);
+            ChildFragmentManager.SetFragmentResult(RenameDirectoryDialogResultKey, bundle);
+
+            // OnDialogResult(directory);
         }
     }
 }

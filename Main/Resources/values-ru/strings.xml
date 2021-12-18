@@ -65,5 +65,8 @@
 <string name="SelectDestination">Пожалуйста, выберите пункт назначения</string>
 
 <string name="Delete">Удаление завершено</string>
+	<string name="Merge">Слияние завершено</string>
 	<string name="Moving">Переехать</string>
+	<string name="Move">Перемещение завершено</string>
+	<string name="Wordlist">Слово книга</string>
 </resources>

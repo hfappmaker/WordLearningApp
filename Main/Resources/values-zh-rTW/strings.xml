@@ -65,5 +65,8 @@
 <string name="SelectDestination">請選擇目的地</string>
 
 <string name="Delete">刪除完成</string>
+	<string name="Merge">合併完成</string>
 	<string name="Moving">移動</string>
+	<string name="Move">移動完成</string>
+	<string name="Wordlist">單詞書</string>
 </resources>

@@ -66,7 +66,9 @@
 <string name="SelectWordListOnly">Please select wordlist only</string>
 <!--Dialog_Move_Start-->
 <string name="SelectDestination">Please select a destination</string>
-	
-<string name="Delete">Deletion is completed</string>
-<string name="Moving">Move</string>
+	<string name="Delete">Deletion is completed</string>
+	<string name="Merge">Merge is completed</string>
+	<string name="Moving">Move</string>
+	<string name="Move">Move is completed</string>
+	<string name="Wordlist">Wordlist</string>
 </resources>

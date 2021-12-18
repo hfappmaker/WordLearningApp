@@ -69,7 +69,9 @@
 <string name="SelectWordListOnly">単語帳を選択して下さい</string>
 <!--Dialog_Move_Start-->
 <string name="SelectDestination">移動先を選択して下さい</string>
-
-<string name="Delete">削除されました。</string>
+	<string name="Merge">マージが完了しました</string>
+	<string name="Delete">削除されました。</string>
 	<string name="Moving">移動</string>
+	<string name="Move">移動されました</string>
+	<string name="Wordlist">単語帳</string>
 </resources>

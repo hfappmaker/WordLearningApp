@@ -1,5 +1,7 @@
 ﻿using Common.Entry;
+using Common.Utility;
 using System;
+using System.Reflection;
 using System.Xml;
 using System.Xml.Linq;
 using WordLearning.Utility;
@@ -15,6 +17,10 @@ namespace WordLearning.Entry
         }
 
 
+        public WlFolder() : this(string.Empty) { }
+
+
+
         public WlFolder(XElement element) : base(element)
         {
 
@@ -22,14 +28,6 @@ namespace WordLearning.Entry
 
 
         protected override WlEntry CreateChildEntry(XElement childElement)
-        {
-            Type type = WlUtility.CurrentAssembly.GetType(childElement.Name.ToString());
-            if (type == typeof(WlWord))
-            {
-                throw new InvalidOperationException();
-            }
-
-            return Activator.CreateInstance(type, childElement, this) as WlEntry;
-        }
+            => CommonUtility.CreateInstance<WlDirectory>(WlUtility.CurrentAssembly, childElement.Name.ToString(), childElement);
     }
 }

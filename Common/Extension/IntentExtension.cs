@@ -13,7 +13,7 @@ namespace Common.Extension
 
         public static T GetExtra<T>(this Intent @intent, string name) where T : class
         {
-            return CommonUtility.GetData<T>(intent.GetIntExtra(name, -1));
+            return CommonUtility.GetData<T>(intent.GetStringExtra(name));
         }
     }
 }
