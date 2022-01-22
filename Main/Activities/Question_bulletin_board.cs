@@ -313,7 +313,7 @@ namespace WordLearning.Activities
                 listboard = listboard.OrderByDescending(elm => elm.Item3).ToList();
                 if (question_bulletin_board.mode == Mode.Board)
                 {
-                    listView.Adapter = new ArrayAdapter_Post(question_bulletin_board, Resource.Layout.row_Post, listboard);
+                    listView.Adapter = new PostAdapter(question_bulletin_board, Resource.Layout.row_Post, listboard);
                 }
             }
         }

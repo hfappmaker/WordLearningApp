@@ -46,7 +46,7 @@
 <!--Wordlist_Addword-->
 <string name="InputWord">Введите слово</string>
 <string name="InputMeaning">Введите значение</string>
-<string name="InputMemo">Enter memo</string>
+<string name="InputMemo">Пожалуйста, введите памятку</string>
 <string name="Cancel">CANCEL</string>
 <string name="RegisterWord">регистр</string>
 <string name="RegisterWordContinue">Регистрировать последовательно</string>
@@ -69,4 +69,25 @@
 	<string name="Moving">Переехать</string>
 	<string name="Move">Перемещение завершено</string>
 	<string name="Wordlist">Слово книга</string>
+	<string name="MaxCountOfTag">Метка допускается максимум 5.</string>
+	<string name="AnotherTitle">Название дублируется.Пожалуйста, установите другое название.</string>
+	<string name="ToolbarTitle_RegisterWord">Регистрировать слова</string>
+	<string name="ToolbarTitle_Editword">Изменить слова</string>
+	<string name="ToolbarTitle_Settings">настройки</string>
+	<string name="ToolbarTitle_Question_bulletin_board">Question_bulletin_board</string>
+	<string-array name="ActionSelectedTag">
+		<item>Редактировать выбранный тег.</item>
+		<item>Удалить выбранный тег.</item>
+	</string-array>
+	<string name="NotImplement">Извините, пока не реализовано.</string>
+	<string name="NoTag">Нет тега</string>
+	<string name="NoRegisteredWord">Слова не зарегистрированы</string>
+	<string name="NoMatchWord">подходящее слово не зарегистрировано</string>
+	<string name="Deleted">Удаление сделано</string>
+	<string name="DeleteWord">Удалить слово</string>
+	<string name="SpecifyDestination">Пожалуйста, укажите номер страницы назначения.</string>
+	<string name="AutoPlayConfirm">Запустите автоматическое воспроизведение. Вы уверены?</string>
+	<string name="WarningPageSelect">Страница должна быть целым числом от 1 до {0}</string>
+	<string name="Memo">напоминание</string>
+
 </resources>

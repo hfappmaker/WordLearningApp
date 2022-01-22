@@ -20,7 +20,7 @@ namespace WordLearning.Dialog
 
             EditText memo = new EditText(context);
             memo.SetMaxHeight(70 * 4);
-            SetMessage(WlMessage.InputMemo[WlLanguageUtil.CurrentLanguage]);
+            SetMessage(Resource.String.InputMemo);
             SetView(memo);
             SetPositiveButton("OK", (s1, e1) => { });
             SetNegativeButton("CANCEL", (s1, e1) => { });

@@ -12,11 +12,11 @@ namespace WordLearning.Adapter
     /// <summary>
     /// Array adapter board.
     /// </summary>
-    public class ArrayAdapter_Post : CustomArrayAdapter
+    public class PostAdapter : CustomArrayAdapter
     {
         private readonly List<(string, string, DateTime)> list;
         private readonly Question_bulletin_board question_Bulletin_Board;
-        public ArrayAdapter_Post(Context context, int resource, IList objects) : base(context, resource, objects)
+        public PostAdapter(Context context, int resource, IList objects) : base(context, resource, objects)
         {
             list = (List<(string, string, DateTime)>)objects;
             question_Bulletin_Board = context as Question_bulletin_board;

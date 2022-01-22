@@ -48,7 +48,7 @@
 <!--Wordlist_Addword-->
 <string name="InputWord">Entrez un mot</string>
 <string name="InputMeaning">Entrez le sens</string>
-<string name="InputMemo">Enter memo</string>
+<string name="InputMemo">S'il vous plaît entrer un mémo</string>
 <string name="Cancel">CANCEL</string>
 <string name="RegisterWord">registre</string>
 <string name="RegisterWordContinue">Enregistrement séquentiel</string>
@@ -70,4 +70,25 @@
 <string name="Moving">Bouge toi</string>
 	<string name="Move">Le déménagement est terminé</string>
 	<string name="Wordlist">Livre de mots</string>
+	<string name="MaxCountOfTag">La balise est autorisée 5 au maximum.</string>
+	<string name="AnotherTitle">Le titre est dupliqué. Veuillez définir un autre titre.</string>
+	<string name="ToolbarTitle_RegisterWord">Enregistrer les mots</string>
+	<string name="ToolbarTitle_Editword">Modifier les mots</string>
+	<string name="ToolbarTitle_Settings">Réglages</string>
+	<string name="ToolbarTitle_Question_bulletin_board">Question_bulletin_board</string>
+	<string-array name="ActionSelectedTag">
+		<item>Modifier la balise sélectionnée.</item>
+		<item>Supprimer la balise sélectionnée.</item>
+	</string-array>
+	<string name="NotImplement">Désolé, pas encore implémenté.</string>
+	<string name="NoTag">Aucun tag</string>
+	<string name="NoRegisteredWord">Les mots ne sont pas enregistrés</string>
+	<string name="NoMatchWord">le mot correspondant n'est pas enregistré</string>
+	<string name="Deleted">Supprimer est terminé</string>
+	<string name="DeleteWord">Supprimer le mot</string>
+	<string name="SpecifyDestination">Veuillez spécifier le numéro de page de la destination.</string>
+	<string name="AutoPlayConfirm">Commencez la lecture automatique. Êtes-vous sûr?</string>
+	<string name="WarningPageSelect">La page doit être un entier compris entre 1 et {0}</string>
+	<string name="Memo">Note</string>
+
 </resources>

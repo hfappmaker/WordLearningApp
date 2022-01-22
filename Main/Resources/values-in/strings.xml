@@ -48,7 +48,7 @@
 <!--Wordlist_Addword-->
 <string name="InputWord">Enter a word</string>
 <string name="InputMeaning">Enter meaning</string>
-<string name="InputMemo">Enter memo</string>
+<string name="InputMemo">Please Input memo</string>
 <string name="Cancel">CANCEL</string>
 <string name="RegisterWord">REGISTER</string>
 <string name="RegisterWordContinue">REGISTER AND NEXT</string>
@@ -71,4 +71,25 @@
 	<string name="Moving">Move</string>
 	<string name="Move">Move is completed</string>
 	<string name="Wordlist">Wordlist</string>
+	<string name="MaxCountOfTag">Tag is allowed 5 at the most.</string>
+	<string name="AnotherTitle">Title is duplicated.Please set another title.</string>
+	<string name="ToolbarTitle_RegisterWord">Register words</string>
+	<string name="ToolbarTitle_Editword">Edit words</string>
+	<string name="ToolbarTitle_Settings">Settings</string>
+	<string name="ToolbarTitle_Question_bulletin_board">Question_bulletin_board</string>
+	<string-array name="ActionSelectedTag">
+		<item>Edit the selected tag.</item>
+		<item>Delete the selected tag.</item>
+	</string-array>
+	<string name="NotImplement">Sorry, not implemented yet.</string>
+	<string name="NoTag">No tag</string>
+	<string name="NoRegisteredWord">Word is not registered.</string>
+	<string name="NoMatchWord">matched word is not registered.</string>
+	<string name="Deleted">Delete is done</string>
+	<string name="DeleteWord">Delete word</string>
+	<string name="SpecifyDestination">Please specify the page number of the destination.</string>
+	<string name="AutoPlayConfirm">Start auto playing.Are you sure?</string>
+	<string name="WarningPageSelect">The page must be an integer from 1 to {0}</string>
+	<string name="Memo">Memo</string>
+
 </resources>

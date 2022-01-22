@@ -46,7 +46,7 @@
 <!--Wordlist_Addword-->
 <string name="InputWord">단어 입력</string>
 <string name="InputMeaning">의미 입력</string>
-<string name="InputMemo">Enter memo</string>
+<string name="InputMemo">메모를 입력하십시오.</string>
 <string name="Cancel">CANCEL</string>
 <string name="RegisterWord">레지스터</string>
 <string name="RegisterWordContinue">순차적으로 등록</string>
@@ -69,4 +69,26 @@
 	<string name="Moving">움직임</string>
 	<string name="Move">이동이 완료되었습니다</string>
 	<string name="Wordlist">단어장</string>
+	<string name="MaxCountOfTag">태그는 최대 5 개까지 허용됩니다.</string>
+	<string name="AnotherTitle">제목이 중복되었습니다. 다른 제목을 설정하십시오.</string>
+	<string name="ToolbarTitle_RegisterWord">단어 등록</string>
+	<string name="ToolbarTitle_Editword">단어 수정</string>
+	<string name="ToolbarTitle_Settings">설정</string>
+	<string name="ToolbarTitle_Question_bulletin_board">Question_bulletin_board</string>
+	<string-array name="ActionSelectedTag">
+		<item>선택한 태그를 편집하십시오.</item>
+		<item>선택한 태그를 삭제하십시오.</item>
+	</string-array>
+	<string name="NotImplement">죄송합니다. 아직 구현되지 않았습니다.</string>
+	<string name="NoTag">태그 없음</string>
+	<string name="NoRegisteredWord">단어가 등록되지 않았습니다.</string>
+	<string name="NoMatchWord">일치하는 단어가 등록되지 않았습니다.</string>
+	<string name="Deleted">삭제가 완료되었습니다.</string>
+	<string name="DeleteWord">단어 삭제</string>
+	<string name="SpecifyDestination">대상 페이지 번호를 지정하십시오.</string>
+	<string name="AutoPlayConfirm">자동 연주 시작. 정말이야?</string>
+	<string name="WarningPageSelect">페이지는 1에서 {0} 사이의 정수 여야합니다.</string>
+	<string name="Memo">메모</string>
+
+
 </resources>

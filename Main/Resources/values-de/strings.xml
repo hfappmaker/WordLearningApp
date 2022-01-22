@@ -48,7 +48,7 @@
 <!--Wordlist_Addword-->
 <string name="InputWord">Geben Sie ein Wort ein</string>
 <string name="InputMeaning">Bedeutung eingeben</string>
-<string name="InputMemo">Enter memo</string>
+<string name="InputMemo">Bitte Memo eingeben</string>
 <string name="Cancel">CANCEL</string>
 <string name="RegisterWord">Registrieren</string>
 <string name="RegisterWordContinue">Registrieren Sie sich sequentiell</string>
@@ -70,4 +70,25 @@
 	<string name="Moving">Bewegung</string>
 	<string name="Move">Der Umzug ist abgeschlossen</string>
 	<string name="Wordlist">Wortbuch</string>
+	<string name="MaxCountOfTag">Tag ist maximal 5 erlaubt.</string>
+	<string name="AnotherTitle">Titel ist doppelt vorhanden. Bitte setzen Sie einen anderen Titel.</string>
+	<string name="ToolbarTitle_RegisterWord">Wörter registrieren</string>
+	<string name="ToolbarTitle_Editword">Wörter bearbeiten</string>
+	<string name="ToolbarTitle_Settings">die Einstellungen</string>
+	<string name="ToolbarTitle_Question_bulletin_board">Question_bulletin_board</string>
+	<string-array name="ActionSelectedTag">
+		<item>Bearbeiten Sie das ausgewählte Tag.</item>
+		<item>Löschen Sie das ausgewählte Tag.</item>
+	</string-array>
+	<string name="NotImplement">Sorry, noch nicht implementiert.</string>
+	<string name="NoTag">Keine Markierung</string>
+	<string name="NoRegisteredWord">Wörter sind nicht registriert</string>
+	<string name="NoMatchWord">übereinstimmendes Wort ist nicht registriert</string>
+	<string name="Deleted">Löschen ist fertig</string>
+	<string name="DeleteWord">Wort löschen</string>
+	<string name="SpecifyDestination">Bitte geben Sie die Seitennummer des Ziels an.</string>
+	<string name="AutoPlayConfirm">Starten Sie die automatische Wiedergabe. Sind Sie sicher?</string>
+	<string name="WarningPageSelect">Die Seite muss eine ganze Zahl von 1 bis {0} sein.</string>
+	<string name="Memo">Memo</string>
+
 </resources>

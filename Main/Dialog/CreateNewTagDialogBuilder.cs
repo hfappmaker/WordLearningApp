@@ -26,7 +26,7 @@ namespace WordLearning.Dialog
         {
             LayoutInflater inflater = LayoutInflater.From(context);
             View view = inflater.Inflate(Resource.Layout.Dialog_CreateNewTag, null);
-            SetMessage(WlMessage.MaxCountOfTag[WlLanguageUtil.CurrentLanguage]);
+            SetMessage(Resource.String.MaxCountOfTag);
             SetView(view);
         }
 

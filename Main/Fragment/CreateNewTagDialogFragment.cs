@@ -29,7 +29,7 @@ namespace WordLearning.Fragment
             AlertDialog.Builder builder = new AlertDialog.Builder(Activity);
             Android.Views.LayoutInflater inflater = Android.Views.LayoutInflater.From(Activity);
             Android.Views.View view = inflater.Inflate(Resource.Layout.Dialog_CreateNewTag, null);
-            builder.SetMessage(WlMessage.MaxCountOfTag[WlLanguageUtil.CurrentLanguage]);
+            builder.SetMessage(Resource.String.MaxCountOfTag);
             builder.SetView(view);
             AlertDialog dialog = builder.Create();
             WlUtility.AddEventToEachView(dialog, this);

@@ -16,7 +16,7 @@ namespace WordLearning.Dialog
 
         private void Initialize(Context context)
         {
-            SetMessage(WlMessage.AutoPlayConfirm[WlLanguageUtil.CurrentLanguage]);
+            SetMessage(Resource.String.AutoPlayConfirm);
             SetPositiveButton("OK", AutoPlayStart);
             SetNegativeButton("CANCEL", (s1, e1) => { });
         }

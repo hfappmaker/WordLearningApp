@@ -98,7 +98,6 @@
     <Compile Include="Colors\TagColorCollection.cs" />
     <Compile Include="Colors\ThemeColor.cs" />
     <Compile Include="Colors\WlColorUtil.cs" />
-    <Compile Include="Constant\WlConstant.cs" />
     <Compile Include="Dialog\AutoPlayDialogBuilder.cs" />
     <Compile Include="Dialog\ChangeThemeColorDialogBuilder.cs" />
     <Compile Include="Dialog\CreateNewTagDialogBuilder.cs" />

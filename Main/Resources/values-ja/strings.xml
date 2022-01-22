@@ -46,7 +46,7 @@
 <!--Wordlist_Addword-->
 <string name="InputWord">単語を入力</string>
 <string name="InputMeaning">意味を入力</string>
-<string name="InputMemo">メモを入力</string>
+<string name="InputMemo">メモを入力して下さい</string>
 <string name="Cancel">キャンセル</string>
 <string name="RegisterWord">登録</string>
 <string name="RegisterWordContinue">登録して次へ</string>
@@ -74,4 +74,25 @@
 	<string name="Moving">移動</string>
 	<string name="Move">移動されました</string>
 	<string name="Wordlist">単語帳</string>
+	<string name="MaxCountOfTag">タグは最大5つまでです</string>
+	<string name="AnotherTitle">タイトルが重複しています。他のタイトル名に変更して下さい。</string>
+	<string name="ToolbarTitle_RegisterWord">単語の登録</string>
+	<string name="ToolbarTitle_Editword">単語の編集</string>
+	<string name="ToolbarTitle_Settings">設定</string>
+	<string name="ToolbarTitle_Question_bulletin_board">質問掲示板</string>
+	<string-array name="ActionSelectedTag">
+		<item>選択したタグを編集する</item>
+		<item>選択したタグを削除する</item>
+	</string-array>
+	<string name="NotImplement">すみません、まだ未実装です。</string>
+	<string name="NoTag">タグなし</string>
+	<string name="NoRegisteredWord">単語が登録されていません</string>
+	<string name="NoMatchWord">条件を満たす単語が存在しません</string>
+	<string name="Deleted">削除されました</string>
+	<string name="DeleteWord">単語の削除</string>
+	<string name="SpecifyDestination">移動先のページ番号を指定して下さい</string>
+	<string name="AutoPlayConfirm">自動再生を開始します。宜しいですか？</string>
+	<string name="WarningPageSelect">ページは1から{0}までの整数で指定して下さい。</string>
+	<string name="Memo">メモ</string>
+
 </resources>

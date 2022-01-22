@@ -2,6 +2,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
            xmlns:local="http://schemas.android.com/apk/res-auto">
 <string name="app_name">WordLearning</string>
+<!--简体中文-->
 <!--Settings-->
 <string name="BackupandRecover_Settings">备份/恢复</string>
 <string name="Themecolor_Settings">主题色</string>
@@ -46,7 +47,7 @@
 <!--Wordlist_Addword-->
 <string name="InputWord">输入一个单词</string>
 <string name="InputMeaning">输入意思</string>
-<string name="InputMemo">Enter memo</string>
+<string name="InputMemo">請輸入備忘錄</string>
 <string name="Cancel">CANCEL</string>
 <string name="RegisterWord">注册</string>
 <string name="RegisterWordContinue">注册顺序</string>
@@ -68,4 +69,25 @@
 	<string name="Moving">移动</string>
 	<string name="Move">移动完成</string>
 	<string name="Wordlist">单词书</string>
+	<string name="MaxCountOfTag">標籤最多允許5。</string>
+	<string name="AnotherTitle">標題是重複的。請設置另一個標題。</string>
+	<string name="ToolbarTitle_RegisterWord">注册单词</string>
+	<string name="ToolbarTitle_Editword">编辑单词</string>
+	<string name="ToolbarTitle_Settings">设置</string>
+	<string name="ToolbarTitle_Question_bulletin_board">Question_bulletin_board</string>
+	<string-array name="ActionSelectedTag">
+		<item>编辑选定的标签</item>
+		<item>删除所选标签</item>
+	</string-array>
+	<string name="NotImplement">对不起，还没有实现。</string>
+	<string name="NoTag">没有标签</string>
+	<string name="NoRegisteredWord">单词未注册</string>
+	<string name="NoMatchWord">匹配的单词未注册</string>
+	<string name="Deleted">删除完成</string>
+	<string name="DeleteWord">删除单词</string>
+	<string name="SpecifyDestination">请指定目的地的页码。</string>
+	<string name="AutoPlayConfirm">开始自动播放。你确定吗？</string>
+	<string name="WarningPageSelect">页面必须是1到{0}之间的整数。</string>
+	<string name="Memo">备忘录</string>
+
 </resources>

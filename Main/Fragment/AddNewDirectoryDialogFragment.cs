@@ -15,7 +15,7 @@ namespace WordLearning.Fragment
 {
     public class AddNewDirectoryDialogFragment : WlAlartDialogFragment
     {
-        public static readonly string AddNewDiredtoryKey = nameof(AddNewDiredtoryKey);
+        public static readonly string AddNewDirectoryKey = nameof(AddNewDirectoryKey);
 
 
         public AddNewDirectoryDialogFragment() : base()
@@ -56,7 +56,7 @@ namespace WordLearning.Fragment
                     {
                         var addNewDirectoryBundle = new Bundle();
                         addNewDirectoryBundle.PutExtra(nameof(WlDirectory), directory);
-                        ParentFragmentManager.SetFragmentResult(AddNewDiredtoryKey, addNewDirectoryBundle);
+                        ParentFragmentManager.SetFragmentResult(AddNewDirectoryKey, addNewDirectoryBundle);
                     }
                 });
             new RenameDirectoryDialogFragment(renameDirectoryBundle).Show(ParentFragmentManager, null);

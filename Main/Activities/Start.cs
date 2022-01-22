@@ -213,7 +213,7 @@ namespace WordLearning.Activities
             switch (item.ItemId)
             {
                 case Resource.Id.action_add_Start_Init:
-                    SupportFragmentManager.SetFragmentResultListenerXamarin(AddNewDirectoryDialogFragment.AddNewDiredtoryKey, this, (key, bundle) => 
+                    SupportFragmentManager.SetFragmentResultListenerXamarin(AddNewDirectoryDialogFragment.AddNewDirectoryKey, this, (key, bundle) => 
                     {
                         WlFolder targetFolder = _listView.GetAdapter<StartAdapter>().CurrentFolder;
                         bundle.GetExtra<WlDirectory>(nameof(WlDirectory)).AddTo(targetFolder);
