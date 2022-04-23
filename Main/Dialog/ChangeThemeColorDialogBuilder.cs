@@ -7,8 +7,6 @@ using Android.Widget;
 using System;
 using System.Collections.Generic;
 using WordLearning.Colors;
-using WordLearning.Language;
-using WordLearning.Messages;
 using WordLearning.Shape;
 using static Android.Widget.RadioGroup;
 using static Android.Widget.SeekBar;
@@ -26,7 +24,7 @@ namespace WordLearning.Dialog
         {
             LayoutInflater inflater = LayoutInflater.From(context);
             View view = inflater.Inflate(Resource.Layout.Dialog_Changethemecolor, null);
-            SetMessage(WlMessage.ChangeThemeColor[WlLanguageUtil.CurrentLanguage]);
+            SetMessage(Resource.String.ChangeThemeColor);
             SetView(view);
         }
 

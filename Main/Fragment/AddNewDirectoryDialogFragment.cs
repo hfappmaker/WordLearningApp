@@ -32,7 +32,7 @@ namespace WordLearning.Fragment
                 },
                 (dialog, e) =>
                 {
-                    AddDirectory(e.Which == 0 ? nameof(WlFolder) : nameof(WlWordList));
+                    AddDirectory((dialog as AlertDialog), e.Which == 0 ? nameof(WlFolder) : nameof(WlWordList));
                 });
 
             builder.SetPositiveButton("CANCEL", (_, _) => { });
@@ -45,11 +45,12 @@ namespace WordLearning.Fragment
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void AddDirectory(string entryType)
+        private void AddDirectory(AlertDialog dialog, string entryType)
         {
             Bundle renameDirectoryBundle = new();
             renameDirectoryBundle.PutExtra(RenameDirectoryDialogFragment.RenameDirectoryKey, CommonUtility.CreateInstance<WlDirectory>(WlUtility.CurrentAssembly, entryType));
-            ParentFragmentManager.SetFragmentResultListenerXamarin(RenameDirectoryDialogFragment.RenameDirectoryDialogResultKey, this, (key, bundle) => 
+            var temp = new RenameDirectoryDialogFragment(renameDirectoryBundle);
+            ParentFragmentManager.SetFragmentResultListenerXamarin(RenameDirectoryDialogFragment.RenameDirectoryDialogResultKey, temp, (key, bundle) => 
                 {
                     WlDirectory directory = renameDirectoryBundle.GetExtra<WlDirectory>(RenameDirectoryDialogFragment.RenameDirectoryKey);
                     if (bundle.GetEnum<DialogButtonType>(nameof(DialogButtonType)) == DialogButtonType.Positive)
@@ -59,7 +60,8 @@ namespace WordLearning.Fragment
                         ParentFragmentManager.SetFragmentResult(AddNewDirectoryKey, addNewDirectoryBundle);
                     }
                 });
-            new RenameDirectoryDialogFragment(renameDirectoryBundle).Show(ParentFragmentManager, null);
+            temp.Show(ParentFragmentManager, null);
+            dialog.Hide();
             // OnDialogResult();
         }
 

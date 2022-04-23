@@ -1,8 +1,6 @@
 ﻿using Android.Content;
 using System.Threading;
 using System.Threading.Tasks;
-using WordLearning.Language;
-using WordLearning.Messages;
 
 namespace WordLearning.Dialog
 {

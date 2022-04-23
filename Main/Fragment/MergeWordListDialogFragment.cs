@@ -7,8 +7,6 @@ using Google.Android.Material.TextField;
 using System.Linq;
 using WordLearning.Entry;
 using WordLearning.Fragment;
-using WordLearning.Language;
-using WordLearning.Messages;
 
 namespace WordLearning.Dialog
 {

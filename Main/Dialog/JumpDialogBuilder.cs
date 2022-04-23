@@ -1,8 +1,6 @@
 ﻿using Android.Content;
 using Android.Widget;
 using AndroidX.AppCompat.App;
-using WordLearning.Language;
-using WordLearning.Messages;
 
 namespace WordLearning.Dialog
 {
@@ -28,7 +26,7 @@ namespace WordLearning.Dialog
                     // context.SetSoftInputMode(SoftInput.AdjustNothing);
                 }
             };
-            SetMessage(WlMessage.SpecifyDestination[WlLanguageUtil.CurrentLanguage]);
+            SetMessage(Resource.String.SpecifyDestination);
             SetView(_editText);
             SetPositiveButton("OK", JumpPage);
             SetNegativeButton("CANCEL", (s1, e1) => { });

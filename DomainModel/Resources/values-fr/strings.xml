@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+           xmlns:local="http://schemas.android.com/apk/res-auto">
+<string name="app_name">WordLearning</string>
+<!--Settings-->
+<string name="BackupandRecover_Settings">Sauvegarde/Récupération</string>
+<string name="Themecolor_Settings">Couleur du thème</string>
+<string name="CSVfile_Settings">Fichier CSV</string>
+<string name="Question_bulletin_board">Question bulletin board</string>
+<string name="ImportFromImage">ImportFromImage</string>
+<string-array name="array_Backup_And_Recover">
+<item android:id="@+id/it_CreateBackup">Créer une sauvegarde</item>
+<item>Récupérer de la sauvegarde</item>
+</string-array>
+<string-array name="array_Changethemecolor">
+<item>Changement de couleur de thème</item>
+</string-array>
+<string-array name="array_ImportFromImage">
+<item>ImportFromImage</item>
+</string-array>
+<string-array name="array_CSVfileimport">
+<item>Importer un fichier CSV</item>
+</string-array>
+<string-array name="array_Question_bulletin_board">
+<item>Question bulletin board</item>
+</string-array>
+<!--Dialog_CreateNewTag-->
+<string name="square_Dialog_CreateNewTag">Carré</string>
+<string name="star_Dialog_CreateNewTag">Étoile</string>
+<string name="heart_Dialog_CreateNewTag">Cœur</string>
+<string name="TagMeaning_Dialog_CreateNewTag">Signification de tag</string>
+<!--Dialog_SetLearnWord-->
+<string name="Order_Dialog_SetLearnWord">Ordre</string>
+<string name="Asc_Dialog_SetLearnWord">Asc</string>
+<string name="Desc_Dialog_SetLearnWord">Desc</string>
+<string name="Random_Dialog_SetLearnWord">Random</string>
+<string name="ChooseTag_Dialog_SetLearnWord">Sélectionnez les balises à apprendre</string>
+<!--Dialog_SettingWordlist-->
+<string name="ChoosWlLanguage.ord_Dialog_SettingWordlist">Langue de sortie de la parole(mot)</string>
+<string name="ChoosWlLanguage.eaning_Dialog_SettingWordlist">Langue de sortie de la parole(sens)</string>
+<string name="Interval_Dialog_SettingWordlist">Intervalle de lecture automatique</string>
+<!--Learn_Wordlist-->
+<string name="OnlyWord_Learn_Wordlist">Word seulement</string>
+<string name="OnlyMeaning_Learn_Wordlist">Signifiant seulement</string>
+<string name="Both_Learn_Wordlist">Tous les deux</string>
+<!--Toolbar_Dialog_EditTag-->
+<string name="Edittag_Toolbar_Dialog_EditTag">Edit a tag</string>
+<!--Wordlist_Addword-->
+<string name="InputWord">Entrez un mot</string>
+<string name="InputMeaning">Entrez le sens</string>
+<string name="InputMemo">"S'il vous plaît entrer un mémo"</string>
+<string name="Cancel">CANCEL</string>
+<string name="RegisterWord">registre</string>
+<string name="RegisterWordContinue">Enregistrement séquentiel</string>
+<string name="AddFolder">Ajouter le dossier</string>
+<string name="AddWordlist">Ajouter un livre de vocabulaire</string>
+<string name="SetName">"S'il vous plaît définir le nom"</string>
+<string name="DeleteEntryConfirm">"Supprimer les éléments sélectionnés. Est-ce que c'est bon?"</string>
+<!--menu_popup_Dialog_EditTag-->
+<string name="Editmemo_menu_popup_Dialog_EditTag">Modifier le mémo</string>
+<string name="Edittag_menu_popup_Dialog_EditTag">Modifier la balise</string>
+<!--Dialog_DirectoryName-->
+<string name="InputDirectoryName">Enter directory name</string>
+<!--Dialog_MergedWordListName-->
+<string name="SelectWordListOnly">Please select wordlist only</string>
+<!--Dialog_Move_Start-->
+<string name="SelectDestination">"S'il vous plaît sélectionner une destination"</string>
+	<string name="Merge">La fusion est terminée</string>
+	<string name="Delete">La suppression est terminée</string>
+<string name="Moving">Bouge toi</string>
+	<string name="Move">Le déménagement est terminé</string>
+	<string name="Wordlist">Livre de mots</string>
+	<string name="MaxCountOfTag">La balise est autorisée 5 au maximum.</string>
+	<string name="AnotherTitle">Le titre est dupliqué. Veuillez définir un autre titre.</string>
+	<string name="ToolbarTitle_RegisterWord">Enregistrer les mots</string>
+	<string name="ToolbarTitle_Editword">Modifier les mots</string>
+	<string name="ToolbarTitle_Settings">Réglages</string>
+	<string name="ToolbarTitle_Question_bulletin_board">Question_bulletin_board</string>
+	<string-array name="ActionSelectedTag">
+		<item>Modifier la balise sélectionnée.</item>
+		<item>Supprimer la balise sélectionnée.</item>
+	</string-array>
+	<string name="NotImplement">Désolé, pas encore implémenté.</string>
+	<string name="NoTag">Aucun tag</string>
+	<string name="NoRegisteredWord">Les mots ne sont pas enregistrés</string>
+	<string name="NoMatchWord">"le mot correspondant n'est pas enregistré"</string>
+	<string name="Deleted">Supprimer est terminé</string>
+	<string name="DeleteWord">Supprimer le mot</string>
+	<string name="SpecifyDestination">Veuillez spécifier le numéro de page de la destination.</string>
+	<string name="AutoPlayConfirm">Commencez la lecture automatique. Êtes-vous sûr?</string>
+	<string name="WarningPageSelect">La page doit être un entier compris entre 1 et {0}</string>
+	<string name="Memo">Note</string>
+	<string-array name="BackUp">
+		<item>Create backup</item>
+		<item>Recover from backup</item>
+	</string-array>
+	<string name="ChangeThemeColor">Change theme color</string>
+	<string name="BU_And_RC">
+		<item>Créez une sauvegarde à partir du livre de mots actuellement enregistré.Êtes-vous sûr?</item>
+		<item>"Restaurer le livre de mots à partir d'une sauvegarde,et fusionner dans le dictionnaire de mots actuel.Êtes-vous sûr?"</item>
+	</string>
+	<string name="RegisterWordListConfirm">Ajoutez ces livres de mots. Êtes-vous sûr?</string>
+	<string name="SelectPlace">Veuillez sélectionner un dossier de destination.</string>
+	<string name="Add">ajouter</string>
+	<string name="AddComplete">"L'addition a été complétée"</string>
+	<string name="CreateBackupComplete">"la création d'une sauvegarde était terminée."</string>
+	<string name="Error">Erreur</string>
+	<string name="RequireStorageAccess">"Échec de la restauration.\nVeuillez autoriser l'accès au stockage."</string>
+	<string name="CreateBackupFailure">Échec de la création de la sauvegarde.</string>
+	<string name="RestoreCompletedTooManyFolder">la restauration a réussi. (Seule une partie a été restaurée car il y a beaucoup de dossiers.)</string>
+	<string name="RestoreCompleted">la restauration a réussi.</string>
+	<string name="RestoreFaliure">"Une erreur s'est produite lors de la restauration. La sauvegarde est cassée."</string>
+	<string name="NoneOfBackup">"La sauvegarde n'existe pas."</string>
+	<string name="IntegrationConfirm">"Fusionnez les listes de mots sélectionnées en une seule.Est-ce que c'est bon?"</string>
+	<string name="SetWordListName">Veuillez indiquer le nom du vocabulaire.</string>
+	<string name="NoMatchedWord">"les mots correspondants n'existent pas."</string>
+	<string name="MoveValidate">La destination est la même que la position actuelle.</string>
+	<string name="EnterWord">"S'il vous plaît entrer des mots"</string>
+</resources>

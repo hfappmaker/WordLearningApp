@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+           xmlns:local="http://schemas.android.com/apk/res-auto">
+<string name="app_name">WordLearning</string>
+<!--Settings-->
+<string name="BackupandRecover_Settings">Backup/Genesen</string>
+<string name="Themecolor_Settings">Farbe des Themas</string>
+<string name="CSVfile_Settings">CSV-Datei</string>
+<string name="Question_bulletin_board">Question bulletin board</string>
+<string name="ImportFromImage">ImportFromImage</string>
+<string-array name="array_Backup_And_Recover">
+<item android:id="@+id/it_CreateBackup">Ein Backup erstellen</item>
+<item>Vom Backup wiederherstellen</item>
+</string-array>
+<string-array name="array_Changethemecolor">
+<item>Änderung der Designfarbe</item>
+</string-array>
+<string-array name="array_CSVfileimport">
+<item>CSV-Datei importieren</item>
+</string-array>
+<string-array name="array_Question_bulletin_board">
+<item>Question bulletin board</item>
+</string-array>
+<string-array name="array_ImportFromImage">
+<item>ImportFromImage</item>
+</string-array>
+<!--Dialog_CreateNewTag-->
+<string name="square_Dialog_CreateNewTag">Quadrat</string>
+<string name="star_Dialog_CreateNewTag">Star</string>
+<string name="heart_Dialog_CreateNewTag">Herz</string>
+<string name="TagMeaning_Dialog_CreateNewTag">Bedeutung von Tag</string>
+<!--Dialog_SetLearnWord-->
+<string name="Order_Dialog_SetLearnWord">Auftrag</string>
+<string name="Asc_Dialog_SetLearnWord">Asc</string>
+<string name="Desc_Dialog_SetLearnWord">Desc</string>
+<string name="Random_Dialog_SetLearnWord">Random</string>
+<string name="ChooseTag_Dialog_SetLearnWord">Wählen Sie Tags zum Lernen aus</string>
+<!--Dialog_SettingWordlist-->
+<string name="ChoosWlLanguage.ord_Dialog_SettingWordlist">Sprache für die Sprachausgabe(Wort)</string>
+<string name="ChoosWlLanguage.eaning_Dialog_SettingWordlist">Sprache für die Sprachausgabe(Bedeutung)</string>
+<string name="Interval_Dialog_SettingWordlist">Autoplay-Intervall</string>
+<!--Learn_Wordlist-->
+<string name="OnlyWord_Learn_Wordlist">Nur Wort</string>
+<string name="OnlyMeaning_Learn_Wordlist">Bedeutet nur</string>
+<string name="Both_Learn_Wordlist">Beide</string>
+<!--Toolbar_Dialog_EditTag-->
+<string name="Edittag_Toolbar_Dialog_EditTag">Edit a tag</string>
+<!--Wordlist_Addword-->
+<string name="InputWord">Geben Sie ein Wort ein</string>
+<string name="InputMeaning">Bedeutung eingeben</string>
+<string name="InputMemo">Bitte Memo eingeben</string>
+<string name="Cancel">CANCEL</string>
+<string name="RegisterWord">Registrieren</string>
+<string name="RegisterWordContinue">Registrieren Sie sich sequentiell</string>
+<string name="AddFolder">Ordner hinzufügen</string>
+<string name="AddWordlist">Vokabeln hinzufügen</string>
+<string name="SetName">Bitte geben Sie den Namen an.</string>
+<string name="DeleteEntryConfirm">Löschen Sie die ausgewählten Elemente. Ist es o.k?</string>
+<!--menu_popup_Dialog_EditTag-->
+<string name="Editmemo_menu_popup_Dialog_EditTag">Memo bearbeiten</string>
+<string name="Edittag_menu_popup_Dialog_EditTag">Tag bearbeiten</string>
+<!--Dialog_DirectoryName-->
+<string name="InputDirectoryName">Enter directory name</string>
+<!--Dialog_MergedWordListName-->
+<string name="SelectWordListOnly">Please select wordlist only</string>
+<!--Dialog_Move_Start-->
+<string name="SelectDestination">Bitte wählen Sie ein Ziel aus</string>
+	<string name="Delete">Die Löschung ist abgeschlossen</string>
+	<string name="Merge">Die Zusammenführung ist abgeschlossen</string>
+	<string name="Moving">Bewegung</string>
+	<string name="Move">Der Umzug ist abgeschlossen</string>
+	<string name="Wordlist">Wortbuch</string>
+	<string name="MaxCountOfTag">Tag ist maximal 5 erlaubt.</string>
+	<string name="AnotherTitle">Titel ist doppelt vorhanden. Bitte setzen Sie einen anderen Titel.</string>
+	<string name="ToolbarTitle_RegisterWord">Wörter registrieren</string>
+	<string name="ToolbarTitle_Editword">Wörter bearbeiten</string>
+	<string name="ToolbarTitle_Settings">die Einstellungen</string>
+	<string name="ToolbarTitle_Question_bulletin_board">Question_bulletin_board</string>
+	<string-array name="ActionSelectedTag">
+		<item>Bearbeiten Sie das ausgewählte Tag.</item>
+		<item>Löschen Sie das ausgewählte Tag.</item>
+	</string-array>
+	<string name="NotImplement">Sorry, noch nicht implementiert.</string>
+	<string name="NoTag">Keine Markierung</string>
+	<string name="NoRegisteredWord">Wörter sind nicht registriert</string>
+	<string name="NoMatchWord">übereinstimmendes Wort ist nicht registriert</string>
+	<string name="Deleted">Löschen ist fertig</string>
+	<string name="DeleteWord">Wort löschen</string>
+	<string name="SpecifyDestination">Bitte geben Sie die Seitennummer des Ziels an.</string>
+	<string name="AutoPlayConfirm">Starten Sie die automatische Wiedergabe. Sind Sie sicher?</string>
+	<string name="WarningPageSelect">Die Seite muss eine ganze Zahl von 1 bis {0} sein.</string>
+	<string name="Memo">Memo</string>
+	<string-array name="BackUp">
+		<item>Ein Backup erstellen</item>
+		<item>Vom Backup wiederherstellen</item>
+	</string-array>
+	<string name="ChangeThemeColor">Change theme color</string>
+	<string name="BU_And_RC">
+		<item>Erstellen Sie eine Sicherungaus dem aktuell registrierten Word-Buch.Bist du sicher?</item>
+		<item>Wordbook aus einem Backup wiederherstellen,und verschmelzen mit dem aktuellen Wortbuch.Bist du sicher?</item>
+	</string>
+	<string name="RegisterWordListConfirm">Fügen Sie diese Wortbücher hinzu. Bist du sicher?</string>
+	<string name="SelectPlace">Bitte wählen Sie einen Zielordner.</string>
+	<string name="Add">hinzufügen</string>
+	<string name="AddComplete">Die Zugabe wurde abgeschlossen</string>
+	<string name="CreateBackupComplete">Das Erstellen eines Backups wurde abgeschlossen.</string>
+	<string name="Error">Error</string>
+	<string name="RequireStorageAccess">Wiederherstellung fehlgeschlagen{0}Bitte erlauben Sie den Zugriff auf Speicher.</string>
+	<string name="CreateBackupFailure">Sicherung konnte nicht erstellt werden</string>
+	<string name="RestoreCompletedTooManyFolder">Wiederherstellen war erfolgreich. (Nur ein Teil wurde wiederhergestellt, da viele Ordner vorhanden sind.)</string>
+	<string name="RestoreCompleted">Wiederherstellen war erfolgreich.</string>
+	<string name="RestoreFaliure">Bei der Wiederherstellung ist ein Fehler aufgetreten. Sicherung ist defekt</string>
+	<string name="NoneOfBackup">Backup existiert nicht.</string>
+	<string name="IntegrationConfirm">Ausgewählte Wortlisten in einer Wortliste zusammenführen.Ist es o.k?</string>
+	<string name="SetWordListName">Bitte geben Sie den Namen des Vokabulars an.</string>
+	<string name="NoMatchedWord">passende Wörter gibt es nicht.</string>
+	<string name="MoveValidate">Das Ziel entspricht der aktuellen Position</string>
+	<string name="EnterWord">Bitte geben Sie Wörter ein</string>
+</resources>

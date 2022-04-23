@@ -1,8 +1,6 @@
 ﻿using Android.Content;
 using Android.Views;
 using Android.Widget;
-using WordLearning.Language;
-using WordLearning.Messages;
 
 namespace WordLearning.Dialog
 {

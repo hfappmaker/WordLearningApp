@@ -7,8 +7,6 @@ using AndroidX.AppCompat.App;
 using System;
 using System.Collections.Generic;
 using WordLearning.Colors;
-using WordLearning.Language;
-using WordLearning.Messages;
 using WordLearning.Shape;
 using WordLearning.Utility;
 using static Android.Widget.RadioGroup;
@@ -28,7 +26,7 @@ namespace WordLearning.Fragment
             AlertDialog.Builder builder = new AlertDialog.Builder(Activity);
             Android.Views.LayoutInflater inflater = Android.Views.LayoutInflater.From(Activity);
             Android.Views.View view = inflater.Inflate(Resource.Layout.Dialog_Changethemecolor, null);
-            builder.SetMessage(WlMessage.ChangeThemeColor[WlLanguageUtil.CurrentLanguage]);
+            builder.SetMessage(Resource.String.ChangeThemeColor);
             builder.SetView(view);
             AlertDialog dialog = builder.Create();
             WlUtility.AddEventToEachView(dialog, this);

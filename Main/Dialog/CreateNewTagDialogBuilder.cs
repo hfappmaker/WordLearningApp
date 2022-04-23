@@ -7,8 +7,6 @@ using Android.Widget;
 using System;
 using System.Collections.Generic;
 using WordLearning.Colors;
-using WordLearning.Language;
-using WordLearning.Messages;
 using WordLearning.Shape;
 using static Android.Widget.RadioGroup;
 using static Android.Widget.SeekBar;

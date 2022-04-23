@@ -9,8 +9,6 @@ using System.Linq;
 using WordLearning.Adapter;
 using WordLearning.Entry;
 using WordLearning.Fragment;
-using WordLearning.Language;
-using WordLearning.Messages;
 using WordLearning.Utility;
 
 namespace WordLearning.Dialog

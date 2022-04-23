@@ -8,8 +8,6 @@ using AndroidX.AppCompat.App;
 using System;
 using System.Collections.Generic;
 using WordLearning.Colors;
-using WordLearning.Language;
-using WordLearning.Messages;
 using WordLearning.Shape;
 using WordLearning.Utility;
 using static Android.Widget.RadioGroup;

@@ -5,6 +5,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Common.Extension;
+using DomainModel.Extension;
 using System;
 using System.Reactive.Disposables;
 using WordLearning.Adapter;

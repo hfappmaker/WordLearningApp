@@ -75,8 +75,7 @@ namespace WordLearning.Dialog
 
             var bundle = new Bundle();
             bundle.PutEnum(nameof(DialogButtonType), (DialogButtonType)e.Which);
-            ChildFragmentManager.SetFragmentResult(RenameDirectoryDialogResultKey, bundle);
-
+            ParentFragmentManager.SetFragmentResult(RenameDirectoryDialogResultKey, bundle);
             // OnDialogResult(directory);
         }
     }

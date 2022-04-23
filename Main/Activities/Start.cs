@@ -6,7 +6,9 @@ using Android.Util;
 using Android.Views;
 using Android.Widget;
 using Common.Entry;
+using Common.EventStore;
 using Common.Extension;
+using DomainModel.Extension;
 using Firebase.Iid;
 using System;
 using System.Reactive.Disposables;
@@ -14,8 +16,6 @@ using WordLearning.Adapter;
 using WordLearning.Dialog;
 using WordLearning.Entry;
 using WordLearning.Fragment;
-using WordLearning.Language;
-using WordLearning.Messages;
 using WordLearning.States;
 using WordLearning.Utility;
 using static Android.Widget.AdapterView;
@@ -166,26 +166,30 @@ namespace WordLearning.Activities
         /// <param name="e"></param>
         public void lv_Start_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (ToolbarState is StartDeleteToolbarState)
+            WriteTransaction(_listView.GetItem<WlEntry>(e.Position).Root, () =>
             {
-                _listView.GetItem<WlEntry>(e.Position).ChangeCheck();
-                return;
+                if (ToolbarState is StartDeleteToolbarState)
+                {
+                    _listView.GetItem<WlEntry>(e.Position).ChangeCheck();
+                    return;
+                }
+                StartAdapter adapter = _listView.Adapter as StartAdapter;
+                WlDirectory selectedDirectory = adapter.CurrentFolder[e.Position] as WlDirectory;
+                switch (selectedDirectory.EntryType)
+                {
+                    case nameof(WlFolder):
+                        adapter.CurrentFolder = selectedDirectory as WlFolder;
+                        break;
+                    case nameof(WlWordList):
+                        Intent intent = new(this, typeof(Edit_Wordlist));
+                        intent.PutExtra(nameof(Edit_Wordlist), selectedDirectory);
+                        StartActivity(intent);
+                        break;
+                    default:
+                        break;
+                }
             }
-            StartAdapter adapter = _listView.Adapter as StartAdapter;
-            WlDirectory selectedDirectory = adapter.CurrentFolder[e.Position] as WlDirectory;
-            switch (selectedDirectory.EntryType)
-            {
-                case nameof(WlFolder):
-                    adapter.CurrentFolder = selectedDirectory as WlFolder;
-                    break;
-                case nameof(WlWordList):
-                    Intent intent = new(this, typeof(Edit_Wordlist));
-                    intent.PutExtra(nameof(Edit_Wordlist), selectedDirectory);
-                    StartActivity(intent);
-                    break;
-                default:
-                    break;
-            }
+            );
         }
 
         /// <summary>
@@ -213,12 +217,13 @@ namespace WordLearning.Activities
             switch (item.ItemId)
             {
                 case Resource.Id.action_add_Start_Init:
-                    SupportFragmentManager.SetFragmentResultListenerXamarin(AddNewDirectoryDialogFragment.AddNewDirectoryKey, this, (key, bundle) => 
+                    var temp = new AddNewDirectoryDialogFragment();
+                    SupportFragmentManager.SetFragmentResultListenerXamarin(AddNewDirectoryDialogFragment.AddNewDirectoryKey, temp, (key, bundle) => 
                     {
                         WlFolder targetFolder = _listView.GetAdapter<StartAdapter>().CurrentFolder;
                         bundle.GetExtra<WlDirectory>(nameof(WlDirectory)).AddTo(targetFolder);
                     });
-                    new AddNewDirectoryDialogFragment().Show(SupportFragmentManager, null);
+                    temp.Show(SupportFragmentManager, null);
                     break;
                 case Resource.Id.action_settings_Start_Init:
                     StartActivity(new Intent(this, typeof(Settings)));

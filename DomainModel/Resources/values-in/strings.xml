@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+           xmlns:local="http://schemas.android.com/apk/res-auto">
+<string name="app_name">WordLearning</string>
+<!--Settings-->
+<string name="BackupandRecover_Settings">Backup/Recover</string>
+<string name="Themecolor_Settings">Theme color</string>
+<string name="CSVfile_Settings">CSV file</string>
+<string name="Question_bulletin_board">Question bulletin board</string>
+<string name="ImportFromImage">ImportFromImage</string>
+<string-array name="array_Backup_And_Recover">
+<item android:id="@+id/it_CreateBackup">Create backup</item>
+<item>Recover from backup</item>
+</string-array>
+<string-array name="array_Changethemecolor">
+<item>Change of theme color</item>
+</string-array>
+<string-array name="array_CSVfileimport">
+<item>Import CSV file</item>
+</string-array>
+<string-array name="array_Question_bulletin_board">
+<item>Question bulletin board</item>
+</string-array>
+<string-array name="array_ImportFromImage">
+<item>ImportFromImage</item>
+</string-array>
+<!--Dialog_CreateNewTag-->
+<string name="square_Dialog_CreateNewTag">Square</string>
+<string name="star_Dialog_CreateNewTag">Star</string>
+<string name="heart_Dialog_CreateNewTag">Heart</string>
+<string name="TagMeaning_Dialog_CreateNewTag">Meaning of tag</string>
+<!--Dialog_SetLearnWord-->
+<string name="Order_Dialog_SetLearnWord">Order</string>
+<string name="Asc_Dialog_SetLearnWord">Asc</string>
+<string name="Desc_Dialog_SetLearnWord">Desc</string>
+<string name="Random_Dialog_SetLearnWord">Random</string>
+<string name="ChooseTag_Dialog_SetLearnWord">Select tags to learn</string>
+<!--Dialog_SettingWordlist-->
+<string name="ChoosWlLanguage.ord_Dialog_SettingWordlist">Speech outputWlLanguage.word)</string>
+<string name="ChoosWlLanguage.eaning_Dialog_SettingWordlist">Speech outputWlLanguage.meaning)</string>
+<string name="Interval_Dialog_SettingWordlist">Autoplay interval</string>
+<!--Learn_Wordlist-->
+<string name="OnlyWord_Learn_Wordlist">Word only</string>
+<string name="OnlyMeaning_Learn_Wordlist">Meaning only</string>
+<string name="Both_Learn_Wordlist">Both</string>
+<!--Toolbar_Dialog_EditTag-->
+<string name="Edittag_Toolbar_Dialog_EditTag">Edit a tag</string>
+<!--Wordlist_Addword-->
+<string name="InputWord">Enter a word</string>
+<string name="InputMeaning">Enter meaning</string>
+<string name="InputMemo">Please Input memo</string>
+<string name="Cancel">CANCEL</string>
+<string name="RegisterWord">REGISTER</string>
+<string name="RegisterWordContinue">REGISTER AND NEXT</string>
+<string name="AddFolder">Add folder</string>
+<string name="AddWordlist">Add wordlist</string>
+<string name="SetName">Please set name</string>
+<string name="DeleteEntryConfirm">Delete the selected items. Is it OK？</string>
+<!--menu_popup_Dialog_EditTag-->
+<string name="Editmemo_menu_popup_Dialog_EditTag">Edit memo</string>
+<string name="Edittag_menu_popup_Dialog_EditTag">Edit tag</string>
+<!--Dialog_DirectoryName-->
+<string name="InputDirectoryName">Enter directory name</string>
+<!--Dialog_MergedWordListName-->
+<string name="SelectWordListOnly">Please select wordlist only</string>
+<!--Dialog_Move_Start-->
+<string name="SelectDestination">Please select a destination</string>
+
+<string name="Delete">Deletion is completed</string>
+	<string name="Merge">Merge is completed</string>
+	<string name="Moving">Move</string>
+	<string name="Move">Move is completed</string>
+	<string name="Wordlist">Wordlist</string>
+	<string name="MaxCountOfTag">Tag is allowed 5 at the most.</string>
+	<string name="AnotherTitle">Title is duplicated.Please set another title.</string>
+	<string name="ToolbarTitle_RegisterWord">Register words</string>
+	<string name="ToolbarTitle_Editword">Edit words</string>
+	<string name="ToolbarTitle_Settings">Settings</string>
+	<string name="ToolbarTitle_Question_bulletin_board">Question_bulletin_board</string>
+	<string-array name="ActionSelectedTag">
+		<item>Edit the selected tag.</item>
+		<item>Delete the selected tag.</item>
+	</string-array>
+	<string name="NotImplement">Sorry, not implemented yet.</string>
+	<string name="NoTag">No tag</string>
+	<string name="NoRegisteredWord">Word is not registered.</string>
+	<string name="NoMatchWord">matched word is not registered.</string>
+	<string name="Deleted">Delete is done</string>
+	<string name="DeleteWord">Delete word</string>
+	<string name="SpecifyDestination">Please specify the page number of the destination.</string>
+	<string name="AutoPlayConfirm">Start auto playing.Are you sure?</string>
+	<string name="WarningPageSelect">The page must be an integer from 1 to {0}</string>
+	<string name="Memo">Memo</string>
+	<string-array name="BackUp">
+		<item>Create backup</item>
+		<item>Recover from backup</item>
+	</string-array>
+	<string name="ChangeThemeColor">Change theme color</string>
+	<string name="BU_And_RC">
+		<item>Create a backup from the currently registered word book. Are you sure?</item>
+		<item>Restore word book from backup,And merge into the current word book. Are you sure?</item>
+	</string>
+	<string name="RegisterWordListConfirm">Add these word books. Are you sure?</string>
+	<string name="SelectPlace">Please select a destination folder.</string>
+	<string name="Add">Add</string>
+	<string name="AddComplete">Addition was completed.</string>
+	<string name="CreateBackupComplete">Creating a backup was completed.</string>
+	<string name="Error">Error</string>
+	<string name="RequireStorageAccess">Failed to restore.{0}Please Allow access to storage.</string>
+	<string name="CreateBackupFailure">Failed to create backup.</string>
+	<string name="RestoreCompletedTooManyFolder">Restoration was successful. (Since there were many folders, only a part was restored.)</string>
+	<string name="RestoreCompleted">Restoration was successful.</string>
+	<string name="RestoreFaliure">An error occurred during restore. Backup is broken.</string>
+	<string name="NoneOfBackup">Backup does not exist.</string>
+	<string name="IntegrationConfirm">Merge selected wordlists into one wordlist.Is it OK?</string>
+	<string name="SetWordListName">Please set name of wordlist.</string>
+	<string name="NoMatchedWord">Matched words does not exist.</string>
+	<string name="MoveValidate">The destination is the same as the current position.</string>
+	<string name="EnterWord">Please Enter words.</string>
+</resources>
