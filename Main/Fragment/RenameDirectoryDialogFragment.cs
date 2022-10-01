@@ -2,12 +2,11 @@
 using Android.OS;
 using Android.Views;
 using AndroidX.AppCompat.App;
-using Common.Entry;
-using Common.Extension;
 using Google.Android.Material.TextField;
-using WordLearning.Fragment;
+using WordLearning.CoreLibrary.Extension;
+using WordLearning.Domain.Entry.EntryCore;
 
-namespace WordLearning.Dialog
+namespace WordLearning.Application.Fragment
 {
     public class RenameDirectoryDialogFragment : WlAlartDialogFragment
     {

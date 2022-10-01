@@ -2,25 +2,16 @@
 using Android.Views;
 using AndroidX.AppCompat.App;
 using AndroidX.RecyclerView.Widget;
-using Common.Entry;
-using Common.Visitors;
-using System.Collections.Generic;
 using System.Linq;
-using WordLearning.Adapter;
-using WordLearning.Entry;
-using WordLearning.Fragment;
-using WordLearning.Utility;
+using WordLearning.Domain.Adapters;
+using WordLearning.Domain.Entry.EntryCore;
 
-namespace WordLearning.Dialog
+namespace WordLearning.Application.Fragment
 {
     public class MoveDirectoryDialogFragment : WlAlartDialogFragment
     {
-        private readonly WlFolder _rootFolder;
-
-
-        public MoveDirectoryDialogFragment(WlFolder rootFolder) : base()
+        public MoveDirectoryDialogFragment() : base()
         {
-            _rootFolder = rootFolder;
         }
 
 
@@ -30,10 +21,7 @@ namespace WordLearning.Dialog
             View layout                 = LayoutInflater.Inflate(Resource.Layout.Dialog_Move_Start, null);
             RecyclerView listFolder     = layout.FindViewById<RecyclerView>(Resource.Id.lv_Dialog_Move_Start);
             listFolder.SetLayoutManager(new LinearLayoutManager(Activity));
-            var checkedItems            = _rootFolder.Accept(new GetCheckedEntryVisitor());
-            Start_MoveAdapter adapter   = new(() => _rootFolder.Accept(new GetHierarchicalEntryVisitor(checkedItems))
-                                            .Where(entry => entry is WlFolder)
-                                            .Select(entry => entry as WlFolder));
+            Start_MoveAdapter adapter   = new();
             listFolder.SetAdapter(adapter);
             builder.SetMessage(Resource.String.SelectDestination);
             builder.SetPositiveButton(Resource.String.Moving, (_, _) =>

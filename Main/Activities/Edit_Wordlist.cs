@@ -4,19 +4,18 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using Common.Extension;
-using DomainModel.Extension;
-using System;
 using System.Reactive.Disposables;
-using WordLearning.Adapter;
-using WordLearning.Dialog;
-using WordLearning.Entry;
-using WordLearning.Fragment;
-using WordLearning.States;
-using WordLearning.Utility;
+using WordLearning.Application.Activities.ActivityCore;
+using WordLearning.Application.Dialog;
+using WordLearning.Application.Fragment;
+using WordLearning.CoreLibrary.Extension;
+using WordLearning.Domain.Adapters;
+using WordLearning.Domain.Entry;
+using WordLearning.Domain.States;
+using WordLearning.Domain.Utility;
 using static Android.Widget.AdapterView;
 
-namespace WordLearning.Activities
+namespace WordLearning.Application.Activities
 {
     [Activity(Label = "Edit_Wordlist")]
     public class Edit_Wordlist : CustomActivity

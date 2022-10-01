@@ -1,7 +1,7 @@
 ﻿using Android.Widget;
 using Java.IO;
 
-namespace Common.Extension
+namespace WordLearning.CoreLibrary.Extension
 {
     public static class AdapterExtension
     {

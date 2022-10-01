@@ -1,8 +1,8 @@
 ﻿using Android.OS;
 using AndroidX.AppCompat.App;
-using WordLearning.Activities;
+using WordLearning.Application.Activities.ActivityCore;
 
-namespace WordLearning.Fragment
+namespace WordLearning.Application.Fragment
 {
     public class WlAlartDialogFragment : AppCompatDialogFragment
     {

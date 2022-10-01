@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace WordLearning.Dialog
+namespace WordLearning.Application.Dialog
 {
     public class AutoPlayDialogBuilder : WlAlartDialogBuilder
     {

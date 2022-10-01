@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Common.Utility
+namespace WordLearning.CoreLibrary.Utility
 {
     public static class CommonUtility
     {

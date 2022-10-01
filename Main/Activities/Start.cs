@@ -5,22 +5,21 @@ using Android.OS;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
-using Common.Entry;
-using Common.EventStore;
-using Common.Extension;
-using DomainModel.Extension;
 using Firebase.Iid;
 using System;
 using System.Reactive.Disposables;
-using WordLearning.Adapter;
-using WordLearning.Dialog;
-using WordLearning.Entry;
-using WordLearning.Fragment;
-using WordLearning.States;
-using WordLearning.Utility;
+using WordLearning.Domain.Adapters;
+using WordLearning.Application.Dialog;
+using WordLearning.CoreLibrary.Extension;
+using WordLearning.Domain.Entry;
+using WordLearning.Domain.Entry.EntryCore;
+using WordLearning.Application.Activities.ActivityCore;
+using WordLearning.Application.Fragment;
+using WordLearning.Domain.States;
+using WordLearning.Domain.Utility;
 using static Android.Widget.AdapterView;
 
-namespace WordLearning.Activities
+namespace WordLearning.Application.Activities
 {
     [Activity(Label = "@string/app_name", MainLauncher = true, LaunchMode = Android.Content.PM.LaunchMode.SingleTop)]
     public class Start : CustomActivity
@@ -64,8 +63,7 @@ namespace WordLearning.Activities
                 SupportActionBar.Title = value.Name;
                 SupportActionBar.SetDisplayHomeAsUpEnabled(value != WlUtility.RootFolder);
                 SupportActionBar.SetHomeButtonEnabled(value != WlUtility.RootFolder);
-                disposable = value.RegisterPropertyValueChanged(nameof(WlFolder.Name),
-                                handler: name => SupportActionBar.Title = name);
+                disposable = value.RegisterPropertyValueChanged(nameof(WlFolder.Name), handler: name => SupportActionBar.Title = name);
             }));
 
             _listView.Adapter = adapter;

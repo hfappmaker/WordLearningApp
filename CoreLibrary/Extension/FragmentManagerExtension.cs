@@ -1,12 +1,9 @@
 ﻿using Android.OS;
-using Common.Utility;
-using Java.IO;
-using System;
 using AndroidX.Fragment.App;
 using AndroidX.Lifecycle;
-using Java.Interop;
+using System;
 
-namespace Common.Extension
+namespace WordLearning.CoreLibrary.Extension
 {
     public static class FragmentManagerExtension
     {

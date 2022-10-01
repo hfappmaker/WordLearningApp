@@ -1,6 +1,6 @@
 ﻿using Android.Content;
 
-namespace WordLearning.Dialog
+namespace WordLearning.Application.Dialog
 {
     internal class SetLearnWordDialogBuilder : WlAlartDialogBuilder
     {

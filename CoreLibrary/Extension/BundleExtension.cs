@@ -1,9 +1,9 @@
 ﻿using Android.OS;
-using Common.Utility;
+using WordLearning.CoreLibrary.Utility;
 using Java.IO;
 using System;
 
-namespace Common.Extension
+namespace WordLearning.CoreLibrary.Extension
 {
     public static class BundleExtension
     {

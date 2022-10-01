@@ -9,12 +9,13 @@ using Android.Widget;
 using System;
 using System.Linq;
 using System.Threading;
-using WordLearning.Colors;
-using WordLearning.Dialog;
+using WordLearning.Application.Activities.ActivityCore;
+using WordLearning.Application.Dialog;
+using WordLearning.Domain.Colors;
 using static Android.Views.GestureDetector;
 using static Android.Widget.RadioGroup;
 
-namespace WordLearning.Activities
+namespace WordLearning.Application.Activities
 {
     [Activity(Label = "Learn_Wordlist")]
     public class Learn_Wordlist : CustomActivity, TextToSpeech.IOnInitListener
@@ -97,7 +98,7 @@ namespace WordLearning.Activities
             foreach ((TagColor TagColor, int Index) pair in TagColorCollection.Instance.Select((TagColor, Index) => (TagColor, Index)))
             {
                 ImageView imageView = new ImageView(ApplicationContext);
-                Android.Graphics.Drawables.Drawable drawable = GetDrawable((int)pair.TagColor.Shape);
+                Android.Graphics.Drawables.Drawable drawable = GetDrawable(pair.TagColor.Shape.Id);
                 drawable.Mutate();
                 drawable.SetColorFilter(new BlendModeColorFilter(pair.TagColor.WlColor, BlendMode.Multiply));
                 imageView.SetImageDrawable(drawable);

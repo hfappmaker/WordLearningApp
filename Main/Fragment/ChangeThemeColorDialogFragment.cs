@@ -6,13 +6,13 @@ using Android.Widget;
 using AndroidX.AppCompat.App;
 using System;
 using System.Collections.Generic;
-using WordLearning.Colors;
-using WordLearning.Shape;
-using WordLearning.Utility;
+using WordLearning.Domain.Colors;
+using WordLearning.Domain.Shape;
+using WordLearning.Domain.Utility;
 using static Android.Widget.RadioGroup;
 using static Android.Widget.SeekBar;
 
-namespace WordLearning.Fragment
+namespace WordLearning.Application.Fragment
 {
     public class ChangeThemeColorDialogFragment : WlAlartDialogFragment
     {
@@ -46,7 +46,7 @@ namespace WordLearning.Fragment
                                             {Resource.Id.rdoheart,WlShape.Heart},
                                         };
 
-            VectorDrawable drawable = Context.GetDrawable((int)drawableDictionary[e.CheckedId]) as VectorDrawable;
+            VectorDrawable drawable = Context.GetDrawable((int)drawableDictionary[e.CheckedId].Id) as VectorDrawable;
             drawable.Mutate();
             drawable.SetColorFilter(new BlendModeColorFilter(tagColor, BlendMode.Multiply));
         }

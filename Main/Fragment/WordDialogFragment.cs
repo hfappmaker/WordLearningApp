@@ -2,11 +2,11 @@
 using Android.OS;
 using Android.Widget;
 using AndroidX.AppCompat.App;
-using Common.Extension;
+using WordLearning.CoreLibrary.Extension;
 using Google.Android.Material.TextField;
-using WordLearning.Entry;
+using WordLearning.Domain.Entry;
 
-namespace WordLearning.Fragment
+namespace WordLearning.Application.Fragment
 {
     public class WordDialogFragment : WlAlartDialogFragment
     {

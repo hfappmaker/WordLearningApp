@@ -1,4 +1,4 @@
-﻿namespace WordLearning.Fragment
+﻿namespace WordLearning.Application.Fragment
 {
     internal class EditTagDialogFragment : WlAlartDialogFragment
     {

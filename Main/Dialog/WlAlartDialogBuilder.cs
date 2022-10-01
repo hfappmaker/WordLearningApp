@@ -1,8 +1,8 @@
 ﻿using Android.Content;
 using AndroidX.AppCompat.App;
-using WordLearning.Utility;
+using WordLearning.Domain.Utility;
 
-namespace WordLearning.Dialog
+namespace WordLearning.Application.Dialog
 {
     public abstract class WlAlartDialogBuilder : AlertDialog.Builder
     {

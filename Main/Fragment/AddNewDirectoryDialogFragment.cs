@@ -1,17 +1,13 @@
 ﻿using Android.Content;
 using Android.OS;
 using AndroidX.AppCompat.App;
-using Common.Entry;
-using Common.Extension;
-using Common.Utility;
-using System;
-using System.Reflection;
-using WordLearning.Adapter;
-using WordLearning.Dialog;
-using WordLearning.Entry;
-using WordLearning.Utility;
+using WordLearning.Domain.Utility;
+using WordLearning.Domain.Entry;
+using WordLearning.Domain.Entry.EntryCore;
+using WordLearning.CoreLibrary.Utility;
+using WordLearning.CoreLibrary.Extension;
 
-namespace WordLearning.Fragment
+namespace WordLearning.Application.Fragment
 {
     public class AddNewDirectoryDialogFragment : WlAlartDialogFragment
     {

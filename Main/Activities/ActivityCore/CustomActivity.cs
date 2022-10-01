@@ -4,13 +4,11 @@ using Android.Views;
 using AndroidX.AppCompat.App;
 using AndroidX.AppCompat.Widget;
 using AndroidX.Transitions;
-using Common.EventStore;
-using Common.States;
-using System;
-using WordLearning.Colors;
-using WordLearning.Utility;
+using WordLearning.Domain.States;
+using WordLearning.Domain.Utility;
+using WordLearning.Domain.Colors;
 
-namespace WordLearning.Activities
+namespace WordLearning.Application.Activities.ActivityCore
 {
     [Activity(Label = "Inherit this activity")]
     public abstract class CustomActivity : AppCompatActivity
@@ -80,42 +78,5 @@ namespace WordLearning.Activities
 
 
         public abstract void OnDialogResult(object result, string dialogName);
-
-
-        protected void WriteTransaction(IAggregateRoot root, Action action)
-        {
-            try
-            {
-                root.BeginReadTransaction();
-                action?.Invoke();
-            }
-            catch
-            {
-                root.Rollback();
-            }
-            finally
-            {
-                root.Commit();
-            }
-        }
-
-
-        protected void ReadTransaction(IAggregateRoot root, Action action)
-        {
-            try
-            {
-                root.BeginReadTransaction();
-                action?.Invoke();
-            }
-            catch
-            {
-
-            }
-            finally
-            {
-                root.EndReadTransaction();
-            }
-        }
-
     }
 }

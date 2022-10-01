@@ -10,7 +10,7 @@ using WordLearning.Adapter;
 using WordLearning.Entry;
 using WordLearning.Utility;
 
-namespace WordLearning.Fragment
+namespace WordLearning.Application.Fragment
 {
     public class CreateNewItemDialogFragment : WlAlartDialogFragment
     {

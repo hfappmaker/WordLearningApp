@@ -2,7 +2,7 @@
 using Android.Views;
 using Android.Widget;
 
-namespace WordLearning.Dialog
+namespace WordLearning.Application.Dialog
 {
     internal class EditWordMemoDialogBuilder : WlAlartDialogBuilder
     {

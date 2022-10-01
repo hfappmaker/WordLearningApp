@@ -1,7 +1,7 @@
 ﻿using Android.Content;
-using Common.Utility;
+using WordLearning.CoreLibrary.Utility;
 
-namespace Common.Extension
+namespace WordLearning.CoreLibrary.Extension
 {
     public static class IntentExtension
     {

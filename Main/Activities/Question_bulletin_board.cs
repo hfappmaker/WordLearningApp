@@ -10,10 +10,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
-using WordLearning.Adapter;
+using WordLearning.Application.Activities.ActivityCore;
+using WordLearning.Domain.Adapters;
 using static Android.Widget.AdapterView;
 
-namespace WordLearning.Activities
+namespace WordLearning.Application.Activities
 {
     [Activity(Label = "Question_bulletin_board")]
     public class Question_bulletin_board : CustomActivity

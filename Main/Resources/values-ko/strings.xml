@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+           xmlns:local="http://schemas.android.com/apk/res-auto">
+<string name="app_name">WordLearning</string>
+<!--Settings-->
+<string name="BackupandRecover_Settings">백업 / 복구</string>
+<string name="Themecolor_Settings">테마 색</string>
+<string name="CSVfile_Settings">CSV 파일</string>
+<string name="Question_bulletin_board">Question bulletin board</string>
+<string name="ImportFromImage">ImportFromImage</string>
+<string-array name="array_Backup_And_Recover">
+<item android:id="@+id/it_CreateBackup">백업 만들기</item>
+<item>백업에서 복구</item>
+</string-array>
+<string-array name="array_Changethemecolor">
+<item>테마 색 변경</item>
+</string-array>
+<string-array name="array_CSVfileimport">
+<item>CSV 파일 가져 오기</item>
+</string-array>
+<string-array name="array_ImportFromImage">
+<item>ImportFromImage</item>
+</string-array>
+<string-array name="array_Question_bulletin_board">
+<item>Question bulletin board</item>
+</string-array>
+<!--Dialog_CreateNewTag-->
+<string name="square_Dialog_CreateNewTag">광장</string>
+<string name="star_Dialog_CreateNewTag">별</string>
+<string name="heart_Dialog_CreateNewTag">심장</string>
+<string name="TagMeaning_Dialog_CreateNewTag">태그의 의미</string>
+<!--Dialog_SetLearnWord-->
+<string name="Order_Dialog_SetLearnWord">주문</string>
+<string name="Asc_Dialog_SetLearnWord">Asc</string>
+<string name="Desc_Dialog_SetLearnWord">Desc</string>
+<string name="Random_Dialog_SetLearnWord">Random</string>
+<string name="ChooseTag_Dialog_SetLearnWord">학습 할 태그 선택</string>
+<!--Dialog_SettingWordlist-->
+<string name="ChoosWlLanguage.ord_Dialog_SettingWordlist">음성 출력 언어(워드)</string>
+<string name="ChoosWlLanguage.eaning_Dialog_SettingWordlist">음성 출력 언어(의미)</string>
+<string name="Interval_Dialog_SettingWordlist">자동 재생 간격</string>
+<!--Learn_Wordlist-->
+<string name="OnlyWord_Learn_Wordlist">단어 만</string>
+<string name="OnlyMeaning_Learn_Wordlist">의미 만</string>
+<string name="Both_Learn_Wordlist">양자 모두</string>
+<!--Wordlist_Addword-->
+<string name="InputWord">단어 입력</string>
+<string name="InputMeaning">의미 입력</string>
+<string name="InputMemo">메모를 입력하십시오.</string>
+<string name="Cancel">CANCEL</string>
+<string name="RegisterWord">레지스터</string>
+<string name="RegisterWordContinue">순차적으로 등록</string>
+<string name="AddFolder">폴더 추가</string>
+<string name="AddWordlist">어휘 책 추가</string>
+<string name="SetName">이름 을 설정하십시오</string>
+<string name="DeleteEntryConfirm">선택한 항목을 삭제하십시오. 괜찮습니까?</string>
+<!--menu_popup_Dialog_EditTag-->
+<string name="Editmemo_menu_popup_Dialog_EditTag">메모 수정</string>
+<string name="Edittag_menu_popup_Dialog_EditTag">태그 수정</string>
+<!--Dialog_DirectoryName-->
+<string name="InputDirectoryName">Enter directory name</string>
+<!--Dialog_MergedWordListName-->
+<string name="SelectWordListOnly">Please select wordlist only</string>
+<!--Dialog_Move_Start-->
+<string name="SelectDestination">목적지를 선택하십시오</string>
+
+<string name="Delete">삭제가 완료되었습니다</string>
+	<string name="Merge">병합이 완료되었습니다</string>
+	<string name="Moving">움직임</string>
+	<string name="Move">이동이 완료되었습니다</string>
+	<string name="Wordlist">단어장</string>
+	<string name="MaxCountOfTag">태그는 최대 5 개까지 허용됩니다.</string>
+	<string name="AnotherTitle">제목이 중복되었습니다. 다른 제목을 설정하십시오.</string>
+	<string name="ToolbarTitle_RegisterWord">단어 등록</string>
+	<string name="ToolbarTitle_Editword">단어 수정</string>
+	<string name="ToolbarTitle_Settings">설정</string>
+	<string name="ToolbarTitle_Question_bulletin_board">Question_bulletin_board</string>
+	<string-array name="ActionSelectedTag">
+		<item>선택한 태그를 편집하십시오.</item>
+		<item>선택한 태그를 삭제하십시오.</item>
+	</string-array>
+	<string name="NotImplement">죄송합니다. 아직 구현되지 않았습니다.</string>
+	<string name="NoTag">태그 없음</string>
+	<string name="NoRegisteredWord">단어가 등록되지 않았습니다.</string>
+	<string name="NoMatchWord">일치하는 단어가 등록되지 않았습니다.</string>
+	<string name="Deleted">삭제가 완료되었습니다.</string>
+	<string name="DeleteWord">단어 삭제</string>
+	<string name="SpecifyDestination">대상 페이지 번호를 지정하십시오.</string>
+	<string name="AutoPlayConfirm">자동 연주 시작. 정말이야?</string>
+	<string name="WarningPageSelect">페이지는 1에서 {0} 사이의 정수 여야합니다.</string>
+	<string name="Memo">메모</string>
+	<string-array name="BackUp">
+		<item>Create backup</item>
+		<item>Recover from backup</item>
+	</string-array>
+	<string name="ChangeThemeColor">Change theme color</string>
+	<string name="BU_And_RC">
+		<item>현재 등록 된 단어장에서 백업을 만듭니다.확실해?</item>
+		<item>백업에서 단어장 복원,현재 단어장에 병합합니다.확실해?</item>
+	</string>
+	<string name="RegisterWordListConfirm">이 단어장을 추가하십시오. 확실해?</string>
+	<string name="SelectPlace">대상 폴더를 선택하십시오.</string>
+	<string name="Add">더하다</string>
+	<string name="AddComplete">추가가 완료되었습니다.</string>
+	<string name="CreateBackupComplete">백업 작성이 완료되었습니다.</string>
+	<string name="Error">오류</string>
+	<string name="RequireStorageAccess">복원하지 못했습니다.{0}저장소에 대한 액세스를 허용하십시오.</string>
+	<string name="CreateBackupFailure">백업을 만들지 못했습니다.</string>
+	<string name="RestoreCompletedTooManyFolder">복원이 성공했습니다. 폴더가 많기 때문에 부품 만 복원되었습니다.</string>
+	<string name="RestoreCompleted">복원이 성공했습니다.</string>
+	<string name="RestoreFaliure">복원 중 오류가 발생했습니다. 백업이 끊어졌습니다.</string>
+	<string name="NoneOfBackup">백업이 존재하지 않습니다.</string>
+	<string name="IntegrationConfirm">선택한 단어 목록을 하나의 단어 목록으로 병합합니다.괜찮습니까?</string>
+	<string name="SetWordListName">어휘집의 이름을 정하십시오.</string>
+	<string name="NoMatchedWord">일치하는 단어가 존재하지 않습니다.</string>
+	<string name="MoveValidate">목적지는 현재 위치와 같습니다.</string>
+	<string name="EnterWord">단어를 입력하십시오.</string>
+</resources>

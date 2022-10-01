@@ -1,11 +1,9 @@
 ﻿using Android.OS;
 using AndroidX.AppCompat.App;
-using Common.Entry;
-using Common.Visitors;
-using WordLearning.Entry;
-using WordLearning.Utility;
+using WordLearning.Domain.Entry.EntryCore;
+using WordLearning.Domain.Entry.Visitors;
 
-namespace WordLearning.Fragment
+namespace WordLearning.Application.Fragment
 {
     public class DeleteEntriesDialogFragment : WlAlartDialogFragment
     {

@@ -1,9 +1,9 @@
 ﻿using Android.Content;
 using Android.Views;
 using Android.Widget;
-using WordLearning.Adapter;
+using WordLearning.Domain.Adapters;
 
-namespace WordLearning.Dialog
+namespace WordLearning.Application.Dialog
 {
     public class EditWordTagDialogBuilder : WlAlartDialogBuilder
     {

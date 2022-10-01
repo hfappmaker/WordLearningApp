@@ -7,13 +7,13 @@ using Android.Widget;
 using AndroidX.AppCompat.App;
 using System;
 using System.Collections.Generic;
-using WordLearning.Colors;
-using WordLearning.Shape;
-using WordLearning.Utility;
+using WordLearning.Domain.Colors;
+using WordLearning.Domain.Utility;
+using WordLearning.Domain.Shape;
 using static Android.Widget.RadioGroup;
 using static Android.Widget.SeekBar;
 
-namespace WordLearning.Fragment
+namespace WordLearning.Application.Fragment
 {
     internal class CreateNewTagDialogFragment : WlAlartDialogFragment
     {
@@ -48,7 +48,7 @@ namespace WordLearning.Fragment
                                             {Resource.Id.rdoheart,WlShape.Heart},
                                         };
 
-            VectorDrawable drawable = Context.GetDrawable((int)drawableDictionary[e.CheckedId]) as VectorDrawable;
+            VectorDrawable drawable = Context.GetDrawable((int)drawableDictionary[e.CheckedId].Id) as VectorDrawable;
             drawable.Mutate();
             drawable.SetColorFilter(new BlendModeColorFilter(tagColor, BlendMode.Multiply));
             shape = drawableDictionary[e.CheckedId];

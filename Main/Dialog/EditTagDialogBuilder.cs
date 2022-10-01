@@ -2,7 +2,7 @@
 using static Android.Widget.AdapterView;
 using static AndroidX.AppCompat.Widget.Toolbar;
 
-namespace WordLearning.Dialog
+namespace WordLearning.Application.Dialog
 {
     internal class EditTagDialogBulder : WlAlartDialogBuilder
     {

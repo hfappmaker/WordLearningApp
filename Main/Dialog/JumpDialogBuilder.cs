@@ -2,7 +2,7 @@
 using Android.Widget;
 using AndroidX.AppCompat.App;
 
-namespace WordLearning.Dialog
+namespace WordLearning.Application.Dialog
 {
     public class JumpDialogBuilder : WlAlartDialogBuilder
     {

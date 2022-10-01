@@ -8,13 +8,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("CoreLibrary.Resource", IsApplication=false)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("WordLearning.CoreLibrary.Resource", IsApplication=false)]
 
-namespace CoreLibrary
+namespace WordLearning.CoreLibrary
 {
 	
 	
-	[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Android.Build.Tasks", "12.1.0.11")]
+	[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Android.Build.Tasks", "12.3.3.31")]
 	public partial class Resource
 	{
 		

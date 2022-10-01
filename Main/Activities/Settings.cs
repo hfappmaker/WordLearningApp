@@ -14,7 +14,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
-using WordLearning.Dialog;
+using WordLearning.Application.Activities.ActivityCore;
+using WordLearning.Application.Dialog;
 using static Android.Widget.AdapterView;
 
 namespace WordLearning.Activities

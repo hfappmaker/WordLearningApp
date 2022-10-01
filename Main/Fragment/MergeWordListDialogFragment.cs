@@ -1,14 +1,12 @@
-﻿using Android.Content;
-using Android.OS;
+﻿using Android.OS;
 using Android.Views;
 using AndroidX.AppCompat.App;
-using Common.Visitors;
 using Google.Android.Material.TextField;
 using System.Linq;
-using WordLearning.Entry;
-using WordLearning.Fragment;
+using WordLearning.Domain.Entry;
+using WordLearning.Domain.Entry.Visitors;
 
-namespace WordLearning.Dialog
+namespace WordLearning.Application.Fragment
 {
     public class MergeWordListDialogFragment : WlAlartDialogFragment
     {

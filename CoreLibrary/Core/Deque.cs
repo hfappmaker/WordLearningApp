@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-namespace Common.Core
+namespace WordLearning.CoreLibrary.Core
 {
     public class Deque<T> : IEnumerable<T>
     {
