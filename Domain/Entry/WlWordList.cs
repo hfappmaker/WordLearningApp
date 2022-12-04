@@ -6,13 +6,10 @@ namespace WordLearning.Domain.Entry
 {
     public class WlWordList : WlDirectory, IEnumerable<WlWord>
     {
-        public WlWordList(string fileName)
-            : base(Enumerable.Empty<WlEntry>())
+        public WlWordList(string name)
+            : base(name, Enumerable.Empty<WlEntry>())
         {
-            Name = fileName;
         }
-
-        public WlWordList() : this(string.Empty) { }
 
         //public WlLanguage VoiceLanguageWord { get; set; }
 

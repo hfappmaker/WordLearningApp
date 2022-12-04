@@ -11,10 +11,12 @@ using System.Reactive.Subjects;
 
 namespace WordLearning.Domain.Entry.EntryCore
 {
-    public abstract class WlDirectory : WlEntry, IWlEnumerable<WlEntry>
+    public abstract class WlDirectory : WlEntry, IEnumerableV2<WlEntry>
     {
-        public WlDirectory(IEnumerable<WlEntry> entries) : base()
+        public WlDirectory(string name, IEnumerable<WlEntry> entries) : base()
         {
+            Name = name;
+
             foreach (WlEntry entry in entries)
             {
                 entry.AddToAction(this);
@@ -23,7 +25,7 @@ namespace WordLearning.Domain.Entry.EntryCore
             Entries.CollectionChanged += NotifyCollectionChanged;
         }
 
-        protected WlObservableCollection<WlEntry> Entries { get; } = new WlObservableCollection<WlEntry>();
+        protected ObservableCollectionV2<WlEntry> Entries { get; } = new ObservableCollectionV2<WlEntry>();
 
         private Subject<EventPattern<NotifyCollectionChangedEventArgs>> CollectionChanged { get; } = new();
 
@@ -116,12 +118,12 @@ namespace WordLearning.Domain.Entry.EntryCore
 
         public string EntryType { get; }
 
-        public string Name { get => GetValue<string>(); set => SetValue(value); }
+        public string Name { get => GetValue<string>(); internal set => SetValue(value); }
 
-        public IDisposable RegisterCollectionChanged(Action<WlObservableCollection<WlEntry>, NotifyCollectionChangedEventArgs> handler)
+        public IDisposable RegisterCollectionChanged(Action<ObservableCollectionV2<WlEntry>, NotifyCollectionChangedEventArgs> handler)
         {
             IDisposable currentDisposable = null;
-            void registerAction() => currentDisposable = CollectionChanged.Subscribe(value => handler(value.Sender as WlObservableCollection<WlEntry>, value.EventArgs));
+            void registerAction() => currentDisposable = CollectionChanged.Subscribe(value => handler(value.Sender as ObservableCollectionV2<WlEntry>, value.EventArgs));
             void disposeAction() => currentDisposable.Dispose();
             Execute(disposeAction, registerAction);
             return Disposable.Create(() => Execute(registerAction, disposeAction));

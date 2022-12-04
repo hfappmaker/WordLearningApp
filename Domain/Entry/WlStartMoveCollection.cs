@@ -14,7 +14,7 @@ using WordLearning.CoreLibrary.Extension;
 
 namespace WordLearning.Domain.Entry
 {
-    public class WlStartMoveCollection : IWlEnumerable<WlFolder>
+    public class WlStartMoveCollection : IEnumerableV2<WlFolder>
     {
         private readonly CompositeDisposable _disposable = new();
 
@@ -41,7 +41,7 @@ namespace WordLearning.Domain.Entry
                                             .TypeSelect<WlFolder>();
         }
 
-        protected WlObservableCollection<WlFolder> Entries { get; } = new WlObservableCollection<WlFolder>();
+        protected ObservableCollectionV2<WlFolder> Entries { get; } = new ObservableCollectionV2<WlFolder>();
 
         private Subject<EventPattern<NotifyCollectionChangedEventArgs>> CollectionChanged { get; } = new();
 
@@ -50,9 +50,9 @@ namespace WordLearning.Domain.Entry
             return Entries.GetEnumerator();
         }
 
-        public IDisposable RegisterCollectionChanged(Action<WlObservableCollection<WlFolder>, NotifyCollectionChangedEventArgs> handler)
+        public IDisposable RegisterCollectionChanged(Action<ObservableCollectionV2<WlFolder>, NotifyCollectionChangedEventArgs> handler)
         {
-            var disposable = CollectionChanged.Subscribe(value => handler(value.Sender as WlObservableCollection<WlFolder>, value.EventArgs));
+            var disposable = CollectionChanged.Subscribe(value => handler(value.Sender as ObservableCollectionV2<WlFolder>, value.EventArgs));
             _disposable.Add(disposable);
             return disposable;
         }

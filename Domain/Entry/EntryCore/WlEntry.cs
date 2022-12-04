@@ -1,17 +1,18 @@
-﻿using WordLearning.Domain.Aggregate;
-using WordLearning.Domain.Entry.Visitors;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
 using System.Runtime.CompilerServices;
+using WordLearning.Domain.Aggregate;
+using WordLearning.Domain.Entry.Visitors;
+using WordLearning.Domain.Transaction;
 
 namespace WordLearning.Domain.Entry.EntryCore
 {
-    public abstract class WlEntry : Java.Lang.Object
+    public abstract class WlEntry : WlEntity
     {
-        private IDictionary<string, object> _attributes = new Dictionary<string, object>();
+        private readonly IDictionary<string, object> _attributes = new Dictionary<string, object>();
 
         public WlEntry()
         {
@@ -60,8 +61,6 @@ namespace WordLearning.Domain.Entry.EntryCore
                 return rank;
             }
         }
-
-        //protected XElement Element { get; }
 
         private Subject<bool> CheckedChanged { get; } = new();
 
@@ -151,7 +150,6 @@ namespace WordLearning.Domain.Entry.EntryCore
         internal virtual void DeleteAction()
         {
             Parent?.Remove(this);
-            //Element.Remove();
             Parent = null;
             DisposeEntry();
         }
@@ -170,7 +168,6 @@ namespace WordLearning.Domain.Entry.EntryCore
         {
             Parent = destination;
             Parent?.Add(this);
-            //Parent?.Element.Add(Element);
             RestoreEntry();
         }
 

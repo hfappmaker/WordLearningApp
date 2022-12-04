@@ -12,10 +12,11 @@ using System.Text;
 
 namespace WordLearning.Domain.Aggregate
 {
-    public interface IAggregateRoot
+    public interface IAggregateRoot : IDisposable
     {
-        int ID { get; }
-
         Subject<(Action undoAction, Action redoAction)> ActionCompleted { get; }
+
+
+        Subject<bool> Disposed { get; }
     }
 }

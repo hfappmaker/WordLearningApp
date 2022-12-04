@@ -15,13 +15,15 @@ namespace WordLearning.Domain.Repositories
 
         void Save();
 
+        T Create();
+
         //IEnumerable<T> GetAll();
 
         //IEnumerable<T> FindAll();
 
         //IEnumerable<T> FindByName(string name);
 
-        //IEnumerable<T> FindById(int id);
+        //IEnumerable<T> FindById(long id);
 
         //IEnumerable<T> FindByNameIgnoreCase(string name);
     }

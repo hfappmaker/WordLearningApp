@@ -26,7 +26,7 @@ namespace WordLearning.Domain.Utility
             System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), FileName);
 
 
-        public static WlFolder RootFolder { get; } = new WlFolder(RootElement.Element(nameof(WlFolder)));
+        public static WlFolder RootFolder { get; } = new WlFolder("Root");
 
 
         private static XDocument GetDefaultDocument()

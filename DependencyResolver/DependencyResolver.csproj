@@ -67,7 +67,11 @@
     <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DomainModel\Domain.csproj">
+    <ProjectReference Include="..\CoreLibrary\CoreLibrary.csproj">
+      <Project>{00776adf-f94c-409f-8d24-edb8ef1bb996}</Project>
+      <Name>CoreLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{aa876033-1db2-4fcf-9b1c-e08e929bd6dc}</Project>
       <Name>Domain</Name>
     </ProjectReference>

@@ -17,7 +17,7 @@
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v10.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v12.0</TargetFrameworkVersion>
     <LangVersion>10.0</LangVersion>
     <AndroidUseAapt2>true</AndroidUseAapt2>
   </PropertyGroup>
@@ -50,8 +50,8 @@
   <ItemGroup>
     <Compile Include="Core\Deque.cs" />
     <Compile Include="Core\Enumeration.cs" />
-    <Compile Include="Core\IWlEnumerable.cs" />
-    <Compile Include="Core\WlObservableCollection.cs" />
+    <Compile Include="Core\IEnumerableV2.cs" />
+    <Compile Include="Core\ObservableCollectionV2.cs" />
     <Compile Include="Extension\AdapterExtension.cs" />
     <Compile Include="Extension\BundleExtension.cs" />
     <Compile Include="Extension\FragmentManagerExtension.cs" />

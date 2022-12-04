@@ -17,7 +17,7 @@
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v10.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v12.0</TargetFrameworkVersion>
     <LangVersion>10.0</LangVersion>
     <AndroidUseAapt2>true</AndroidUseAapt2>
   </PropertyGroup>
@@ -48,24 +48,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Adapters\AdapterCore\CustomArrayAdapter.cs" />
-    <Compile Include="Adapters\AdapterCore\RecyclerAdaper.cs" />
-    <Compile Include="Adapters\Edit_WordListAdapter.cs" />
-    <Compile Include="Adapters\PostAdapter.cs" />
-    <Compile Include="Adapters\SelectedTagAdapter.cs" />
-    <Compile Include="Adapters\StartAdapter.cs" />
-    <Compile Include="Adapters\Start_MoveAdapter.cs" />
-    <Compile Include="Adapters\TagListAdapter.cs" />
-    <Compile Include="Adapters\TitleAdapter.cs" />
     <Compile Include="Aggregate\IAggregateRoot.cs" />
     <Compile Include="Colors\TagColor.cs" />
     <Compile Include="Colors\TagColorCollection.cs" />
     <Compile Include="Colors\ThemeColor.cs" />
     <Compile Include="Colors\WlColorUtil.cs" />
+    <Compile Include="Entry\EntryCore\WlEntity.cs" />
     <Compile Include="Entry\EntryCore\WlDirectory.cs" />
     <Compile Include="Entry\EntryCore\WlEntry.cs" />
     <Compile Include="Entry\Visitors\DeleteCheckedEntryVisitor.cs" />
-    <Compile Include="Entry\Visitors\GetAllEntryVisitor.cs" />
+    <Compile Include="Entry\Visitors\GetAllFolderVisitor.cs" />
     <Compile Include="Entry\Visitors\GetCheckedEntryVisitor.cs" />
     <Compile Include="Entry\Visitors\GetHierarchicalEntryVisitor.cs" />
     <Compile Include="Entry\Visitors\IWlEntryGetterVisitor.cs" />
@@ -75,22 +67,15 @@
     <Compile Include="Entry\WlStartMoveCollection.cs" />
     <Compile Include="Entry\WlWord.cs" />
     <Compile Include="Entry\WlWordList.cs" />
-    <Compile Include="BusinessTransaction\ICommand.cs" />
-    <Compile Include="BusinessTransaction\TransactionCommand.cs" />
+    <Compile Include="Transaction\ICommand.cs" />
+    <Compile Include="Transaction\TransactionCommand.cs" />
     <Compile Include="Repositories\IWlRootFolderRepository.cs" />
     <Compile Include="Repositories\IWlRepository.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shape\WlShape.cs" />
-    <Compile Include="States\Edit_WordlistDeleteToolbarState.cs" />
-    <Compile Include="States\Edit_WordlistInitToolbarState.cs" />
-    <Compile Include="States\IToolbarState.cs" />
-    <Compile Include="States\StartDeleteToolbarState.cs" />
-    <Compile Include="States\StartInitToolbarState.cs" />
-    <Compile Include="BusinessTransaction\BusinessTransaction.cs" />
+    <Compile Include="Transaction\BusinessTransaction.cs" />
     <Compile Include="Utility\WlUtility.cs" />
-    <Compile Include="ViewHolders\WlRecyclerViewHolder.cs" />
-    <Compile Include="ViewHolders\WlViewHolder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -112,12 +97,6 @@
     <PackageReference Include="Xamarin.Google.Dagger">
       <Version>2.39.1</Version>
     </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CoreLibrary\CoreLibrary.csproj">
-      <Project>{00776adf-f94c-409f-8d24-edb8ef1bb996}</Project>
-      <Name>CoreLibrary</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Dialog_Changethemecolor.xml" />
@@ -165,9 +144,6 @@
     <AndroidResource Include="Resources\layout\row.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\row_Explorer.xml" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\layout\row_Latest.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -187,9 +163,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Settings.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\Start.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Start_Deletemode.xml" />
@@ -421,6 +394,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\star2.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CoreLibrary\CoreLibrary.csproj">
+      <Project>{00776adf-f94c-409f-8d24-edb8ef1bb996}</Project>
+      <Name>CoreLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

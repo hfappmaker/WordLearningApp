@@ -3,7 +3,7 @@
 namespace WordLearning.Infrastructure.UnitOfWorks
 {
     [Flags]
-    public enum EntityState
+    internal enum EntityState
     {
         Added,
         Deleted,

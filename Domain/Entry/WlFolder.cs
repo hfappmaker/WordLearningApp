@@ -6,12 +6,7 @@ namespace WordLearning.Domain.Entry
 {
     public class WlFolder : WlDirectory, IEnumerable<WlDirectory>
     {
-        public WlFolder(string fileName) : base(Enumerable.Empty<WlEntry>())
-        {
-            Name = fileName;
-        }
-
-        public WlFolder() : this(string.Empty) { }
+        public WlFolder(string name) : base(name, Enumerable.Empty<WlEntry>()) { }
 
 
         IEnumerator<WlDirectory> IEnumerable<WlDirectory>.GetEnumerator()
