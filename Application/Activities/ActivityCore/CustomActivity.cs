@@ -13,7 +13,6 @@ namespace WordLearning.Application.Activities.ActivityCore
     [Activity(Label = "Inherit this activity")]
     public abstract class CustomActivity : AppCompatActivity
     {
-        public 
         public int? basetoolbarResID = null;
         public IMenu menu;
         private IToolbarState _toolbarState;
